@@ -1,0 +1,400 @@
+// External UI Library Styles
+// This file includes all external UI library styles that need to be bundled
+// into the shadow DOM since they can't access the document head
+
+// ==============================================
+// Tailwind CSS Base (for shadcn/ui compatibility)
+// ==============================================
+
+// Reset and normalize styles for shadow DOM
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+// Typography base
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+// HTML5 display-role reset for older browsers
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+// Base typography
+body {
+  line-height: 1;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+// ==============================================
+// Tailwind Utilities (Essential for shadcn/ui)
+// ==============================================
+
+// Flexbox utilities
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.gap-1 { gap: 0.25rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+
+// Spacing utilities
+.m-0 { margin: 0; }
+.m-1 { margin: 0.25rem; }
+.m-2 { margin: 0.5rem; }
+.m-4 { margin: 1rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.p-0 { padding: 0; }
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 0.75rem; }
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.px-8 { padding-left: 2rem; padding-right: 2rem; }
+.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.pt-0 { padding-top: 0; }
+
+// Space utilities for adjacent elements
+.space-y-1 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.25rem; }
+.space-y-1\.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.375rem; }
+.space-y-2 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.5rem; }
+.space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem; }
+.space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5rem; }
+
+// Text utilities
+.text-xs { font-size: 0.75rem; line-height: 1rem; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-base { font-size: 1rem; line-height: 1.5rem; }
+.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.text-2xl { font-size: 1.5rem; line-height: 2rem; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.leading-none { line-height: 1; }
+.tracking-tight { letter-spacing: -0.025em; }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+// More utilities needed by shadcn/ui
+.whitespace-nowrap { white-space: nowrap; }
+.underline { text-decoration-line: underline; }
+.underline-offset-4 { text-underline-offset: 4px; }
+.cursor-pointer { cursor: pointer; }
+.cursor-not-allowed { cursor: not-allowed; }
+.pointer-events-none { pointer-events: none; }
+.resize-none { resize: none; }
+.outline-none { outline: 2px solid transparent; outline-offset: 2px; }
+.bg-transparent { background-color: transparent; }
+.opacity-50 { opacity: 0.5; }
+.opacity-70 { opacity: 0.7; }
+
+// Transition utilities
+.transition-colors { 
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+// Border utilities
+.rounded-xl { border-radius: 0.75rem; }
+.border-t { border-top-width: 1px; border-top-style: solid; }
+
+// Border utilities
+.border { border-width: 1px; }
+.border-0 { border-width: 0; }
+.border-t { border-top-width: 1px; }
+.border-b { border-bottom-width: 1px; }
+.border-solid { border-style: solid; }
+.rounded { border-radius: 0.25rem; }
+.rounded-md { border-radius: 0.375rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.rounded-full { border-radius: 9999px; }
+
+// Width/Height utilities
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+.w-9 { width: 2.25rem; }
+.h-full { height: 100%; }
+.h-auto { height: auto; }
+.h-8 { height: 2rem; }
+.h-9 { height: 2.25rem; }
+.h-10 { height: 2.5rem; }
+.min-h-0 { min-height: 0; }
+.min-h-\[60px\] { min-height: 60px; }
+.min-h-\[100px\] { min-height: 100px; }
+.max-w-sm { max-width: 24rem; }
+.max-w-md { max-width: 28rem; }
+.max-w-lg { max-width: 32rem; }
+
+// Display utilities
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.hidden { display: none; }
+
+// Position utilities
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+// Shadow utilities
+.shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+.shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
+.shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+
+// ==============================================
+// CSS Custom Properties (Design System)
+// ==============================================
+
+:host {
+  // Color system that works with ServiceNow and external libraries
+  --background: 48 33.3333% 97.0588%;
+  --foreground: 48 19.6078% 20%;
+  --card: 0 0% 100%;
+  --card-foreground: 60 2.5641% 7.6471%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 50.7692 19.4030% 13.1373%;
+  --primary: 238.7324 83.5294% 66.6667%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 46.1538 22.8070% 88.8235%;
+  --secondary-foreground: 50.7692 8.4967% 30.0000%;
+  --muted: 44.0000 29.4118% 90%;
+  --muted-foreground: 50.0000 2.3622% 50.1961%;
+  --accent: 46.1538 22.8070% 88.8235%;
+  --accent-foreground: 50.7692 19.4030% 13.1373%;
+  --destructive: 60 2.5641% 7.6471%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 50 7.5000% 84.3137%;
+  --input: 50.7692 7.9755% 68.0392%;
+  --ring: 210 74.8031% 49.8039%;
+  --chart-1: 18.2813 57.1429% 43.9216%;
+  --chart-2: 251.4545 84.6154% 74.5098%;
+  --chart-3: 46.1538 28.2609% 81.9608%;
+  --chart-4: 256.5517 49.1525% 88.4314%;
+  --chart-5: 17.7778 60% 44.1176%;
+  --sidebar: 51.4286 25.9259% 94.7059%;
+  --sidebar-foreground: 60 2.5210% 23.3333%;
+  --sidebar-primary: 238.7324 83.5294% 66.6667%;
+  --sidebar-primary-foreground: 0 0% 98.4314%;
+  --sidebar-accent: 46.1538 22.8070% 88.8235%;
+  --sidebar-accent-foreground: 0 0% 20.3922%;
+  --sidebar-border: 0 0% 92.1569%;
+  --sidebar-ring: 0 0% 70.9804%;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --radius: 0.5rem;
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+// ==============================================
+// Component Base Styles (shadcn/ui compatible)
+// ==============================================
+
+// Button base styles
+.btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(var(--radius) - 2px);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
+
+// Input base styles
+.input-base {
+  display: flex;
+  width: 100%;
+  border-radius: calc(var(--radius) - 2px);
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--background));
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  
+  &:focus {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  &::placeholder {
+    color: hsl(var(--muted-foreground));
+  }
+}
+
+// Card base styles
+.card-base {
+  border-radius: calc(var(--radius) + 2px);
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+// ==============================================
+// Color Utilities (using CSS custom properties)
+// ==============================================
+
+.bg-background { background-color: hsl(var(--background)); }
+.bg-card { background-color: hsl(var(--card)); }
+.bg-primary { background-color: hsl(var(--primary)); }
+.bg-secondary { background-color: hsl(var(--secondary)); }
+.bg-muted { background-color: hsl(var(--muted)); }
+.bg-destructive { background-color: hsl(var(--destructive)); }
+.bg-accent { background-color: hsl(var(--accent)); }
+
+.text-card-foreground { color: hsl(var(--card-foreground)); }
+.text-primary { color: hsl(var(--primary)); }
+.text-primary-foreground { color: hsl(var(--primary-foreground)); }
+.text-secondary-foreground { color: hsl(var(--secondary-foreground)); }
+.text-muted-foreground { color: hsl(var(--muted-foreground)); }
+.text-destructive-foreground { color: hsl(var(--destructive-foreground)); }
+.text-accent-foreground { color: hsl(var(--accent-foreground)); }
+.text-foreground { color: hsl(var(--foreground)); }
+
+.border-input { border-color: hsl(var(--border)); }
+.border-border { border-color: hsl(var(--border)); }
+
+// ==============================================
+// State Utilities (hover, focus, disabled)
+// ==============================================
+
+.hover\:bg-primary\/90:hover { background-color: hsl(var(--primary) / 0.9); }
+.hover\:bg-secondary\/80:hover { background-color: hsl(var(--secondary) / 0.8); }
+.hover\:bg-destructive\/90:hover { background-color: hsl(var(--destructive) / 0.9); }
+.hover\:bg-accent:hover { background-color: hsl(var(--accent)); }
+.hover\:text-accent-foreground:hover { color: hsl(var(--accent-foreground)); }
+.hover\:underline:hover { text-decoration-line: underline; }
+
+.focus-visible\:outline-none:focus-visible { outline: 2px solid transparent; outline-offset: 2px; }
+.focus-visible\:ring-1:focus-visible { 
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.focus-visible\:ring-ring:focus-visible { --tw-ring-color: hsl(var(--ring)); }
+
+.disabled\:cursor-not-allowed:disabled { cursor: not-allowed; }
+.disabled\:opacity-50:disabled { opacity: 0.5; }
+.disabled\:pointer-events-none:disabled { pointer-events: none; }
+
+.placeholder\:text-muted-foreground::placeholder { color: hsl(var(--muted-foreground)); }
+
+// File input specific styles
+.file\:border-0::file-selector-button { border-width: 0; }
+.file\:bg-transparent::file-selector-button { background-color: transparent; }
+.file\:text-sm::file-selector-button { font-size: 0.875rem; line-height: 1.25rem; }
+.file\:font-medium::file-selector-button { font-weight: 500; }
+.file\:text-foreground::file-selector-button { color: hsl(var(--foreground)); }
+
+// Special utilities for specific classes
+.\[&_svg\]\:size-4 svg { width: 1rem; height: 1rem; }
+.\[&_svg\]\:shrink-0 svg { flex-shrink: 0; }
+.\[&_svg\]\:pointer-events-none svg { pointer-events: none; }
+
+// Peer utilities for label/input relationships
+.peer:disabled ~ .peer-disabled\:cursor-not-allowed { cursor: not-allowed; }
+.peer:disabled ~ .peer-disabled\:opacity-70 { opacity: 0.7; }
+
+// Responsive utilities
+@media (min-width: 768px) {
+  .md\:text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+}
+
+// Flex utilities
+.flex-1 { flex: 1 1 0%; }
+.flex-wrap { flex-wrap: wrap; }
+
+// ==============================================
+// React Component Wrappers
+// ==============================================
+
+// Wrapper for React components to ensure proper styling isolation
+.react-ui-wrapper {
+  // Ensure all external UI components inherit the design system
+  font-family: var(--font-sans);
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+  
+  // Reset any ServiceNow-specific styles that might interfere
+  * {
+    box-sizing: border-box;
+  }
+  
+  // Ensure proper text rendering
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-feature-settings: normal;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+}

@@ -1,0 +1,5 @@
+// Component-specific styles for the shadcn example
+// These styles are scoped to this component and included in the shadow DOM
+
+// Import Tailwind CSS which now includes :host CSS variables
+@import '../../styles/_tailwind-generated.css';

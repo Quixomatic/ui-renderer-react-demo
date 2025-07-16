@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "WebFetch(domain:www.npmjs.com)",
+      "Bash(find:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm uninstall:*)",
+      "WebFetch(domain:gist.github.com)",
+      "Bash(cp:*)",
+      "Bash(chmod:*)",
+      "Bash(rm:*)",
+      "Bash(npx setup-servicenow-react:*)",
+      "Bash(mv:*)",
+      "Bash(grep:*)",
+      "Bash(npm ls:*)",
+      "Bash(ls:*)",
+      "Bash(npm run build:*)",
+      "Bash(cat:*)",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(npx @tailwindcss/cli:*)",
+      "Bash(npm run css:build:*)"
+    ],
+    "deny": []
+  }
+}
