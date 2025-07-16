@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 // Real shadcn/ui components
-import { Button } from "@/components/ui/button.jsx";
-import { Input } from "@/components/ui/input.jsx";
-import { Label } from "@/components/ui/label.jsx";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card.jsx";
-import { Textarea } from "@/components/ui/textarea.jsx";
+import { Button } from "../../../components/ui/button.jsx";
+import { Input } from "../../../components/ui/input.jsx";
+import { Label } from "../../../components/ui/label.jsx";
+import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card.jsx";
+import { Textarea } from "../../../components/ui/textarea.jsx";
 
 export default function ShadcnExample(state) {
     const { dispatch, properties } = state;

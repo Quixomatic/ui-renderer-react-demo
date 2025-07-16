@@ -1,82 +1,92 @@
 # @turboforge/tf-form-v2
 
-A web component for TurboForge forms in Next Experience that demonstrates React 18 integration with ServiceNow components.
+A working demo of React components nested within ServiceNow's Snabbdom components, featuring full shadcn/ui integration with proper styling in the shadow DOM.
+
+![Screenshot](screenshot.png)
 
 ## Features
 
 - **Hybrid Architecture**: Snabbdom parent component with React child components
 - **React 18 Support**: Full React 18 hooks and features via `@quixomatic/ui-renderer-react-simple`
-- **Form Components**: Example form components with validation and state management
-- **ServiceNow Integration**: Seamless integration with ServiceNow's component system
+- **shadcn/ui Integration**: Complete shadcn/ui components with proper styling
+- **Tailwind CSS**: Configured for shadow DOM with CSS variables support
+- **ServiceNow Shadow DOM**: Properly isolated styles that work within ServiceNow's shadow DOM
+
+## Working Demo
+
+This project demonstrates:
+- ✅ React components rendering inside ServiceNow shadow DOM
+- ✅ shadcn/ui components with full styling support
+- ✅ Tailwind CSS with shadow DOM compatibility
+- ✅ Interactive form handling with React state management
+- ✅ CSS variables properly configured for both `:root` and `:host`
 
 ## Project Structure
 
 ```
 src/
 ├── index.js                                    # Main component export
+├── components/ui/                              # shadcn/ui components
+│   ├── button.jsx                             # Button component
+│   ├── input.jsx                              # Input component
+│   ├── label.jsx                              # Label component
+│   ├── card.jsx                               # Card component
+│   └── textarea.jsx                           # Textarea component
+├── lib/utils.js                               # Utility functions (cn, etc)
+├── styles/tailwind.css                        # Tailwind CSS configuration
 └── x-312987-tf-form-v-2/                      # Main component
     ├── index.js                               # Component definition (Snabbdom)
     ├── styles.scss                            # Component styles
+    ├── styles/_tailwind-generated.css         # Generated Tailwind CSS
     └── components/                            # Sub-components
-        └── test-react-component/              # React component example
+        └── shadcn-example/                    # React shadcn/ui example
             ├── index.js                       # React component registration
             ├── view.js                        # React component implementation
-            ├── styles.scss                    # React component styles
-            └── FormExample.js                 # Form example component
+            └── styles.scss                    # Component styles with Tailwind
 ```
 
 ## Setup
 
-### Automated Setup (Recommended)
-
-Run the complete automated setup:
-
-```bash
-# One command setup - handles everything automatically
-node setup-react.js
-```
-
-This script will:
-- Install React 18 and the renderer
-- Set up the fake `@servicenow/ui-renderer-react` package
-- Automatically patch the ServiceNow babel plugin
-- Verify everything works correctly
-
-### Manual Setup
-
-If you prefer manual setup:
+### 1. Install Dependencies
 
 ```bash
 # Install the React renderer and React 18
 npm install @quixomatic/ui-renderer-react-simple react@18 react-dom@18
 
-# Run the setup script
+# Install shadcn/ui dependencies
+npm install @radix-ui/react-label @radix-ui/react-slot class-variance-authority clsx tailwind-merge lucide-react
+
+# Install Tailwind CSS
+npm install tailwindcss@^3.4.17
+```
+
+### 2. React Renderer Setup
+
+Run the automated setup:
+
+```bash
+# Set up the fake @servicenow/ui-renderer-react package
 npx setup-servicenow-react
 
-# Complete the setup
-npm install
-
-# Patch the babel plugin
+# Patch the babel plugin (if needed)
 node patch-babel-plugin.js
 ```
 
-### Restore Original Babel Plugin
+### 3. Tailwind CSS Setup
 
-If you need to restore the original ServiceNow babel plugin:
+Generate the Tailwind CSS for shadow DOM:
 
 ```bash
-node patch-babel-plugin.js restore
+# Build Tailwind CSS with shadow DOM support
+npm run build:css-prod
 ```
 
-## Usage
+This generates `src/x-312987-tf-form-v-2/styles/_tailwind-generated.css` with:
+- CSS variables for both `:root` and `:host` (shadow DOM compatibility)
+- All shadcn/ui utility classes
+- Proper styling for the shadow DOM environment
 
-The main component demonstrates:
-- **Snabbdom parent** with standard ServiceNow component features
-- **React child components** with full React 18 capabilities
-- **State communication** between Snabbdom and React components
-- **Form handling** with validation and submission
-
-## Development
+### 4. Development
 
 ```bash
 # Start development server
@@ -84,15 +94,45 @@ snc ui-component develop
 
 # Build for production
 snc ui-component build
+
+# Watch Tailwind CSS changes during development
+npm run build:css
 ```
 
-## React Integration
+## Key Features Demonstrated
 
-This project showcases how to integrate React 18 components within ServiceNow's component system:
+### React in Shadow DOM
+- React components render correctly within ServiceNow's shadow DOM
+- Full React 18 features including hooks and state management
+- Proper event handling and component lifecycle
 
-- **Main component**: Uses Snabbdom renderer for ServiceNow compatibility
-- **Sub-components**: Use React renderer for modern React features
-- **Communication**: Uses ServiceNow's dispatch/action system for component communication
+### shadcn/ui Integration
+- Complete shadcn/ui components (Button, Input, Label, Card, Textarea)
+- All variants and sizes working properly
+- Proper focus states and accessibility
+
+### Tailwind CSS in Shadow DOM
+- CSS variables defined for both `:root` and `:host`
+- Automatic shadow DOM compatibility
+- All utility classes available to React components
+
+### State Management
+- Communication between Snabbdom parent and React child components
+- ServiceNow's dispatch/action system for component communication
+- React state management with hooks
+
+## Configuration Files
+
+- `tailwind.config.js` - Tailwind configuration with shadow DOM support
+- `components.json` - shadcn/ui configuration
+- `jsconfig.json` - Path mapping for imports
+- `package.json` - Build scripts for CSS generation
+
+## Build Process
+
+1. **CSS Generation**: `npm run build:css-prod` generates Tailwind CSS with shadow DOM variables
+2. **Component Build**: `snc ui-component build` builds the ServiceNow component
+3. **Development**: `npm run build:css` watches for Tailwind changes during development
 
 ## License
 
