@@ -1,0 +1,38 @@
+:host {
+	box-sizing: border-box;
+	line-height: var(--now-line-height, 1.25);
+	font-family: var(--now-font-family, 'Source Sans Pro', Arial, sans-serif);
+}
+:host([hidden]) {
+	display: none;
+}
+*,
+:after,
+:before {
+	box-sizing: border-box;
+}
+ul {
+	list-style-type: none;
+	margin-top: 0;
+	padding-top: 0;
+	padding-left: 0;
+}
+.multi-select-values {
+	padding-left: 0.25rem;
+}
+now-icon {
+	padding: 0.5rem;
+}
+.sn-catalog-form-modal-content-headers {
+	margin: 0 15%;
+	margin-bottom: 2rem;
+}
+.hide-printable-buttons {
+	display: none;
+}
+.multi-select-label {
+	display: inline-block;
+}
+.multi-select-icon {
+	color: RGBA(var(--now-color--primary-1, 30, 133, 109));
+}

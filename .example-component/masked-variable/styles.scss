@@ -1,0 +1,22 @@
+:host {
+	box-sizing: border-box;
+	line-height: var(--now-line-height, 1.25);
+	font-family: var(--now-font-family,"Source Sans Pro",Arial,sans-serif);
+}
+:host([hidden]) {
+	display: none;
+}
+*,
+:after,
+:before {
+	box-sizing: border-box;
+}
+.sc-confirmation-field {
+	padding-top: 0.75rem;
+}
+.sc-masked-toggle-slot {
+	cursor: pointer;
+}
+.form-control {
+	margin-bottom: 0.75rem;
+}

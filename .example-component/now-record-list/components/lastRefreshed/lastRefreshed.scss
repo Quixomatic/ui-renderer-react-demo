@@ -1,0 +1,8 @@
+// Imports
+import ___CSS_LOADER_API_NO_SOURCEMAP_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/noSourceMaps.js";
+import ___CSS_LOADER_API_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/api.js";
+var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_NO_SOURCEMAP_IMPORT___);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ":host{box-sizing:border-box;font-family:var(--now-font-family,\"Source Sans Pro\",Arial,sans-serif);line-height:var(--now-line-height,1.25)}:host([hidden]){display:none}*,:after,:before{box-sizing:border-box}.now-a11y-label{clip:rect(0 0 0 0);block-size:1px;border:none;clip-path:inset(50%);inline-size:1px;margin:0;overflow:hidden;padding:0;position:absolute;white-space:nowrap}.sn-last-refreshed{color:RGB(var(--now-color_text--secondary,var(--now-color--neutral-15,44,53,55)));font-size:.75rem;margin-top:calc(var(--now-scale-space--sm, 1)*.5rem)}:host(:not([dir=rtl])) .sn-last-refreshed,:root:not([dir=rtl]) .sn-last-refreshed{margin-right:calc(var(--now-scale-space--lg, 1)*1rem)}:host([dir=rtl]) .sn-last-refreshed,:root[dir=rtl] .sn-last-refreshed{margin-left:calc(var(--now-scale-space--lg, 1)*1rem)}", ""]);
+// Exports
+export default ___CSS_LOADER_EXPORT___;

@@ -1,0 +1,36 @@
+:host {
+	box-sizing: border-box;
+	line-height: var(--now-line-height, 1.25);
+	font-family: var(--now-font-family, 'Source Sans Pro', Arial, sans-serif);
+}
+:host([hidden]) {
+	display: none;
+}
+*,
+:after,
+:before {
+	box-sizing: border-box;
+}
+.sc-container-two-col {
+	padding-left: 1.5rem;
+	display: inline-flex;
+	flex: 1 1 240px;
+	flex-direction: column;
+	min-width: 240px;
+	position: relative;
+}
+@media screen and (max-width: 705px) {
+	.sc-container-two-col {
+		padding-left: 0 !important;
+	}
+}
+.sc-section-form-column {
+	display: inline-flex;
+	flex-direction: column;
+}
+.sc-checkbox-container {
+	margin-bottom: 0.75rem;
+}
+.sc-checkbox-container .sc-section-form-column-child-checkbox {
+	margin-bottom: -0.75rem;
+}

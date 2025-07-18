@@ -1,0 +1,1243 @@
+{
+  "f": {
+    "priceDetails": {
+      "label": "Price",
+      "price": "",
+      "recurringPrice": "",
+      "visible": true
+    },
+    "formData": {
+      "variablesLayout": [
+        {
+          "name": "variables.formatter_1",
+          "type": "container",
+          "parent": "",
+          "caption": "",
+          "captionDisplay": "",
+          "layout": "normal",
+          "columns": [
+            {
+              "fields": [
+                {
+                  "name": "variables.start_date",
+                  "type": "field"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "name": "variables.end_date",
+                  "type": "field"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "variables.need_travel",
+          "type": "field",
+          "parent": ""
+        },
+        {
+          "name": "variables.transportation_type",
+          "type": "field",
+          "parent": ""
+        },
+        {
+          "name": "variables.formatter_2",
+          "type": "container",
+          "parent": "",
+          "caption": "",
+          "captionDisplay": "",
+          "layout": "normal",
+          "columns": [
+            {
+              "fields": [
+                {
+                  "name": "variables.travel_start",
+                  "type": "field"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "name": "variables.travel_end",
+                  "type": "field"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "variables.reference_test",
+          "type": "field",
+          "parent": ""
+        }
+      ],
+      "fields": {
+        "variables.formatter_1": {
+          "type": "container",
+          "id": "3665cc2e97c1b950ee1d9300f153af09",
+          "name": "variables.formatter_1",
+          "variableName": "formatter_1",
+          "label": null,
+          "order": 1000,
+          "visible": true,
+          "canRead": true,
+          "canWrite": true,
+          "canCreate": true,
+          "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+          "variableSet": "",
+          "displayTitle": false,
+          "layout": "",
+          "containerType": "container",
+          "hasPriceImplecations": false,
+          "showHelp": false,
+          "helpText": "",
+          "instructions": null,
+          "__typename": "AppCatalog_ContainerQuestionElementType",
+          "sys_readonly": false,
+          "readonly": false,
+          "mandatory": false,
+          "variable_name": "formatter_1",
+          "_cat_variable": true,
+          "is_variable": true,
+          "variable_id": "IO:3665cc2e97c1b950ee1d9300f153af09",
+          "_children": ["variables.start_date", "variables.end_date"],
+          "parsedAttributes": {},
+          "subType": null,
+          "defaultValue": null
+        },
+        "variables.start_date": {
+          "type": "glide_date",
+          "id": "8af4c42e97c1b950ee1d9300f153af5a",
+          "name": "variables.start_date",
+          "variableName": "start_date",
+          "label": "What is your Home Leave start date?",
+          "order": 1010,
+          "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+          "variableSet": "",
+          "mandatory": true,
+          "readOnly": false,
+          "visible": true,
+          "canRead": true,
+          "canWrite": true,
+          "canCreate": true,
+          "variableAttributes": "",
+          "defaultValue": null,
+          "dynamicValueField": "",
+          "dynamicValueDotWalkPath": "",
+          "exampleText": "",
+          "useConfirmation": false,
+          "regExp": "",
+          "canDecrypt": false,
+          "hasPriceImplecations": false,
+          "showHelp": false,
+          "helpText": "",
+          "instructions": null,
+          "__typename": "AppCatalog_StandardQuestionElementType",
+          "sys_readonly": false,
+          "readonly": false,
+          "variable_name": "start_date",
+          "_cat_variable": true,
+          "is_variable": true,
+          "variable_id": "IO:8af4c42e97c1b950ee1d9300f153af5a",
+          "value": "2025-01-23",
+          "displayValue": "2025-01-23",
+          "valuesList": [],
+          "display_value_list": [],
+          "_parent": "variables.formatter_1",
+          "parsedAttributes": {},
+          "subType": null
+        },
+        "variables.end_date": {
+          "type": "glide_date",
+          "id": "2635842e97c1b950ee1d9300f153af7f",
+          "name": "variables.end_date",
+          "variableName": "end_date",
+          "label": "What is your Home Leave end date?",
+          "order": 1510,
+          "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+          "variableSet": "",
+          "mandatory": true,
+          "readOnly": false,
+          "visible": true,
+          "canRead": true,
+          "canWrite": true,
+          "canCreate": true,
+          "variableAttributes": "",
+          "defaultValue": null,
+          "dynamicValueField": "",
+          "dynamicValueDotWalkPath": "",
+          "exampleText": "",
+          "useConfirmation": false,
+          "regExp": "",
+          "canDecrypt": false,
+          "hasPriceImplecations": false,
+          "showHelp": false,
+          "helpText": "",
+          "instructions": null,
+          "__typename": "AppCatalog_StandardQuestionElementType",
+          "sys_readonly": false,
+          "readonly": false,
+          "variable_name": "end_date",
+          "_cat_variable": true,
+          "is_variable": true,
+          "variable_id": "IO:2635842e97c1b950ee1d9300f153af7f",
+          "value": "2025-01-24",
+          "displayValue": "2025-01-24",
+          "valuesList": [],
+          "display_value_list": [],
+          "_parent": "variables.formatter_1",
+          "parsedAttributes": {},
+          "subType": null
+        },
+        "variables.need_travel": {
+          "type": "choice",
+          "id": "4bb5cc2e97c1b950ee1d9300f153af3d",
+          "name": "variables.need_travel",
+          "variableName": "need_travel",
+          "label": "Do you need to travel to your Home Leave destination? If your destination is in a separate city, you must include travel details.",
+          "order": 2010,
+          "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+          "variableSet": "",
+          "mandatory": true,
+          "readOnly": false,
+          "visible": true,
+          "canRead": true,
+          "canWrite": true,
+          "canCreate": true,
+          "variableAttributes": "",
+          "defaultValue": null,
+          "dynamicValueField": "",
+          "dynamicValueDotWalkPath": "",
+          "lookupTable": "",
+          "lookupValue": "",
+          "lookupLabel": "",
+          "includeNone": false,
+          "lookupUnique": false,
+          "choiceTable": "",
+          "choiceField": "",
+          "choiceDirection": "down",
+          "choices": [
+            {
+              "displayValue": "Yes",
+              "value": "Yes"
+            },
+            {
+              "displayValue": "No",
+              "value": "No"
+            }
+          ],
+          "dependentField": "",
+          "referringTable": "sc_cat_item",
+          "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+          "hasPriceImplecations": false,
+          "showHelp": false,
+          "helpText": "",
+          "instructions": null,
+          "__typename": "AppCatalog_ChoiceQuestionElementType",
+          "sys_readonly": false,
+          "readonly": false,
+          "variable_name": "need_travel",
+          "_cat_variable": true,
+          "is_variable": true,
+          "variable_id": "IO:4bb5cc2e97c1b950ee1d9300f153af3d",
+          "value": "No",
+          "displayValue": "No",
+          "valuesList": [],
+          "display_value_list": [],
+          "_parent": "",
+          "parsedAttributes": {},
+          "subType": "button_yes_no"
+        },
+        "variables.transportation_type": {
+          "type": "choice",
+          "id": "5726446e97c1b950ee1d9300f153afe4",
+          "name": "variables.transportation_type",
+          "variableName": "transportation_type",
+          "label": "What would be your mode of transportation?",
+          "order": 2020,
+          "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+          "variableSet": "",
+          "mandatory": true,
+          "readOnly": false,
+          "visible": true,
+          "canRead": true,
+          "canWrite": true,
+          "canCreate": true,
+          "variableAttributes": "",
+          "defaultValue": null,
+          "dynamicValueField": "",
+          "dynamicValueDotWalkPath": "",
+          "lookupTable": "",
+          "lookupValue": "",
+          "lookupLabel": "",
+          "includeNone": false,
+          "lookupUnique": false,
+          "choiceTable": "",
+          "choiceField": "",
+          "choiceDirection": "down",
+          "choices": [
+            {
+              "displayValue": "Economy Airfare",
+              "value": "economy_airfare"
+            }
+          ],
+          "dependentField": "",
+          "referringTable": "sc_cat_item",
+          "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+          "hasPriceImplecations": false,
+          "showHelp": false,
+          "helpText": "",
+          "instructions": null,
+          "__typename": "AppCatalog_ChoiceQuestionElementType",
+          "sys_readonly": false,
+          "readonly": false,
+          "variable_name": "transportation_type",
+          "_cat_variable": true,
+          "is_variable": true,
+          "variable_id": "IO:5726446e97c1b950ee1d9300f153afe4",
+          "value": "economy_airfare",
+          "displayValue": "Economy Airfare",
+          "valuesList": [],
+          "display_value_list": [],
+          "_parent": "",
+          "parsedAttributes": {},
+          "subType": null
+        },
+        "variables.formatter_2": {
+          "type": "container",
+          "id": "39564c6e97c1b950ee1d9300f153af3a",
+          "name": "variables.formatter_2",
+          "variableName": "formatter_2",
+          "label": null,
+          "order": 3000,
+          "visible": true,
+          "canRead": true,
+          "canWrite": true,
+          "canCreate": true,
+          "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+          "variableSet": "",
+          "displayTitle": false,
+          "layout": "",
+          "containerType": "container",
+          "hasPriceImplecations": false,
+          "showHelp": false,
+          "helpText": "",
+          "instructions": null,
+          "__typename": "AppCatalog_ContainerQuestionElementType",
+          "sys_readonly": false,
+          "readonly": false,
+          "mandatory": false,
+          "variable_name": "formatter_2",
+          "_cat_variable": true,
+          "is_variable": true,
+          "variable_id": "IO:39564c6e97c1b950ee1d9300f153af3a",
+          "_children": ["variables.travel_start", "variables.travel_end"],
+          "parsedAttributes": {},
+          "subType": null,
+          "defaultValue": null
+        },
+        "variables.travel_start": {
+          "type": "glide_date",
+          "id": "c786c46e97c1b950ee1d9300f153af6e",
+          "name": "variables.travel_start",
+          "variableName": "travel_start",
+          "label": "When are you beginning travel to your Home Leave Destination?",
+          "order": 3010,
+          "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+          "variableSet": "",
+          "mandatory": true,
+          "readOnly": false,
+          "visible": true,
+          "canRead": true,
+          "canWrite": true,
+          "canCreate": true,
+          "variableAttributes": "",
+          "defaultValue": null,
+          "dynamicValueField": "",
+          "dynamicValueDotWalkPath": "",
+          "exampleText": "",
+          "useConfirmation": false,
+          "regExp": "",
+          "canDecrypt": false,
+          "hasPriceImplecations": false,
+          "showHelp": false,
+          "helpText": "",
+          "instructions": null,
+          "__typename": "AppCatalog_StandardQuestionElementType",
+          "sys_readonly": false,
+          "readonly": false,
+          "variable_name": "travel_start",
+          "_cat_variable": true,
+          "is_variable": true,
+          "variable_id": "IO:c786c46e97c1b950ee1d9300f153af6e",
+          "value": "",
+          "displayValue": "",
+          "valuesList": [],
+          "display_value_list": [],
+          "_parent": "variables.formatter_2",
+          "parsedAttributes": {},
+          "subType": null
+        },
+        "variables.travel_end": {
+          "type": "glide_date",
+          "id": "8ec644ae97c1b950ee1d9300f153af37",
+          "name": "variables.travel_end",
+          "variableName": "travel_end",
+          "label": "When are you ending travel to your Home Leave Destination?",
+          "order": 3510,
+          "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+          "variableSet": "",
+          "mandatory": true,
+          "readOnly": false,
+          "visible": true,
+          "canRead": true,
+          "canWrite": true,
+          "canCreate": true,
+          "variableAttributes": "",
+          "defaultValue": null,
+          "dynamicValueField": "",
+          "dynamicValueDotWalkPath": "",
+          "exampleText": "",
+          "useConfirmation": false,
+          "regExp": "",
+          "canDecrypt": false,
+          "hasPriceImplecations": false,
+          "showHelp": false,
+          "helpText": "",
+          "instructions": null,
+          "__typename": "AppCatalog_StandardQuestionElementType",
+          "sys_readonly": false,
+          "readonly": false,
+          "variable_name": "travel_end",
+          "_cat_variable": true,
+          "is_variable": true,
+          "variable_id": "IO:8ec644ae97c1b950ee1d9300f153af37",
+          "value": "",
+          "displayValue": "",
+          "valuesList": [],
+          "display_value_list": [],
+          "_parent": "variables.formatter_2",
+          "parsedAttributes": {},
+          "subType": null
+        },
+        "variables.reference_test": {
+          "type": "reference",
+          "id": "09fc1ff583f62e50e8fbc9a6feaad31a",
+          "name": "variables.reference_test",
+          "variableName": "reference_test",
+          "label": "Reference Test",
+          "order": 4010,
+          "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+          "variableSet": "",
+          "mandatory": false,
+          "readOnly": false,
+          "visible": true,
+          "canRead": true,
+          "canWrite": true,
+          "canCreate": true,
+          "reference": "sys_user",
+          "referenceQual": "active=true^emailISNOTEMPTY^EQ",
+          "listTable": "",
+          "useReferenceQualifier": "simple",
+          "variableAttributes": "",
+          "defaultValue": null,
+          "dynamicValueField": "",
+          "dynamicValueDotWalkPath": "",
+          "referringTable": "sc_cat_item",
+          "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+          "refAcOrderBy": "name",
+          "hasPriceImplecations": false,
+          "showHelp": false,
+          "helpText": "",
+          "instructions": null,
+          "__typename": "AppCatalog_ReferenceQuestionElementType",
+          "sys_readonly": false,
+          "readonly": false,
+          "variable_name": "reference_test",
+          "_cat_variable": true,
+          "is_variable": true,
+          "variable_id": "IO:09fc1ff583f62e50e8fbc9a6feaad31a",
+          "value": "",
+          "displayValue": "",
+          "valuesList": [],
+          "display_value_list": [],
+          "_parent": "",
+          "parsedAttributes": {},
+          "subType": null,
+          "tableFields": [
+            {
+              "column_label": {
+                "value": "Name",
+                "display_value": "Name"
+              },
+              "element": {
+                "value": "name",
+                "display_value": "name"
+              },
+              "type": {
+                "value": "string",
+                "display_value": "string"
+              }
+            },
+            {
+              "column_label": {
+                "value": "Email",
+                "display_value": "Email"
+              },
+              "element": {
+                "value": "email",
+                "display_value": "email"
+              },
+              "type": {
+                "value": "email",
+                "display_value": "email"
+              }
+            }
+          ]
+        }
+      },
+      "client_scripts": {
+        "onLoad": [],
+        "onChange": [
+          {
+            "name": "On Change - Test",
+            "sysId": "2af94bbd83762e50e8fbc9a6feaad3ce",
+            "script": "function onChange(control, oldValue, newValue, isLoading) {\n    if (isLoading || newValue == '') {\n        return;\n    }\n\n    var value = g_form.getValue('start_date');\n\n    alert(value);\n}\n",
+            "type": "onChange",
+            "fieldName": "variables.start_date",
+            "tableName": ""
+          }
+        ],
+        "onSubmit": []
+      },
+      "ui_policy": [
+        {
+          "short_description": "Show travel needed fields",
+          "sys_id": "7595d63f9715f910ee1d9300f153affe",
+          "script_true": null,
+          "script_false": null,
+          "reverse": true,
+          "on_load": true,
+          "is_run_scripts": false,
+          "pre_evaluated": false,
+          "pre_evaluated_result": false,
+          "actions": [
+            {
+              "visible": "true",
+              "name": "variables.transportation_type",
+              "disabled": "ignore",
+              "mandatory": "true",
+              "cleared": "false",
+              "related_list": null,
+              "value": "",
+              "value_action": "ignore",
+              "field_message_type": "none",
+              "field_message": "",
+              "sys_id": "0bb59a3f9715f910ee1d9300f153afc6"
+            },
+            {
+              "visible": "true",
+              "name": "variables.travel_start",
+              "disabled": "ignore",
+              "mandatory": "true",
+              "cleared": "false",
+              "related_list": null,
+              "value": "",
+              "value_action": "ignore",
+              "field_message_type": "none",
+              "field_message": "",
+              "sys_id": "5ab51e3f9715f910ee1d9300f153af1c"
+            },
+            {
+              "visible": "true",
+              "name": "variables.travel_end",
+              "disabled": "ignore",
+              "mandatory": "true",
+              "cleared": "false",
+              "related_list": null,
+              "value": "",
+              "value_action": "ignore",
+              "field_message_type": "none",
+              "field_message": "",
+              "sys_id": "cba5da3f9715f910ee1d9300f153af73"
+            }
+          ],
+          "conditions": [
+            {
+              "term": "variables.need_travel=Yes",
+              "field": "variables.need_travel",
+              "field_label": "Do you need to travel to your Home Leave destination? If your destination is in a separate city, you must include travel details.",
+              "type": "string",
+              "column_type": "variable_request",
+              "value": "Yes",
+              "oper": "=",
+              "operator_label": "is",
+              "catalog_variable": "4bb5cc2e97c1b950ee1d9300f153af3d",
+              "catalog_operator": "=",
+              "catalog_variable_type": "yesno",
+              "catalog_variable_table": null,
+              "or": false,
+              "newquery": false,
+              "pre_evaluated_term": false,
+              "pre_evaluated_term_result": false,
+              "reference_fields": []
+            }
+          ],
+          "onload": true,
+          "table": "(catalog)"
+        }
+      ],
+      "data_lookups": {},
+      "stepData": {
+        "display_label": {
+          "value": "Itinerary Element: Home Leave",
+          "display_value": "Itinerary Element: Home Leave",
+          "label": "Display Label",
+          "field_name": "display_label",
+          "path": "display_label",
+          "table": "x_312987_turbofo_0_step",
+          "type": "string"
+        },
+        "short_description": {
+          "value": "Home Leave: {current.location}",
+          "display_value": "Home Leave: {current.location}",
+          "label": "Short description",
+          "field_name": "short_description",
+          "path": "short_description",
+          "table": "x_312987_turbofo_0_step",
+          "type": "translated_text",
+          "compiled_value": "Home Leave: "
+        },
+        "footer_message": {
+          "value": "If the Home Leave needs to be updated, navigate to OF-126 to make changes. Note that it takes at least 24 hours for updates to be reflected here.",
+          "display_value": "If the Home Leave needs to be updated, navigate to OF-126 to make changes. Note that it takes at least 24 hours for updates to be reflected here.",
+          "label": "Footer Message",
+          "field_name": "footer_message",
+          "path": "footer_message",
+          "table": "x_312987_turbofo_0_step",
+          "type": "string"
+        },
+        "step_type": {
+          "value": "repeater_summary_with_questions",
+          "display_value": "Repeater Summary with Questions",
+          "label": "Step Type",
+          "field_name": "step_type",
+          "path": "step_type",
+          "table": "x_312987_turbofo_0_step",
+          "type": "choice"
+        },
+        "glyph": {
+          "value": null,
+          "display_value": "",
+          "label": "Glyph",
+          "field_name": "glyph",
+          "path": "glyph",
+          "table": "x_312987_turbofo_0_step",
+          "type": "glyphicon"
+        },
+        "allow_attachments": {
+          "value": "0",
+          "display_value": "false",
+          "label": "Allow Attachments",
+          "field_name": "allow_attachments",
+          "path": "allow_attachments",
+          "table": "x_312987_turbofo_0_step",
+          "type": "boolean"
+        }
+      },
+      "instanceState": {
+        "value": "complete",
+        "display_value": "Complete",
+        "label": "State",
+        "field_name": "state",
+        "path": "state",
+        "table": "x_312987_turbofo_0_step_instance",
+        "type": "choice"
+      },
+      "initialObject": {
+        "end_date": {
+          "display_value": "2025-01-24",
+          "name": "end_date",
+          "label": "What is your Home Leave end date?",
+          "value": "2025-01-24"
+        },
+        "need_travel": {
+          "display_value": "No",
+          "name": "need_travel",
+          "label": "Do you need to travel to your Home Leave destination? If your destination is in a separate city, you must include travel details.",
+          "value": "No"
+        },
+        "travel_start": {
+          "display_value": "",
+          "name": "travel_start",
+          "label": "When are you beginning travel to your Home Leave Destination?",
+          "value": ""
+        },
+        "transportation_type": {
+          "display_value": "Economy Airfare",
+          "name": "transportation_type",
+          "label": "What would be your mode of transportation?",
+          "value": "economy_airfare"
+        },
+        "travel_end": {
+          "display_value": "",
+          "name": "travel_end",
+          "label": "When are you ending travel to your Home Leave Destination?",
+          "value": ""
+        },
+        "start_date": {
+          "display_value": "2025-01-23",
+          "name": "start_date",
+          "label": "What is your Home Leave start date?",
+          "value": "2025-01-23"
+        }
+      },
+      "totalAnswerObject": {
+        "personnel_information": {
+          "efms_check": {
+            "yes_no_answer": {
+              "display_value": "Yes",
+              "name": "yes_no_answer",
+              "label": "Yes/No Answer",
+              "value": "yes"
+            }
+          },
+          "home_leave_check": {
+            "yes_no_answer": {
+              "display_value": "Yes",
+              "name": "yes_no_answer",
+              "label": "Yes/No Answer",
+              "value": "yes"
+            }
+          },
+          "nearby_check": {
+            "yes_no_answer": {
+              "display_value": "Yes",
+              "name": "yes_no_answer",
+              "label": "Yes/No Answer",
+              "value": "yes"
+            }
+          },
+          "efms_traveling": {
+            "who_traveling": {
+              "display_value": "",
+              "name": "who_traveling",
+              "label": "Who is this itinerary for?",
+              "value": "12826bf03710200044e0bfc8bcbe5db1,6a826bf03710200044e0bfc8bcbe5dec,a2826bf03710200044e0bfc8bcbe5ded,b282abf03710200044e0bfc8bcbe5d28,be82abf03710200044e0bfc8bcbe5d1c"
+            }
+          },
+          "estimated_departure": {
+            "estimated_date_departure": {
+              "display_value": "2025-01-23",
+              "name": "estimated_date_departure",
+              "label": "What is the estimated date of departure?",
+              "value": "2025-01-23"
+            }
+          }
+        },
+        "itinerary_elements": {
+          "repeater_itinerary_elements": {
+            "repeat_items": [
+              {
+                "instance": "c9e5c19983d3da50e8fbc9a6feaad389",
+                "data": {
+                  "select_elements": {
+                    "element_type": {
+                      "display_value": "Home Leave",
+                      "name": "element_type",
+                      "label": "What's the next item in your itinerary?",
+                      "value": "home_leave"
+                    },
+                    "who_for": {
+                      "display_value": "",
+                      "name": "who_for",
+                      "label": "Who is this itinerary for?",
+                      "value": "12826bf03710200044e0bfc8bcbe5db1,6a826bf03710200044e0bfc8bcbe5dec,a2826bf03710200044e0bfc8bcbe5ded,b282abf03710200044e0bfc8bcbe5d28,be82abf03710200044e0bfc8bcbe5d1c"
+                    }
+                  },
+                  "type_home_leave": {
+                    "end_date": {
+                      "display_value": "2025-01-24",
+                      "name": "end_date",
+                      "label": "What is your Home Leave end date?",
+                      "value": "2025-01-24"
+                    },
+                    "need_travel": {
+                      "display_value": "No",
+                      "name": "need_travel",
+                      "label": "Do you need to travel to your Home Leave destination? If your destination is in a separate city, you must include travel details.",
+                      "value": "No"
+                    },
+                    "travel_start": {
+                      "display_value": "",
+                      "name": "travel_start",
+                      "label": "When are you beginning travel to your Home Leave Destination?",
+                      "value": ""
+                    },
+                    "transportation_type": {
+                      "display_value": "Economy Airfare",
+                      "name": "transportation_type",
+                      "label": "What would be your mode of transportation?",
+                      "value": "economy_airfare"
+                    },
+                    "travel_end": {
+                      "display_value": "",
+                      "name": "travel_end",
+                      "label": "When are you ending travel to your Home Leave Destination?",
+                      "value": ""
+                    },
+                    "start_date": {
+                      "display_value": "2025-01-23",
+                      "name": "start_date",
+                      "label": "What is your Home Leave start date?",
+                      "value": "2025-01-23"
+                    }
+                  },
+                  "airfare_elections": {
+                    "election": {
+                      "display_value": "Rest Stop",
+                      "name": "election",
+                      "label": "Which of the following is required for this itinerary?",
+                      "value": "rest_stop"
+                    },
+                    "IO:8a56cd9983d3da50e8fbc9a6feaad3f7": {
+                      "name": "IO:8a56cd9983d3da50e8fbc9a6feaad3f7",
+                      "label": "I acknowledge that a Rest Stop or Business Class Lounge is not required for this Itinerary.",
+                      "value": ""
+                    },
+                    "election_not_needed": {
+                      "display_value": "false",
+                      "name": "election_not_needed",
+                      "label": "I acknowledge that a Rest Stop or Business Class Lounge is not required for this Itinerary.",
+                      "value": "false"
+                    }
+                  },
+                  "has_more_check": {
+                    "has_more": {
+                      "display_value": "Yes",
+                      "name": "has_more",
+                      "label": "Do you have any more itinerary elements to add?",
+                      "value": "Yes"
+                    }
+                  }
+                }
+              },
+              {
+                "instance": "3026899983d3da50e8fbc9a6feaad3a0",
+                "data": {
+                  "select_elements": {
+                    "element_type": {
+                      "display_value": "Consultation",
+                      "name": "element_type",
+                      "label": "What's the next item in your itinerary?",
+                      "value": "consultation"
+                    },
+                    "who_for": {
+                      "display_value": "",
+                      "name": "who_for",
+                      "label": "Who is this itinerary for?",
+                      "value": "12826bf03710200044e0bfc8bcbe5db1,6a826bf03710200044e0bfc8bcbe5dec,a2826bf03710200044e0bfc8bcbe5ded,b282abf03710200044e0bfc8bcbe5d28,be82abf03710200044e0bfc8bcbe5d1c"
+                    }
+                  },
+                  "type_consultation": {
+                    "end_date": {
+                      "display_value": "2025-01-26",
+                      "name": "end_date",
+                      "label": "What is your consultation end date?",
+                      "value": "2025-01-26"
+                    },
+                    "transportation_mode": {
+                      "display_value": "",
+                      "name": "transportation_mode",
+                      "label": "What would be your mode of transportation?",
+                      "value": ""
+                    },
+                    "need_travel": {
+                      "display_value": "No",
+                      "name": "need_travel",
+                      "label": "Do you need to travel for your consultation?",
+                      "value": "No"
+                    },
+                    "travel_start": {
+                      "display_value": "",
+                      "name": "travel_start",
+                      "label": "When are you beginning travel to your consultation?",
+                      "value": ""
+                    },
+                    "travel_end": {
+                      "display_value": "",
+                      "name": "travel_end",
+                      "label": "When are you ending travel to your consultation?",
+                      "value": ""
+                    },
+                    "start_date": {
+                      "display_value": "2025-01-25",
+                      "name": "start_date",
+                      "label": "What is your consultation start date?",
+                      "value": "2025-01-25"
+                    }
+                  },
+                  "airfare_elections": {
+                    "election": {
+                      "display_value": "Business Class Lounge",
+                      "name": "election",
+                      "label": "Which of the following is required for this itinerary?",
+                      "value": "business_class_lounge"
+                    },
+                    "IO:9356819983d3da50e8fbc9a6feaad34c": {
+                      "name": "IO:9356819983d3da50e8fbc9a6feaad34c",
+                      "label": "I acknowledge that a Rest Stop or Business Class Lounge is not required for this Itinerary.",
+                      "value": ""
+                    },
+                    "election_not_needed": {
+                      "display_value": "false",
+                      "name": "election_not_needed",
+                      "label": "I acknowledge that a Rest Stop or Business Class Lounge is not required for this Itinerary.",
+                      "value": "false"
+                    }
+                  },
+                  "has_more_check": {
+                    "has_more": {
+                      "display_value": "Yes",
+                      "name": "has_more",
+                      "label": "Do you have any more itinerary elements to add?",
+                      "value": "Yes"
+                    }
+                  }
+                }
+              },
+              {
+                "instance": "9136c99983d3da50e8fbc9a6feaad3d2",
+                "data": {
+                  "select_elements": {
+                    "element_type": {
+                      "display_value": "Transfer Travel & Effects",
+                      "name": "element_type",
+                      "label": "What's the next item in your itinerary?",
+                      "value": "transfer_travel_and_effects"
+                    },
+                    "who_for": {
+                      "display_value": "",
+                      "name": "who_for",
+                      "label": "Who is this itinerary for?",
+                      "value": "12826bf03710200044e0bfc8bcbe5db1,6a826bf03710200044e0bfc8bcbe5dec,a2826bf03710200044e0bfc8bcbe5ded,b282abf03710200044e0bfc8bcbe5d28,be82abf03710200044e0bfc8bcbe5d1c"
+                    }
+                  },
+                  "type_transfer_travel": {
+                    "need_travel": {
+                      "display_value": "No",
+                      "name": "need_travel",
+                      "label": "Do you need to travel to your onward assignment? If your destination is in a separate city, you must include travel details.",
+                      "value": "No"
+                    },
+                    "travel_start": {
+                      "display_value": "",
+                      "name": "travel_start",
+                      "label": "When are you beginning travel to your destination?",
+                      "value": ""
+                    },
+                    "location": {
+                      "display_value": "10065 East Harvard Avenue, Denver,CO",
+                      "name": "location",
+                      "label": "What is the location of your onward assignment?",
+                      "value": "25ab8f300a0a0bb300d99f69c3ac24cd"
+                    },
+                    "transportation_type": {
+                      "display_value": "Economy Airfare",
+                      "name": "transportation_type",
+                      "label": "What would be your mode of transportation for your training?",
+                      "value": "economy_airfare"
+                    },
+                    "travel_end": {
+                      "display_value": "",
+                      "name": "travel_end",
+                      "label": "When are you ending travel to your destination?",
+                      "value": ""
+                    },
+                    "start_date": {
+                      "display_value": "2025-01-27",
+                      "name": "start_date",
+                      "label": "When are you arriving at your onward assignment?",
+                      "value": "2025-01-27"
+                    }
+                  },
+                  "airfare_elections": {
+                    "election": {
+                      "display_value": "",
+                      "name": "election",
+                      "label": "Which of the following is required for this itinerary?",
+                      "value": ""
+                    },
+                    "election_not_needed": {
+                      "display_value": "true",
+                      "name": "election_not_needed",
+                      "label": "I acknowledge that a Rest Stop or Business Class Lounge is not required for this Itinerary.",
+                      "value": "true"
+                    },
+                    "IO:01668d9983d3da50e8fbc9a6feaad3e5": {
+                      "name": "IO:01668d9983d3da50e8fbc9a6feaad3e5",
+                      "label": "I acknowledge that a Rest Stop or Business Class Lounge is not required for this Itinerary.",
+                      "value": ""
+                    }
+                  },
+                  "has_more_check": {
+                    "has_more": {
+                      "display_value": "No",
+                      "name": "has_more",
+                      "label": "Do you have any more itinerary elements to add?",
+                      "value": "No"
+                    }
+                  }
+                }
+              },
+              {
+                "instance": "96664d9983d3da50e8fbc9a6feaad327",
+                "data": {
+                  "select_elements": {
+                    "element_type": {
+                      "display_value": "Training",
+                      "name": "element_type",
+                      "label": "What's the next item in your itinerary?",
+                      "value": "training"
+                    },
+                    "who_for": {
+                      "display_value": "",
+                      "name": "who_for",
+                      "label": "Who is this itinerary for?",
+                      "value": "12826bf03710200044e0bfc8bcbe5db1,6a826bf03710200044e0bfc8bcbe5dec,a2826bf03710200044e0bfc8bcbe5ded,b282abf03710200044e0bfc8bcbe5d28,be82abf03710200044e0bfc8bcbe5d1c"
+                    }
+                  },
+                  "type_training": {
+                    "end_date": {
+                      "display_value": "2025-01-26",
+                      "name": "end_date",
+                      "label": "What is your training end/depart date?",
+                      "value": "2025-01-26"
+                    },
+                    "ship_uab": {
+                      "display_value": "No",
+                      "name": "ship_uab",
+                      "label": "Do you want to ship Unaccompanied Air Baggage (UAB) to this location?",
+                      "value": "No"
+                    },
+                    "course_id": {
+                      "display_value": "Test",
+                      "name": "course_id",
+                      "label": "What is your course ID?",
+                      "value": "Test"
+                    },
+                    "course_position": {
+                      "display_value": "Test",
+                      "name": "course_position",
+                      "label": "What is the Course Position Number?",
+                      "value": "Test"
+                    },
+                    "course_name": {
+                      "display_value": "Test",
+                      "name": "course_name",
+                      "label": "What is the name of the course you will be taking?",
+                      "value": "Test"
+                    },
+                    "transportation_mode": {
+                      "display_value": "Economy Airfare",
+                      "name": "transportation_mode",
+                      "label": "What would be your mode of transportation for your training?",
+                      "value": "economy_airfare"
+                    },
+                    "need_travel": {
+                      "display_value": "No",
+                      "name": "need_travel",
+                      "label": "Do you need to enter travel for your training?",
+                      "value": "No"
+                    },
+                    "travel_start": {
+                      "display_value": "",
+                      "name": "travel_start",
+                      "label": "When are you beginning travel to your training destination?",
+                      "value": ""
+                    },
+                    "travel_end": {
+                      "display_value": "",
+                      "name": "travel_end",
+                      "label": "When are you ending travel to your training destination?",
+                      "value": ""
+                    },
+                    "start_date": {
+                      "display_value": "2025-01-24",
+                      "name": "start_date",
+                      "label": "What is your training start/arrive date?",
+                      "value": "2025-01-24"
+                    }
+                  },
+                  "airfare_elections": {
+                    "IO:e8c6fa3483ac6690e8fbc9a6feaad372": {
+                      "name": "IO:e8c6fa3483ac6690e8fbc9a6feaad372",
+                      "label": "I acknowledge that a Rest Stop or Business Class Lounge is not required for this Itinerary.",
+                      "value": ""
+                    },
+                    "election": {
+                      "display_value": "Business Class Lounge",
+                      "name": "election",
+                      "label": "Which of the following is required for this itinerary?",
+                      "value": "business_class_lounge"
+                    },
+                    "election_not_needed": {
+                      "display_value": "false",
+                      "name": "election_not_needed",
+                      "label": "I acknowledge that a Rest Stop or Business Class Lounge is not required for this Itinerary.",
+                      "value": "false"
+                    }
+                  },
+                  "has_more_check": {
+                    "has_more": {
+                      "display_value": "No",
+                      "name": "has_more",
+                      "label": "Do you have any more itinerary elements to add?",
+                      "value": "No"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "variablesValues": [
+      {
+        "name": "variables.end_date",
+        "value": "2025-01-24",
+        "displayValue": "2025-01-24",
+        "valuesList": [],
+        "display_value_list": []
+      },
+      {
+        "name": "variables.travel_start",
+        "value": "",
+        "displayValue": "",
+        "valuesList": [],
+        "display_value_list": []
+      },
+      {
+        "name": "variables.reference_test",
+        "value": "",
+        "displayValue": "",
+        "valuesList": [],
+        "display_value_list": []
+      },
+      {
+        "name": "variables.need_travel",
+        "value": "No",
+        "displayValue": "No",
+        "valuesList": [],
+        "display_value_list": []
+      },
+      {
+        "name": "variables.start_date",
+        "value": "2025-01-23",
+        "displayValue": "2025-01-23",
+        "valuesList": [],
+        "display_value_list": []
+      },
+      {
+        "name": "variables.transportation_type",
+        "value": "economy_airfare",
+        "displayValue": "Economy Airfare",
+        "valuesList": [],
+        "display_value_list": []
+      },
+      {
+        "name": "variables.travel_end",
+        "value": "",
+        "displayValue": "",
+        "valuesList": [],
+        "display_value_list": []
+      }
+    ],
+    "actionDetails": {
+      "label": "Order Now",
+      "disabled": false
+    },
+    "attachmentDetails": {
+      "mandatory": false,
+      "value": [],
+      "hideattachment": false,
+      "disabled": false
+    },
+    "catalogItemDetails": {
+      "name": "Type - Home Leave",
+      "shortDescription": "Home Leave: {current.location}",
+      "description": "",
+      "sysId": "3a2dae00974dfd10ee1d9300f153afb0",
+      "picture": "",
+      "hidePicture": true,
+      "requestMethod": "",
+      "hideDeliveryTime": "false",
+      "type": "catalog_item"
+    },
+    "quantityDetails": {
+      "label": "Quantity",
+      "value": "1",
+      "items": [
+        {
+          "value": "1",
+          "displayValue": "1"
+        },
+        {
+          "value": "2",
+          "displayValue": "2"
+        },
+        {
+          "value": "3",
+          "displayValue": "3"
+        },
+        {
+          "value": "4",
+          "displayValue": "4"
+        },
+        {
+          "value": "5",
+          "displayValue": "5"
+        },
+        {
+          "value": "6",
+          "displayValue": "6"
+        },
+        {
+          "value": "7",
+          "displayValue": "7"
+        },
+        {
+          "value": "8",
+          "displayValue": "8"
+        },
+        {
+          "value": "9",
+          "displayValue": "9"
+        },
+        {
+          "value": "10",
+          "displayValue": "10"
+        }
+      ],
+      "visible": true
+    },
+    "targetRecord": {
+      "table": "sc_cart_item",
+      "sysId": "9294804a83ba2e50e8fbc9a6feaad3fd"
+    },
+    "deliveryInformation": {
+      "value": "",
+      "hidden": false
+    },
+    "specialInstructions": {
+      "value": "",
+      "hidden": false
+    }
+  }
+}

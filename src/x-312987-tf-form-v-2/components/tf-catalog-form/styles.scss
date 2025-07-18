@@ -1,0 +1,20 @@
+// TurboForge Catalog Form Bridge Component Styles
+// This component includes Tailwind CSS for use within the shadow DOM
+
+// Import Tailwind CSS with shadow DOM support
+@import '../../styles/_tailwind-generated.css';
+
+// Component-specific styles
+.tf-catalog-form {
+  // Ensure proper spacing and layout
+  width: 100%;
+  
+  // Override any inherited styles that might interfere
+  * {
+    box-sizing: border-box;
+  }
+  
+  // Ensure proper typography inheritance
+  font-family: hsl(var(--font-sans));
+  color: hsl(var(--foreground));
+}

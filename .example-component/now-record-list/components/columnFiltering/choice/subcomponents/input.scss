@@ -1,0 +1,8 @@
+// Imports
+import ___CSS_LOADER_API_NO_SOURCEMAP_IMPORT___ from "../../../../../node_modules/css-loader/dist/runtime/noSourceMaps.js";
+import ___CSS_LOADER_API_IMPORT___ from "../../../../../node_modules/css-loader/dist/runtime/api.js";
+var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_NO_SOURCEMAP_IMPORT___);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ":host{box-sizing:border-box;font-family:var(--now-font-family,\"Source Sans Pro\",Arial,sans-serif);line-height:var(--now-line-height,1.25)}:host([hidden]){display:none}*,:after,:before{box-sizing:border-box}now-icon{padding-left:.25rem;padding-top:.5rem}", ""]);
+// Exports
+export default ___CSS_LOADER_EXPORT___;

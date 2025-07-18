@@ -1,0 +1,30 @@
+:host {
+	box-sizing: border-box;
+	line-height: var(--now-line-height, 1.25);
+	font-family: var(--now-font-family, 'Source Sans Pro', Arial, sans-serif);
+}
+:host([hidden]) {
+	display: none;
+}
+*,
+:after,
+:before {
+	box-sizing: border-box;
+}
+:host .multi-row-modal--overlay-loading {
+	position: absolute;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+:host .multi-row-modal--overlay-loading > span {
+	color: RGB(var(--now-color_text--primary, var(--now-color--neutral-18, 22, 27, 28)));
+	font-size: 1rem;
+	text-align: center;
+}
+:host .multi-row-modal--overlay-loading sn-icon {
+	color: RGB(var(--now-color--primary-2, 23, 100, 82));
+	margin: 0 0 0.5rem;
+}

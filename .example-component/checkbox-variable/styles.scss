@@ -1,0 +1,24 @@
+:host {
+	box-sizing: border-box;
+	line-height: var(--now-line-height, 1.25);
+	font-family: var(--now-font-family,"Source Sans Pro",Arial,sans-serif);
+}
+:host([hidden]) {
+	display: none;
+}
+*,
+:after,
+:before {
+	box-sizing: border-box;
+}
+.sc-checkbox-flex {
+	display: flex;
+	margin-block-start: calc(var(--now-scale-space--sm, 1) * 0.5rem * -1 + -16px + var(--now-scale-space--xs, 1) * 0.25rem * -1);
+}
+.sc-checkbox-flex.has-error {
+	color: RGB(var(--now-color_alert--critical-2, 200, 60, 54));
+}
+.sc-checkbox-flex now-legacy-icon {
+	padding: 0 0.25rem;
+	line-height: inherit;
+}

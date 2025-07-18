@@ -1,0 +1,39 @@
+:host {
+	box-sizing: border-box;
+	line-height: var(--now-line-height, 1.25);
+	font-family: var(--now-font-family, 'Source Sans Pro', Arial, sans-serif);
+}
+:host([hidden]) {
+	display: none;
+}
+*,
+:after,
+:before {
+	box-sizing: border-box;
+}
+.sc-variable-wrapper now-input {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.sc-variable-wrapper.-sm {
+	margin-bottom: 0.5rem;
+}
+.sc-variable-wrapper.-md {
+	margin-bottom: 0.75rem;
+}
+.sc-variable-wrapper.-lg {
+	margin-bottom: 1rem;
+}
+.sc-variable-wrapper.-xl {
+	margin-bottom: 1.5rem;
+}
+.padding-h-xs {
+	padding-left: 0.25rem;
+	padding-right: 0.25rem;
+}
+.compact-control {
+	width: 50%;
+}
+.control {
+	width: 100%;
+}

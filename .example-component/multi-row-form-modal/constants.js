@@ -1,0 +1,20 @@
+export const MODAL_SUBMIT_CLICKED = 'MODAL_SUBMIT_CLICKED';
+export const MODAL_CLOSE_CLICKED = 'MODAL_CLOSE_CLICKED';
+export const MODAL_CLOSED = 'NOW_MODAL#OPENED_SET';
+export const PLATFORM_RESOURCES_LOADED = 'PLATFORM_RESOURCES_LOADED';
+export const ENVIRONMENT_INITIALIZED = 'ENVIRONMENT_INITIALIZED';
+export const ENVIRONMENT_INITIALIZATION_FAILED =
+	'ENVIRONMENT_INITIALIZATION_FAILED';
+export const CATALOG_FORM_DATA_LOADED = 'CATALOG_FORM_DATA_LOADED';
+export const CATALOG_FORM_DATA_LOAD_FAILED = 'CATALOG_FORM_DATA_LOAD_FAILED';
+export const MULTI_ROW_FORM_MODAL_CLOSED = 'MULTI_ROW_FORM_MODAL_CLOSED';
+export const NOW_ALERT_ITEM_CLICKED = 'NOW_ALERT#ACTION_CLICKED';
+
+export const FIELDS = 'fields';
+export const IS_LOADING = 'isLoading';
+export const VARIABLES_LAYOUT = 'variablesLayout';
+export const G_FORM = 'gForm';
+export const NOTIFICATIONS = 'notifications';
+export const FORM_DATA = 'formData';
+export const DUPLICATE_UNIQUE_FIELD_ERR_MSG =
+	'The following fields are not unique: {0}';

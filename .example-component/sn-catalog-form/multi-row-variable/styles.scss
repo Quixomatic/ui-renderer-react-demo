@@ -1,0 +1,36 @@
+:host {
+	box-sizing: border-box;
+	line-height: var(--now-line-height, 1.25);
+	font-family: var(--now-font-family, 'Source Sans Pro', Arial, sans-serif);
+}
+:host([hidden]) {
+	display: none;
+}
+*,
+:after,
+:before {
+	box-sizing: border-box;
+}
+.sn-multirow-var {
+	margin-bottom: 0.75rem;
+	margin-top: 0.75rem;
+}
+.sn-multirow-var-button {
+	margin-left: 1rem;
+}
+.sn-multirow-var-header-container {
+	width: 100%;
+	overflow: hidden;
+}
+.sn-multirow-var .sn-multirow-var-header-container {
+	display: flex;
+	align-items: center;
+	margin-bottom: 0.75rem;
+}
+.sn-multirow-var .sn-multirow-var-header-container-header {
+	flex: 1;
+}
+.sn-multirow-var now-legacy-icon {
+	margin-right: 0.25rem;
+	float: left;
+}
