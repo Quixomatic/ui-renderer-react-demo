@@ -607,9 +607,87 @@ This applies to all JSX file imports throughout the project. Regular JavaScript 
 ## Production Readiness & Polish
 
 ### 🔄 Phase 6: Build & Deployment (IN PROGRESS)
-- [ ] **Tailwind CSS configuration** - Fix version mismatch between v3/v4
-- [ ] **CSS generation optimization** - Ensure all classes are properly detected
-- [ ] **Build process refinement** - Streamline build:css script
+
+#### 🎯 Tailwind v4 Migration Plan (HIGH PRIORITY)
+**Goal**: Migrate from Tailwind v3 to v4 for better shadcn/ui compatibility while maintaining ServiceNow compatibility
+
+**Current Issues**:
+- Version mismatch: shadcn/ui expects v4, we're using v3.4.17
+- Class detection problems across all our files
+- ServiceNow's Sass parser conflicts with modern CSS (variables, nesting)
+- Build process inconsistencies
+
+**Migration Strategy**:
+- [ ] **Phase 6a: Tailwind v4 Setup**
+  - [ ] Upgrade to Tailwind v4 in package.json
+  - [ ] Update tailwind.config.js to v4 format
+  - [ ] Configure PostCSS pipeline for ServiceNow compatibility
+  - [ ] Test v4 class generation and detection
+
+- [ ] **Phase 6b: PostCSS Integration** 
+  - [ ] Set up PostCSS processors to clean modern CSS
+  - [ ] Configure autoprefixer for browser compatibility
+  - [ ] Add css-variables-to-custom-properties plugin
+  - [ ] Add postcss-nested to flatten nested CSS
+  - [ ] Test output compatibility with ServiceNow Sass parser
+
+- [ ] **Phase 6c: File Detection Optimization**
+  - [ ] Audit content paths in tailwind.config.js
+  - [ ] Ensure all component directories are scanned
+  - [ ] Add safelist for commonly used classes
+  - [ ] Test class detection across all field components
+
+- [ ] **Phase 6d: Build Process Refinement**
+  - [ ] Update build:css script for v4 workflow
+  - [ ] Integrate PostCSS processing pipeline
+  - [ ] Create clean CSS output for ServiceNow
+  - [ ] Test build process end-to-end
+
+- [ ] **Phase 6e: Alternative Sass Bypass Approaches (If PostCSS Fails)**
+  **Shadow DOM CSS Injection Strategies** (Taking advantage of style isolation):
+  
+  - [ ] **Option 1: Runtime CSS Injection** (Most Promising)
+    - [ ] Fetch raw Tailwind v4 CSS at runtime
+    - [ ] Inject directly into shadow root via `<style>` element
+    - [ ] Bypass Sass parser completely since CSS never goes through build
+    
+  - [ ] **Option 2: External CSS Import**
+    - [ ] Serve Tailwind CSS as separate external file
+    - [ ] Import via `<link>` element in shadow DOM
+    - [ ] ServiceNow serves CSS without Sass processing
+    
+  - [ ] **Option 3: Constructable Stylesheets** (Modern)
+    - [ ] Use `new CSSStyleSheet()` API for shadow DOM
+    - [ ] Dynamic CSS injection with `adoptedStyleSheets`
+    - [ ] Clean, performant approach for modern browsers
+    
+  - [ ] **Option 4: Build-Time CSS Bundling**
+    - [ ] Bundle CSS as JavaScript module (`import css from './style.css?inline'`)
+    - [ ] Inject CSS string at component initialization
+    - [ ] Webpack/bundler processes CSS, not ServiceNow Sass
+    
+  - [ ] **Option 5: ServiceNow UI Component Override**
+    - [ ] Research ServiceNow CSS injection APIs
+    - [ ] Use any available UI component CSS hooks
+    - [ ] Platform-specific injection methods
+    
+  - [ ] **Option 6: Hybrid Fallback Strategy**
+    - [ ] Try external CSS first, fallback to runtime injection
+    - [ ] Graceful degradation to Sass-processed CSS if all fails
+    - [ ] Multiple backup approaches for reliability
+    
+  - [ ] **Testing & Documentation**
+    - [ ] Test shadow DOM CSS isolation works as expected
+    - [ ] Document performance implications of each approach
+    - [ ] Create fallback detection and switching logic
+
+**Success Criteria**:
+- ✅ Tailwind v4 classes work in all components
+- ✅ ServiceNow Sass parser accepts generated CSS
+- ✅ All shadcn/ui components style correctly
+- ✅ Build process is reliable and fast
+- ✅ No CSS conflicts or missing styles
+
 - [ ] **Component registration** - Verify ServiceNow component registration
 - [ ] **Example data setup** - Complete test data for all field types
 
@@ -661,9 +739,9 @@ This applies to all JSX file imports throughout the project. Regular JavaScript 
 ## Current Priorities
 
 ### 🔥 Immediate (This Week)
-1. **Fix Tailwind CSS build issues** - Resolve v3/v4 version conflicts
-2. **Complete button group styling** - Ensure clear button displays properly
-3. **Test all field types** - Verify complete functionality across field types
+1. **Tailwind v4 Migration** - Complete Phase 6a-6d migration plan for v4 + PostCSS compatibility
+2. **Complete button group styling** - Ensure clear button displays properly with new CSS pipeline
+3. **Test all field types** - Verify complete functionality across field types with v4 classes
 
 ### 📈 Short Term (Next 2 Weeks)
 1. **MRVS implementation** - Multi-row variable sets for complex forms
