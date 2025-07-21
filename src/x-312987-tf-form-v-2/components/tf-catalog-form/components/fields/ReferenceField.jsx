@@ -69,7 +69,7 @@ export function ReferenceField({
     const hasMore = paginationInfo.hasMore || false;
     
     // Debug logging
-    useEffect(() => {
+    /*useEffect(() => {
         console.log('ReferenceField debug:', {
             name,
             cacheKey,
@@ -84,7 +84,7 @@ export function ReferenceField({
             paginationInfo,
             hasOptions: referenceOptions.length > 0
         });
-    }, [referenceData, referenceLoading, referencePagination, cacheKey, baseReferenceOptions.length, referenceOptions.length, currentValue, displayValue]);
+    }, [referenceData, referenceLoading, referencePagination, cacheKey, baseReferenceOptions.length, referenceOptions.length, currentValue, displayValue]);*/
     
     // Trigger initial load of reference data
     useEffect(() => {

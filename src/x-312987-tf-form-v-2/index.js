@@ -219,16 +219,34 @@ createCustomElement('x-312987-tf-form-v-2', {
 			const { field, value } = action.payload;
 			const mappedFieldName = getMappedFieldName(field);
 
+			//console.log('FORM_VALUE_CHANGE triggered:', { field, value, mappedFieldName });
+
 			// Update the comprehensive field object
 			if (state.fields[mappedFieldName]) {
-				const updatedField = updateFieldValue(state.fields[mappedFieldName], value);
+				const currentField = state.fields[mappedFieldName];
 
-				updateState({
-					fields: {
-						...state.fields,
-						[mappedFieldName]: updatedField
-					}
-				});
+				// Extract current value and displayValue
+				const currentValue = currentField.value || '';
+				const currentDisplayValue = currentField.displayValue || '';
+
+				// Extract new value and displayValue
+				const newValue = typeof value === 'object' ? (value.value || '') : (value || '');
+				const newDisplayValue = typeof value === 'object' ? (value.displayValue || value.value || '') : (value || '');
+
+				// Only update if values have actually changed
+				if (currentValue !== newValue || currentDisplayValue !== newDisplayValue) {
+					const updatedField = updateFieldValue(currentField, value);
+
+					updateState({
+						fields: {
+							...state.fields,
+							[mappedFieldName]: updatedField
+						}
+					});
+				} else {
+					//console.log('Value unchanged, skipping update:', { currentValue, newValue, currentDisplayValue, newDisplayValue });
+					action.stopPropagation();
+				}
 			}
 		},
 		'FORM_FIELD_STATE_CHANGE': ({ action, updateState, state }) => {
@@ -538,7 +556,7 @@ createCustomElement('x-312987-tf-form-v-2', {
 			errorActionType: 'REFERENCE_SEARCH_ERROR'
 		}),
 		'REFERENCE_SEARCH_SUCCESS': ({ action, updateState, state }) => {
-			console.log('REFERENCE_SEARCH_SUCCESS received - full action:', action);
+			//console.log('REFERENCE_SEARCH_SUCCESS received - full action:', action);
 
 			// ServiceNow HTTP effects put the response in action.payload.result
 			const records = action.payload?.result || [];
@@ -546,9 +564,9 @@ createCustomElement('x-312987-tf-form-v-2', {
 			// Parse pagination info from response headers
 			const responseHeaders = action.meta?.responseHeaders || {};
 			const linkHeader = responseHeaders.link || '';
-			
-			console.log('Response headers:', responseHeaders);
-			console.log('Link header raw:', linkHeader);
+
+			//console.log('Response headers:', responseHeaders);
+			//console.log('Link header raw:', linkHeader);
 
 			// Parse the Link header for pagination URLs
 			const hasMore = linkHeader.includes('rel="next"');
@@ -557,14 +575,14 @@ createCustomElement('x-312987-tf-form-v-2', {
 				const nextMatch = linkHeader.match(/<([^>]+)>;rel="next"/);
 				nextUrl = nextMatch ? nextMatch[1] : null;
 			}
-			
-			console.log('Pagination parsing:', { 
-				linkHeader, 
-				hasMore, 
+
+			/*console.log('Pagination parsing:', {
+				linkHeader,
+				hasMore,
 				nextUrl,
 				linkHeaderLength: linkHeader.length,
 				includesNext: linkHeader.includes('rel="next"')
-			});
+			});*/
 
 			// Get metadata from the action
 			const { cacheKey, field, referenceTable, tableFields, isLoadMore } = action.meta || {};
@@ -610,8 +628,8 @@ createCustomElement('x-312987-tf-form-v-2', {
 				return option;
 			});
 
-			console.log('Final options array:', options);
-			console.log('Updating state with options:', { cacheKey, optionsCount: options.length });
+			//console.log('Final options array:', options);
+			//console.log('Updating state with options:', { cacheKey, optionsCount: options.length });
 
 			// Only update if we have a valid cacheKey
 			if (cacheKey) {
@@ -629,12 +647,12 @@ createCustomElement('x-312987-tf-form-v-2', {
 					nextUrl,
 					totalLoaded: allOptions.length
 				};
-				
-				console.log('Storing pagination info:', { cacheKey, paginationInfo });
+
+				//console.log('Storing pagination info:', { cacheKey, paginationInfo });
 
 				// Get metadata to check if this was a search
 				const { searchTerm } = action.meta || {};
-				
+
 				// Build new reference data state
 				const newReferenceData = {
 					...state.referenceData,
@@ -645,7 +663,7 @@ createCustomElement('x-312987-tf-form-v-2', {
 				if (searchTerm) {
 					newReferenceData[`${cacheKey}_searched`] = true;
 				}
-				
+
 				updateState({
 					referenceData: newReferenceData,
 					referenceLoading: newReferenceLoading,

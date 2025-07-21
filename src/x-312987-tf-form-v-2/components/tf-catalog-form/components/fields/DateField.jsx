@@ -74,6 +74,10 @@ export function DateField({
         return '';
     };
 
+    // Check if field is readonly or disabled
+    const isReadOnly = fieldState?.readonly || config.readOnly;
+    const isDisabled = fieldState?.disabled;
+
     // For datetime fields, use separate date and time inputs
     if (config.type === 'glide_date_time') {
         return (
@@ -92,6 +96,7 @@ export function DateField({
                                 <Button
                                     variant="outline"
                                     className={`w-32 justify-between font-normal ${error ? 'border-destructive' : ''} ${!currentDate ? 'text-muted-foreground' : ''}`}
+                                    disabled={isReadOnly || isDisabled}
                                 >
                                     {currentDate ? currentDate.toLocaleDateString() : "Select date"}
                                     <ChevronDownIcon />
@@ -119,6 +124,8 @@ export function DateField({
                             onChange={handleTimeChange}
                             placeholder="Select time"
                             className={`bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none ${error ? 'border-destructive' : ''}`}
+                            readOnly={isReadOnly}
+                            disabled={isDisabled}
                         />
                     </div>
                 </div>
@@ -141,6 +148,7 @@ export function DateField({
                     <Button
                         variant="outline"
                         className={`w-full justify-between font-normal ${error ? 'border-destructive' : ''} ${!currentDate ? 'text-muted-foreground' : ''}`}
+                        disabled={isReadOnly || isDisabled}
                     >
                         {currentDate ? currentDate.toLocaleDateString() : "Select date"}
                         <ChevronDownIcon />

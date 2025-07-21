@@ -51,33 +51,74 @@ export function BaseField({
             )}
 
             {/* Input component */}
-            {React.cloneElement(children, {
-                id: name,
-                name: name,
-                disabled: isReadOnly || isDisabled,
-                'aria-invalid': error ? 'true' : 'false',
-                'aria-describedby': error ? `${name}-error` : undefined
-            })}
-
-            {/* Error message */}
-            {error && (
-                <p id={`${name}-error`} className="text-sm text-destructive mt-1">
-                    {error}
-                </p>
+            {typeof children === 'function' ? (
+                // If children is a function, call it with the field props
+                children({
+                    id: config.type !== 'boolean' ? name : undefined,
+                    name: name,
+                    disabled: isReadOnly || isDisabled,
+                    'aria-invalid': error ? 'true' : 'false',
+                    'aria-describedby': error ? `${name}-error` : undefined
+                })
+            ) : (
+                // Otherwise, clone the element and add props
+                React.cloneElement(children, {
+                    // Don't add id to boolean fields - they handle their own id on the checkbox
+                    ...(config.type !== 'boolean' && { id: name }),
+                    name: name,
+                    disabled: isReadOnly || isDisabled,
+                    'aria-invalid': error ? 'true' : 'false',
+                    'aria-describedby': error ? `${name}-error` : undefined
+                })
             )}
 
-            {/* Help text */}
-            {config.helpText && (
-                <p className="text-xs text-muted-foreground mt-1">
-                    {config.helpText}
-                </p>
-            )}
+            {/* For boolean fields, wrap messages in a min-height container */}
+            {config.type === 'boolean' ? (
+                <div className="min-h-[36px] flex flex-col justify-start">
+                    {/* Error message */}
+                    {error && (
+                        <p id={`${name}-error`} className="text-sm text-destructive">
+                            {error}
+                        </p>
+                    )}
 
-            {/* Instructions */}
-            {config.instructions && (
-                <p className="text-xs text-muted-foreground mt-1 italic">
-                    {config.instructions}
-                </p>
+                    {/* Help text - indented for checkboxes */}
+                    {config.helpText && (
+                        <p className="text-xs text-muted-foreground ml-6">
+                            {config.helpText}
+                        </p>
+                    )}
+
+                    {/* Instructions - indented for checkboxes */}
+                    {config.instructions && (
+                        <p className="text-xs text-muted-foreground italic ml-6">
+                            {config.instructions}
+                        </p>
+                    )}
+                </div>
+            ) : (
+                <>
+                    {/* Error message */}
+                    {error && (
+                        <p id={`${name}-error`} className="text-sm text-destructive mt-1">
+                            {error}
+                        </p>
+                    )}
+
+                    {/* Help text */}
+                    {config.helpText && (
+                        <p className="text-xs text-muted-foreground mt-1">
+                            {config.helpText}
+                        </p>
+                    )}
+
+                    {/* Instructions */}
+                    {config.instructions && (
+                        <p className="text-xs text-muted-foreground mt-1 italic">
+                            {config.instructions}
+                        </p>
+                    )}
+                </>
             )}
         </div>
     );

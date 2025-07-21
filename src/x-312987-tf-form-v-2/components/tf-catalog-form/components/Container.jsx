@@ -40,37 +40,37 @@ export function Container({
     // Render fields within a column
     const renderColumnFields = (columnFields) => {
         return columnFields.map((field, fieldIndex) => {
-            if (field.type !== 'field') {
+            if (field.type === 'field') {
+                const fieldConfig = fields[field.name];
+                if (!fieldConfig) {
+                    console.warn(`Field configuration not found for: ${field.name}`);
+                    return null;
+                }
+
+                return (
+                    <FieldRenderer
+                        key={field.name}
+                        name={field.name}
+                        config={fieldConfig}
+                        value={formValues[field.name]}
+                        error={validationErrors[field.name]}
+                        fieldStates={fieldStates}
+                        readOnlyOption={readOnlyOption}
+                        renderStyle={renderStyle}
+                        shadowRoot={shadowRoot}
+                        referenceData={referenceData}
+                        referenceLoading={referenceLoading}
+                        referencePagination={referencePagination}
+                        onValueChange={onValueChange}
+                        onValidation={onValidation}
+                        onReferenceSearch={onReferenceSearch}
+                        onReferenceLoadMore={onReferenceLoadMore}
+                    />
+                );
+            } else {
                 console.warn(`Unexpected field type in container: ${field.type}`);
                 return null;
             }
-
-            const fieldConfig = fields[field.name];
-            if (!fieldConfig) {
-                console.warn(`Field configuration not found for: ${field.name}`);
-                return null;
-            }
-
-            return (
-                <FieldRenderer
-                    key={field.name}
-                    name={field.name}
-                    config={fieldConfig}
-                    value={formValues[field.name]}
-                    error={validationErrors[field.name]}
-                    fieldStates={fieldStates}
-                    readOnlyOption={readOnlyOption}
-                    renderStyle={renderStyle}
-                    shadowRoot={shadowRoot}
-                    referenceData={referenceData}
-                    referenceLoading={referenceLoading}
-                    referencePagination={referencePagination}
-                    onValueChange={onValueChange}
-                    onValidation={onValidation}
-                    onReferenceSearch={onReferenceSearch}
-                    onReferenceLoadMore={onReferenceLoadMore}
-                />
-            );
         });
     };
 

@@ -4,6 +4,7 @@ import { FormLayout } from "./components/FormLayout.jsx";
 import { GFormAPI } from "../../lib/GFormAPI.js";
 import { UIPolicyEngine } from "../../lib/UIPolicyEngine.js";
 import { ClientScriptEngine } from "../../lib/ClientScriptEngine.js";
+import { normalizeVariablesLayout, debugLayoutTransformation } from "./utils/layoutNormalizer.js";
 
 /**
  * Main TurboForge Catalog Form View
@@ -85,6 +86,13 @@ export default function TfCatalogForm(state) {
         });
         return messages;
     }, [fields]);
+
+    // Normalize the variables layout to handle ServiceNow's weird checkbox_container patterns
+    const normalizedVariablesLayout = useMemo(() => {
+        const normalized = normalizeVariablesLayout(variablesLayout, fields);
+        debugLayoutTransformation(variablesLayout, normalized);
+        return normalized;
+    }, [variablesLayout]);
 
     const gFormRef = useRef(null);
     const uiPolicyEngineRef = useRef(null);
@@ -245,7 +253,7 @@ export default function TfCatalogForm(state) {
                 <CardContent>
                     <FormLayout
                         fields={fields}
-                        variablesLayout={variablesLayout}
+                        variablesLayout={normalizedVariablesLayout}
                         formValues={formValues}
                         validationErrors={validationErrors}
                         fieldStates={fieldStates}

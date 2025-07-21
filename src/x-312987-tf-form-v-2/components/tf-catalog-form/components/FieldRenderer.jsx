@@ -5,6 +5,19 @@ import { ChoiceField } from './fields/ChoiceField.jsx';
 import { BooleanField } from './fields/BooleanField.jsx';
 import { TextField } from './fields/TextField.jsx';
 import { ReferenceField } from './fields/ReferenceField.jsx';
+import { EmailField } from './fields/EmailField.jsx';
+import { UrlField } from './fields/UrlField.jsx';
+import { MaskedField } from './fields/MaskedField.jsx';
+import { DurationField } from './fields/DurationField.jsx';
+import { YesNoButtonField } from './fields/YesNoButtonField.jsx';
+import { NumericScaleField } from './fields/NumericScaleField.jsx';
+import { MultipleChoiceField } from './fields/MultipleChoiceField.jsx';
+import { IpAddressField } from './fields/IpAddressField.jsx';
+import { IpAddressFieldSegmented } from './fields/IpAddressFieldSegmented.jsx';
+import { LabelField } from './fields/LabelField.jsx';
+import { RichTextLabelField } from './fields/RichTextLabelField.jsx';
+import { ListCollectorField } from './fields/ListCollectorField.jsx';
+import { HtmlField } from './fields/HtmlField.jsx';
 
 /**
  * FieldRenderer - Field Type Router
@@ -73,8 +86,7 @@ export function FieldRenderer({
         case 'choice':
             return <ChoiceField {...commonProps} />;
         case 'choice:button_yes_no':
-            // TODO: Implement YesNoButtonField component
-            return <ChoiceField {...commonProps} />;
+            return <YesNoButtonField {...commonProps} />;
 
         // Boolean field variations
         case 'boolean':
@@ -82,12 +94,64 @@ export function FieldRenderer({
 
         // Text field variations
         case 'text':
-        case 'html':
+        case 'multi_two_lines':
             return <TextField {...commonProps} />;
+            
+        // HTML field
+        case 'html':
+            return <HtmlField {...commonProps} />;
 
         // Reference field variations
         case 'reference':
+        case 'requested_for':
             return <ReferenceField {...commonProps} />;
+
+        // Email field
+        case 'email':
+            return <EmailField {...commonProps} />;
+
+        // URL field
+        case 'url':
+            return <UrlField {...commonProps} />;
+
+        // Masked field
+        case 'masked':
+            return <MaskedField {...commonProps} />;
+
+        // Duration field
+        case 'glide_duration':
+            return <DurationField {...commonProps} />;
+
+        // Numeric scale field
+        case 'numeric_scale':
+            return <NumericScaleField {...commonProps} />;
+
+        // Multiple choice field (radio buttons)
+        case 'multiple_choice':
+            return <MultipleChoiceField {...commonProps} />;
+
+        // IP Address field
+        case 'ip_address':
+            return (
+                <>
+                    <IpAddressField {...commonProps} />
+                    <div className="mt-2">
+                        <IpAddressFieldSegmented {...commonProps} />
+                    </div>
+                </>
+            );
+
+        // Label field (display only)
+        case 'label':
+            return <LabelField {...commonProps} />;
+
+        // Rich text label field (display only)
+        case 'rich_text_label':
+            return <RichTextLabelField {...commonProps} />;
+
+        // List collector field (multi-select reference)
+        case 'glide_list':
+            return <ListCollectorField {...commonProps} />;
 
         // Fallback for unsupported types
         default:

@@ -1,6 +1,12 @@
 import '../src/x-312987-tf-form-v-2';
 import exampleData from '../.example-data/example-response.json';
 
+const html = document.querySelector('html');
+html.style = `
+height: 100%;
+background: #faf9f5;
+`;
+
 const el = document.createElement('DIV');
 document.body.appendChild(el);
 
