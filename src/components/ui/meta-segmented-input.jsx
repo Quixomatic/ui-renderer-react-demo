@@ -27,6 +27,7 @@ export const MetaSegmentedInput = ({
   const selectedConfig = configOptions.options[selectedKey]
   const [showMask, setShowMask] = useState(false)
   const [isFocused, setIsFocused] = useState(false)
+  const [focusedSegment, setFocusedSegment] = useState(-1)
 
   const refSegments = useRef([])
 
@@ -264,8 +265,8 @@ export const MetaSegmentedInput = ({
         onPaste={disabled ? undefined : handlePaste}
         onBlur={disabled ? undefined : handleBlur}
         onClick={(e) => {
-          // In unified mode, clicking anywhere should focus the first empty segment or first segment
-          if (variant === "unified" && !disabled) {
+          // In unified mode, only focus if clicking on the container itself, not on inputs
+          if (variant === "unified" && !disabled && e.target === e.currentTarget) {
             const firstEmptyIndex = segments.findIndex(seg => !seg)
             const targetIndex = firstEmptyIndex !== -1 ? firstEmptyIndex : 0
             refSegments.current[targetIndex]?.focus()
@@ -328,7 +329,11 @@ export const MetaSegmentedInput = ({
                     className={cn(
                       variant === "unified" 
                         ? cn(
-                            "border-0 shadow-none bg-transparent px-1 py-0 h-auto text-center focus-visible:ring-0 focus-visible:ring-offset-0",
+                            "border-0 shadow-none bg-transparent px-1 py-0 h-auto text-center",
+                            // Only show focus outline on the actually focused segment
+                            focusedSegment === segmentIndex 
+                              ? "focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-1 rounded-sm"
+                              : "focus-visible:ring-0 focus-visible:ring-offset-0",
                             icon && "pl-6"
                           )
                         : cn(
@@ -346,6 +351,8 @@ export const MetaSegmentedInput = ({
                     value={seg}
                     onChange={(e) => handleSegmentChange(segmentIndex, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(e, segmentIndex)}
+                    onFocus={() => setFocusedSegment(segmentIndex)}
+                    onBlur={() => setFocusedSegment(-1)}
                     inputMode={segCfg.inputMode || inputMode}
                     type={isMasked ? "password" : "text"}
                     placeholder={segCfg.placeholder || ""}

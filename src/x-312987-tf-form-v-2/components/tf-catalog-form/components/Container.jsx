@@ -15,6 +15,7 @@ export function Container({
     formValues,
     validationErrors,
     fieldStates,
+    showValidationErrors,
     readOnlyOption,
     renderStyle,
     variableGap,
@@ -55,6 +56,7 @@ export function Container({
                         value={formValues[field.name]}
                         error={validationErrors[field.name]}
                         fieldStates={fieldStates}
+                        showValidationErrors={showValidationErrors}
                         readOnlyOption={readOnlyOption}
                         renderStyle={renderStyle}
                         shadowRoot={shadowRoot}

@@ -18,6 +18,7 @@ export function BooleanField({
     value, 
     fieldState, 
     error, 
+    fieldMessages,
     renderStyle,
     onValueChange 
 }) {
@@ -42,6 +43,7 @@ export function BooleanField({
             value={value}
             fieldState={fieldState}
             error={error}
+            fieldMessages={fieldMessages}
             renderStyle={renderStyle}
         >
             {(fieldProps) => (

@@ -125,7 +125,7 @@
                         {
                             "fields": [
                                 {
-                                    "name": "variables.3a74836283722290e8fbc9a6feaad346",
+                                    "name": "variables.d3fcef4b83faa290e8fbc9a6feaad368",
                                     "type": "checkbox_container"
                                 },
                                 {
@@ -169,7 +169,7 @@
                     ]
                 },
                 {
-                    "name": "variables.3a74836283722290e8fbc9a6feaad346",
+                    "name": "variables.d3fcef4b83faa290e8fbc9a6feaad368",
                     "type": "checkbox_container",
                     "parent": "variables.0f95a90283b26e50e8fbc9a6feaad3d2",
                     "caption": "",
@@ -581,7 +581,7 @@
                         "variables.numeric_scale",
                         "variables.rich_text_label_test",
                         "variables.yes_no_test",
-                        "variables.3a74836283722290e8fbc9a6feaad346",
+                        "variables.d3fcef4b83faa290e8fbc9a6feaad368",
                         "variables.single_line_text_test",
                         "variables.html_test",
                         "variables.label_test",
@@ -655,7 +655,8 @@
                                 "display_value": "string"
                             }
                         }
-                    ]
+                    ],
+                    "qualifier": "active=true^emailISNOTEMPTY^EQ"
                 },
                 "variables.email_test": {
                     "type": "email",
@@ -3563,7 +3564,9 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "min": "0",
+                    "max": "10"
                 },
                 "variables.rich_text_label_test": {
                     "type": "rich_text_label",
@@ -3637,7 +3640,7 @@
                     "choices": [
                         {
                             "displayValue": "-- None --",
-                            "value": " "
+                            "value": ""
                         },
                         {
                             "displayValue": "Yes",
@@ -3670,10 +3673,10 @@
                     "parsedAttributes": {},
                     "subType": null
                 },
-                "variables.3a74836283722290e8fbc9a6feaad346": {
+                "variables.d3fcef4b83faa290e8fbc9a6feaad368": {
                     "type": "container",
-                    "id": "7a74836283722290e8fbc9a6feaad346",
-                    "name": "variables.3a74836283722290e8fbc9a6feaad346",
+                    "id": "17fcef4b83faa290e8fbc9a6feaad368",
+                    "name": "variables.d3fcef4b83faa290e8fbc9a6feaad368",
                     "variableName": null,
                     "label": "Options",
                     "order": -1,
@@ -3697,7 +3700,7 @@
                     "variable_name": null,
                     "_cat_variable": true,
                     "is_variable": true,
-                    "variable_id": "IO:7a74836283722290e8fbc9a6feaad346",
+                    "variable_id": "IO:17fcef4b83faa290e8fbc9a6feaad368",
                     "_children": [
                         "variables.checkbox_test"
                     ],
@@ -3741,7 +3744,7 @@
                     "displayValue": "false",
                     "valuesList": [],
                     "display_value_list": [],
-                    "_parent": "variables.3a74836283722290e8fbc9a6feaad346",
+                    "_parent": "variables.d3fcef4b83faa290e8fbc9a6feaad368",
                     "hideMandatory": false,
                     "parsedAttributes": {},
                     "subType": null
@@ -3767,7 +3770,7 @@
                     "dynamicValueDotWalkPath": "",
                     "exampleText": "",
                     "useConfirmation": false,
-                    "regExp": "",
+                    "regExp": "^(?![\\.])[a-zA-Z0-9!#$%*\\/?|^{}`~&'\\+\\-=_.]+(?<![.]+)@(?![\\.-])[a-zA-Z0-9-_\\.]+(\\.[a-zA-Z0-9_]+)$",
                     "canDecrypt": false,
                     "hasPriceImplecations": false,
                     "showHelp": false,
@@ -3786,7 +3789,45 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "validation": {
+                        "name": {
+                            "value": "Email",
+                            "display_value": "Email",
+                            "label": "Name",
+                            "field_name": "name",
+                            "path": "validate_regex.name",
+                            "table": "question_regex",
+                            "type": "string"
+                        },
+                        "validation_message": {
+                            "value": "Not a valid email",
+                            "display_value": "Not a valid email",
+                            "label": "Validation message",
+                            "field_name": "validation_message",
+                            "path": "validate_regex.validation_message",
+                            "table": "question_regex",
+                            "type": "translated_text"
+                        },
+                        "active": {
+                            "value": "1",
+                            "display_value": "true",
+                            "label": "Active",
+                            "field_name": "active",
+                            "path": "validate_regex.active",
+                            "table": "question_regex",
+                            "type": "boolean"
+                        },
+                        "regex": {
+                            "value": "^(?![\\.])[a-zA-Z0-9!#$%*\\/?|^{}`~&'\\+\\-=_.]+(?<![.]+)@(?![\\.-])[a-zA-Z0-9-_\\.]+(\\.[a-zA-Z0-9_]+)$",
+                            "display_value": "^(?![\\.])[a-zA-Z0-9!#$%*\\/?|^{}`~&'\\+\\-=_.]+(?<![.]+)@(?![\\.-])[a-zA-Z0-9-_\\.]+(\\.[a-zA-Z0-9_]+)$",
+                            "label": "Regular Expression",
+                            "field_name": "regex",
+                            "path": "validate_regex.regex",
+                            "table": "question_regex",
+                            "type": "string"
+                        }
+                    }
                 },
                 "variables.html_test": {
                     "type": "html",
@@ -4092,7 +4133,23 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tableFields": [
+                        {
+                            "column_label": {
+                                "value": "Name",
+                                "display_value": "Name"
+                            },
+                            "element": {
+                                "value": "name",
+                                "display_value": "name"
+                            },
+                            "type": {
+                                "value": "string",
+                                "display_value": "string"
+                            }
+                        }
+                    ]
                 },
                 "variables.url_test": {
                     "type": "url",
@@ -5047,7 +5104,7 @@
         },
         "targetRecord": {
             "table": "sc_cart_item",
-            "sysId": "f674836283722290e8fbc9a6feaad347"
+            "sysId": "93fcef4b83faa290e8fbc9a6feaad369"
         },
         "deliveryInformation": {
             "value": "",

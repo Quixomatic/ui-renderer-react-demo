@@ -17,6 +17,7 @@ export function FormLayout({
     formValues,
     validationErrors,
     fieldStates,
+    showValidationErrors,
     readOnlyOption,
     renderStyle,
     variableGap,
@@ -43,6 +44,7 @@ export function FormLayout({
                     formValues={formValues}
                     validationErrors={validationErrors}
                     fieldStates={fieldStates}
+                    showValidationErrors={showValidationErrors}
                     readOnlyOption={readOnlyOption}
                     renderStyle={renderStyle}
                     variableGap={variableGap}
@@ -71,6 +73,7 @@ export function FormLayout({
                     value={formValues[item.name]}
                     error={validationErrors[item.name]}
                     fieldStates={fieldStates}
+                    showValidationErrors={showValidationErrors}
                     readOnlyOption={readOnlyOption}
                     renderStyle={renderStyle}
                     shadowRoot={shadowRoot}

@@ -35,6 +35,7 @@ export function FieldRenderer({
     readOnlyOption,
     renderStyle,
     fieldStates,
+    showValidationErrors,
     shadowRoot,
     referenceData,
     referenceLoading,
@@ -51,6 +52,7 @@ export function FieldRenderer({
         value,
         fieldState: fieldStates?.[name] || {},
         error,
+        showValidationErrors,
         renderStyle,
         shadowRoot,
         referenceData,
@@ -132,14 +134,7 @@ export function FieldRenderer({
 
         // IP Address field
         case 'ip_address':
-            return (
-                <>
-                    <IpAddressField {...commonProps} />
-                    <div className="mt-2">
-                        <IpAddressFieldSegmented {...commonProps} />
-                    </div>
-                </>
-            );
+            return <IpAddressFieldSegmented {...commonProps} />;
 
         // Label field (display only)
         case 'label':

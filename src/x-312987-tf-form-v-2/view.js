@@ -7,6 +7,8 @@
  * Architecture:
  * Snabbdom (this component) → React Bridge (tf-catalog-form) → Regular React Components
  */
+import debug from './lib/debug.js';
+
 export default (state) => {
 	// Get comprehensive field data from state
 	const {
@@ -33,7 +35,7 @@ export default (state) => {
 		sourceId,
 	} = state.properties;
 
-	console.log(fields);
+	debug.log('componentRender', 'View rendering with fields:', fields);
 
 	return (
 		<div className="turbo-forge-catalog-form-container">

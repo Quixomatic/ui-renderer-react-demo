@@ -253,7 +253,7 @@ export function ListCollectorField({
                 
                 {/* Dropdown */}
                 {isOpen && !isReadOnly && !isDisabled && (
-                    <div className="absolute z-50 w-full mt-1 bg-popover border rounded-md shadow-lg max-h-60 overflow-auto">
+                    <div className="absolute z-50 w-full mt-1 bg-popover border border-border rounded-md shadow-lg max-h-60 overflow-auto">
                         {availableResults.length > 0 ? (
                             <>
                                 {availableResults.map((item) => (
@@ -262,11 +262,11 @@ export function ListCollectorField({
                                         className="px-3 py-2 hover:bg-accent cursor-pointer"
                                         onClick={() => handleSelect(item)}
                                     >
-                                        <div className="font-medium">
+                                        <div className="text-sm font-normal">
                                             {item.label || item[displayField] || item.displayValue || item.value}
                                         </div>
                                         {item.additionalInfo && (
-                                            <div className="text-sm text-muted-foreground">
+                                            <div className="text-xs text-muted-foreground">
                                                 {item.additionalInfo}
                                             </div>
                                         )}

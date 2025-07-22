@@ -24,6 +24,7 @@ export default function TfCatalogForm(state) {
         variablesLayout,
         formMessages,
         formValid,
+        showValidationErrors,
         readOnlyOption,
         renderStyle,
         variableGap,
@@ -98,6 +99,7 @@ export default function TfCatalogForm(state) {
     const uiPolicyEngineRef = useRef(null);
     const clientScriptEngineRef = useRef(null);
     const isLoadingRef = useRef(true);
+    const hasInteractedRef = useRef(false);
 
     // Initialize g_form API and engines
     useEffect(() => {
@@ -139,6 +141,9 @@ export default function TfCatalogForm(state) {
             isLoadingRef.current = false;
             clientScriptEngineRef.current.executeOnLoad(formValues);
             uiPolicyEngineRef.current.evaluateAll(formValues, true);
+            
+            // Run initial validation on all fields after everything is set up
+            dispatch('FORM_INITIAL_VALIDATION', {});
         }, 0);
 
         return () => {
@@ -173,6 +178,12 @@ export default function TfCatalogForm(state) {
 
     // Handle value changes from child components
     const handleValueChange = (field, value) => {
+        // Track first interaction
+        if (!hasInteractedRef.current) {
+            hasInteractedRef.current = true;
+            dispatch('FORM_FIRST_INTERACTION', {});
+        }
+
         // Get old value before change
         const oldValue = formValues[field];
 
@@ -257,6 +268,7 @@ export default function TfCatalogForm(state) {
                         formValues={formValues}
                         validationErrors={validationErrors}
                         fieldStates={fieldStates}
+                        showValidationErrors={showValidationErrors}
                         readOnlyOption={readOnlyOption}
                         renderStyle={renderStyle}
                         variableGap={variableGap}

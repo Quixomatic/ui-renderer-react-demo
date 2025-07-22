@@ -17,10 +17,10 @@
   --muted-foreground: hsl(50.0000 2.3622% 50.1961%);
   --accent: hsl(46.1538 22.8070% 88.8235%);
   --accent-foreground: hsl(50.7692 19.4030% 13.1373%);
-  --destructive: hsl(60 2.5641% 7.6471%);
+  --destructive: hsl(0 84.2365% 60.1961%);
   --destructive-foreground: hsl(0 0% 100%);
   --border: hsl(50 7.5000% 84.3137%);
-  --input: hsl(50.7692 7.9755% 68.0392%);
+  --input: hsl(50 7.5000% 84.3137%);
   --ring: hsl(210 74.8031% 49.8039%);
   --chart-1: hsl(18.2813 57.1429% 43.9216%);
   --chart-2: hsl(251.4545 84.6154% 74.5098%);
@@ -70,7 +70,7 @@
   --destructive: hsl(0 84.2365% 60.1961%);
   --destructive-foreground: hsl(0 0% 100%);
   --border: hsl(60 5.0847% 23.1373%);
-  --input: hsl(52.5000 5.1282% 30.5882%);
+  --input: hsl(50.7692 7.9755% 68.0392%)
   --ring: hsl(210 74.8031% 49.8039%);
   --chart-1: hsl(18.2813 57.1429% 43.9216%);
   --chart-2: hsl(251.4545 84.6154% 74.5098%);
@@ -152,10 +152,15 @@
   --shadow-2xl: var(--shadow-2xl);
 }
 
-*,
+/**,
 ::after,
 ::before,
 ::backdrop,
 ::file-selector-button {
   border-color: var(--color-border);
-}
+}*/
+/*@layer utilities {
+  .border {
+    border-color: var(--color-border);
+  }
+}*/

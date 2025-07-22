@@ -15,6 +15,7 @@ export function DurationField({
     value, 
     fieldState, 
     error, 
+    fieldMessages,
     renderStyle,
     onValueChange 
 }) {
@@ -141,6 +142,7 @@ export function DurationField({
             value={value} 
             fieldState={fieldState} 
             error={error}
+            fieldMessages={fieldMessages}
             renderStyle={renderStyle}
         >
             <div className="flex gap-2 items-center">

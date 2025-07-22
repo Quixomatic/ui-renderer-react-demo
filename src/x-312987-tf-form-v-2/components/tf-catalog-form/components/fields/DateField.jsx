@@ -20,6 +20,7 @@ export function DateField({
     value, 
     fieldState, 
     error, 
+    fieldMessages,
     renderStyle,
     shadowRoot,
     onValueChange 
@@ -87,6 +88,7 @@ export function DateField({
                 value={value} 
                 fieldState={fieldState} 
                 error={error}
+                fieldMessages={fieldMessages}
                 renderStyle={renderStyle}
             >
                 <div className="flex gap-4">
@@ -141,6 +143,7 @@ export function DateField({
             value={value} 
             fieldState={fieldState} 
             error={error}
+            fieldMessages={fieldMessages}
             renderStyle={renderStyle}
         >
             <Popover open={open} onOpenChange={setOpen}>

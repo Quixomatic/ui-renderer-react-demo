@@ -14,6 +14,7 @@ export function EmailField({
     value, 
     fieldState, 
     error, 
+    fieldMessages,
     renderStyle,
     onValueChange 
 }) {
@@ -39,6 +40,7 @@ export function EmailField({
             value={value} 
             fieldState={fieldState} 
             error={error}
+            fieldMessages={fieldMessages}
             renderStyle={renderStyle}
         >
             <Input

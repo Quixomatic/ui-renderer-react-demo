@@ -60,7 +60,7 @@ export function Combobox({
             disabled={disabled}
             {...props}
           >
-            <span className="truncate">
+            <span className={cn("truncate font-normal", !selectedOption && "text-muted-foreground")}>
               {selectedOption ? selectedOption.label : placeholder}
             </span>
             <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -70,7 +70,6 @@ export function Combobox({
           <Button
             type="button"
             variant="outline"
-            size="sm"
             className="px-2 rounded-l-none border-l-0 hover:bg-red-50 hover:text-red-600"
             onClick={onClear}
           >
@@ -84,7 +83,7 @@ export function Combobox({
           width: 'var(--radix-popover-trigger-width)',
           maxHeight: '18rem'
         }}
-        container={container}
+        container={container || document.body}
       >
         <Command shouldFilter={false} className="h-full">
           <CommandInput 

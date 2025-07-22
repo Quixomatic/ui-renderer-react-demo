@@ -55,7 +55,7 @@ export function normalizeVariablesLayout(variablesLayout, fields) {
                                     }
                                 });
                             } else {
-                                console.warn(`Referenced checkbox container not found: ${field.name}`);
+                                debug.warn('layout', `Referenced checkbox container not found: ${field.name}`);
                             }
                         } else {
                             // Regular field - keep as is
@@ -83,9 +83,11 @@ export function normalizeVariablesLayout(variablesLayout, fields) {
 /**
  * Log the layout transformation for debugging
  */
+import debug from '../../../lib/debug.js';
+
 export function debugLayoutTransformation(original, normalized) {
-    console.group('Layout Normalization');
-    console.log('Original layout:', original);
-    console.log('Normalized layout:', normalized);
-    console.groupEnd();
+    debug.group('layout', 'Layout Normalization', () => {
+        debug.log('layout', 'Original layout:', original);
+        debug.log('layout', 'Normalized layout:', normalized);
+    });
 }
