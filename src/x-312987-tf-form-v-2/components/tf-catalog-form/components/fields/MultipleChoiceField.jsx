@@ -10,14 +10,12 @@ import { BaseField } from './BaseField.jsx';
  * Displays options as radio buttons for single selection.
  */
 export function MultipleChoiceField({ 
-    name, 
-    config, 
-    value, 
-    fieldState, 
-    error, 
-    renderStyle,
+    baseFieldProps,
     onValueChange 
 }) {
+    // Extract needed values from baseFieldProps
+    const { name, config, value, fieldState, error } = baseFieldProps;
+    
     // Get current value
     const currentValue = typeof value === 'object' ? (value?.value || '') : (value || '');
     
@@ -47,14 +45,7 @@ export function MultipleChoiceField({
     const isDisabled = fieldState?.disabled;
 
     return (
-        <BaseField 
-            name={name} 
-            config={config} 
-            value={value} 
-            fieldState={fieldState} 
-            error={error}
-            renderStyle={renderStyle}
-        >
+        <BaseField {...baseFieldProps}>
             <RadioGroup
                 value={currentValue}
                 onValueChange={handleChange}

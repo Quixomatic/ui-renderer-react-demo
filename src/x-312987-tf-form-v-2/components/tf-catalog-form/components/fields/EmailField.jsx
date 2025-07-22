@@ -9,15 +9,12 @@ import { BaseField } from './BaseField.jsx';
  * Provides email format validation and appropriate input attributes.
  */
 export function EmailField({ 
-    name, 
-    config, 
-    value, 
-    fieldState, 
-    error, 
-    fieldMessages,
-    renderStyle,
+    baseFieldProps,
     onValueChange 
 }) {
+    // Extract needed values from baseFieldProps
+    const { name, config, value, error } = baseFieldProps;
+    
     // Get current field value
     const currentValue = typeof value === 'object' ? (value?.value || '') : (value || '');
     const displayValue = typeof value === 'object' ? (value?.displayValue || value?.value || '') : (value || '');
@@ -34,15 +31,7 @@ export function EmailField({
     };
 
     return (
-        <BaseField 
-            name={name} 
-            config={config} 
-            value={value} 
-            fieldState={fieldState} 
-            error={error}
-            fieldMessages={fieldMessages}
-            renderStyle={renderStyle}
-        >
+        <BaseField {...baseFieldProps}>
             <Input
                 type="email"
                 value={displayValue}

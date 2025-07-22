@@ -10,15 +10,12 @@ import { BaseField } from './BaseField.jsx';
  * Provides inputs for days, hours, and minutes.
  */
 export function DurationField({ 
-    name, 
-    config, 
-    value, 
-    fieldState, 
-    error, 
-    fieldMessages,
-    renderStyle,
+    baseFieldProps,
     onValueChange 
 }) {
+    // Extract needed values from baseFieldProps
+    const { name, config, value, fieldState, error } = baseFieldProps;
+    
     // Parse duration value into components
     const parseDuration = (durationValue) => {
         if (!durationValue || typeof durationValue !== 'string') {
@@ -136,15 +133,7 @@ export function DurationField({
     const isDisabled = fieldState?.disabled;
 
     return (
-        <BaseField 
-            name={name} 
-            config={config} 
-            value={value} 
-            fieldState={fieldState} 
-            error={error}
-            fieldMessages={fieldMessages}
-            renderStyle={renderStyle}
-        >
+        <BaseField {...baseFieldProps}>
             <div className="flex gap-2 items-center">
                 <div className="flex items-center gap-1">
                     <Input

@@ -9,14 +9,11 @@ import { BaseField } from './BaseField.jsx';
  * For string fields, value and displayValue are typically the same.
  */
 export function StringField({ 
-    name, 
-    config, 
-    value, 
-    fieldState, 
-    error, 
-    renderStyle,
+    baseFieldProps,
     onValueChange 
 }) {
+    // Extract needed values from baseFieldProps
+    const { name, config, value, error } = baseFieldProps;
     // Get current field value (handle both simple values and value/displayValue objects)
     const currentValue = typeof value === 'object' ? (value?.value || '') : (value || '');
     const displayValue = typeof value === 'object' ? (value?.displayValue || value?.value || '') : (value || '');
@@ -33,14 +30,7 @@ export function StringField({
     };
 
     return (
-        <BaseField 
-            name={name} 
-            config={config} 
-            value={value} 
-            fieldState={fieldState} 
-            error={error}
-            renderStyle={renderStyle}
-        >
+        <BaseField {...baseFieldProps}>
             <Input
                 type="text"
                 value={displayValue}

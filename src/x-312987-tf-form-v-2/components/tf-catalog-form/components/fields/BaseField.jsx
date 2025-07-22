@@ -1,5 +1,6 @@
 import React from 'react';
 import { Label } from '../../../../../components/ui/label.jsx';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../../../../components/ui/tooltip.jsx';
 import { CircleAlert, Info, TriangleAlert } from 'lucide-react';
 
 /**
@@ -21,6 +22,8 @@ export function BaseField({
     error, 
     onChange,
     renderStyle,
+    variableGap,
+    shadowRoot,
     showValidationErrors = true, // Whether to show validation errors (false during initial silent validation)
     children // The actual input component
 }) {
@@ -44,6 +47,14 @@ export function BaseField({
 
     // Calculate field width based on render style
     const fieldWidth = renderStyle === 'compact' ? 'w-1/2' : 'w-full';
+
+    // Calculate vertical spacing based on variableGap
+    const spacingClass = {
+        'sm': 'mb-3',    // 12px
+        'md': 'mb-4',    // 16px  
+        'lg': 'mb-6',    // 24px
+        'xl': 'mb-8'     // 32px
+    }[variableGap] || 'mb-4';
 
     // Helper function to render field messages
     const renderFieldMessages = (indentForBoolean = false) => {
@@ -112,13 +123,27 @@ export function BaseField({
     };
 
     return (
-        <div className={`field-container ${fieldWidth}`}>
+        <div className={`field-container ${fieldWidth} ${spacingClass}`}>
             {/* Label (for non-boolean fields) */}
             {config.type !== 'boolean' && (
-                <Label htmlFor={name} className="block text-sm font-medium mb-2">
-                    {label}
-                    {isMandatory && <span className="text-destructive ml-1">*</span>}
-                </Label>
+                <div className="flex items-center gap-2 mb-2">
+                    <Label htmlFor={name} className="block text-sm font-medium">
+                        {label}
+                        {isMandatory && <span className="text-destructive ml-1">*</span>}
+                    </Label>
+                    {config.tooltip && (
+                        <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <Info className="h-4 w-4 text-muted-foreground cursor-help hover:text-foreground transition-colors" />
+                                </TooltipTrigger>
+                                <TooltipContent side="right" align="start" container={shadowRoot}>
+                                    <p className="max-w-xs">{config.tooltip}</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                    )}
+                </div>
             )}
 
             {/* Input component */}

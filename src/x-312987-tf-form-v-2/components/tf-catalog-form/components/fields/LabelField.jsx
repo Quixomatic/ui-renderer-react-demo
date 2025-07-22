@@ -10,7 +10,8 @@ export function LabelField({
     name, 
     config, 
     fieldState, 
-    renderStyle 
+    renderStyle,
+    variableGap
 }) {
     // Labels don't have values - they just display their label text
     const labelText = config.label || '';
@@ -23,7 +24,7 @@ export function LabelField({
     const fieldClass = renderStyle === 'compact' ? 'py-1' : 'py-2';
 
     return (
-        <div className={`${fieldClass} text-sm text-muted-foreground`}>
+        <div className={`${fieldClass} text-sm font-normal`}>
             {labelText}
         </div>
     );

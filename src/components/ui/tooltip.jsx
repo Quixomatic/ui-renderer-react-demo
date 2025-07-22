@@ -29,11 +29,12 @@ function TooltipTrigger({
 function TooltipContent({
   className,
   sideOffset = 0,
+  container,
   children,
   ...props
 }) {
   return (
-    <TooltipPrimitive.Portal>
+    <TooltipPrimitive.Portal container={container}>
       <TooltipPrimitive.Content
         data-slot="tooltip-content"
         sideOffset={sideOffset}

@@ -20,16 +20,12 @@ import { parseDate } from '@internationalized/date';
  * For glide_date type fields with proper value/displayValue handling.
  */
 export function DateFieldRAC({ 
-    name, 
-    config, 
-    value, 
-    fieldState, 
-    error, 
-    showValidationErrors,
-    renderStyle,
-    shadowRoot,
+    baseFieldProps,
     onValueChange 
 }) {
+    // Extract needed values from baseFieldProps
+    const { name, config, value, fieldState, error } = baseFieldProps;
+    
     // Get current field value
     const currentValue = typeof value === 'object' ? (value?.value || '') : (value || '');
     const displayValue = typeof value === 'object' ? (value?.displayValue || value?.value || '') : (value || '');
@@ -70,15 +66,7 @@ export function DateFieldRAC({
     const isDisabled = fieldState?.disabled;
 
     return (
-        <BaseField 
-            name={name} 
-            config={config} 
-            value={value} 
-            fieldState={fieldState} 
-            error={error}
-            showValidationErrors={showValidationErrors}
-            renderStyle={renderStyle}
-        >
+        <BaseField {...baseFieldProps}>
             <DatePicker
                 value={dateValue}
                 onChange={handleDateChange}

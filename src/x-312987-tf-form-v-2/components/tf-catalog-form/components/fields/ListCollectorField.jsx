@@ -13,20 +13,16 @@ import { cn } from '../../../../../../components/lib/utils.js';
  * Similar to ReferenceField but supports multiple selections displayed as removable pills.
  */
 export function ListCollectorField({ 
-    name, 
-    config, 
-    value, 
-    fieldState, 
-    error, 
-    renderStyle,
-    shadowRoot,
-    referenceData,
-    referenceLoading,
-    referencePagination,
+    baseFieldProps,
     onValueChange,
     onReferenceSearch,
-    onReferenceLoadMore
+    onReferenceLoadMore,
+    referenceData,
+    referenceLoading,
+    referencePagination
 }) {
+    // Extract needed values from baseFieldProps
+    const { name, config, value, fieldState, error, shadowRoot } = baseFieldProps;
     const [isOpen, setIsOpen] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const dropdownRef = useRef(null);
@@ -168,14 +164,7 @@ export function ListCollectorField({
     const isMandatory = fieldState?.mandatory || config.mandatory;
 
     return (
-        <BaseField 
-            name={name} 
-            config={config} 
-            value={value} 
-            fieldState={fieldState} 
-            error={error}
-            renderStyle={renderStyle}
-        >
+        <BaseField {...baseFieldProps}>
             <div ref={dropdownRef} className="relative">
                 {/* Selected items pills */}
                 {selectedItems.length > 0 && (

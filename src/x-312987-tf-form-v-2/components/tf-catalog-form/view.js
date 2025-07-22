@@ -90,7 +90,7 @@ export default function TfCatalogForm(state) {
 
     // Normalize the variables layout to handle ServiceNow's weird checkbox_container patterns
     const normalizedVariablesLayout = useMemo(() => {
-        const normalized = normalizeVariablesLayout(variablesLayout, fields);
+        const normalized = normalizeVariablesLayout(variablesLayout);
         debugLayoutTransformation(variablesLayout, normalized);
         return normalized;
     }, [variablesLayout]);

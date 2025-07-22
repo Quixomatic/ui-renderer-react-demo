@@ -754,6 +754,32 @@ This applies to all JSX file imports throughout the project. Regular JavaScript 
 - [x] **Production safe** - No performance impact when categories disabled ✅
 - [x] **Complete documentation** - DEBUG_USAGE.md with examples and scenarios ✅
 - [x] **Log migration** - Converted 50+ console logs to categorized system ✅
+- [x] **Error bypass system** - alwaysShowErrors setting to ensure critical errors display ✅
+- [x] **Re-render debugging** - Enhanced COMPONENT_RENDERED with state diff tracking ✅
+
+#### ✅ UI Consistency & User Experience - COMPLETED
+- [x] **ServiceNow choice compatibility** - Fixed empty string choice values with NONE_PLACEHOLDER ✅
+- [x] **Muted text styling** - Combobox placeholders use text-muted-foreground ✅ 
+- [x] **Font weight normalization** - All input controls use font-normal for consistency ✅
+- [x] **Dropdown size standardization** - ListCollectorField uses text-sm to match other dropdowns ✅
+- [x] **variableGap vertical spacing** - Configurable field spacing with sm/md/lg/xl options ✅
+- [x] **Container auto-hide** - Containers hide when all contained fields are hidden ✅
+- [x] **Tooltip support** - Field help text display with shadcn Tooltip and shadow DOM compatibility ✅
+
+#### ✅ Component Architecture Improvements - COMPLETED
+- [x] **baseFieldProps pattern** - Centralized prop management for maintainability ✅
+- [x] **BaseField enhancement** - Added shadowRoot passing and tooltip support ✅
+- [x] **FieldRenderer optimization** - Single point of common prop extraction ✅
+- [x] **18 field components refactored** - All field types updated to use baseFieldProps ✅
+
+#### ✅ ServiceNow Edge Case Handling - COMPLETED
+- [x] **Checkbox group detection** - Layout normalizer detects mandatory checkbox group pattern ✅
+- [x] **CheckboxGroupField component** - Specialized component for grouped mandatory checkboxes ✅
+- [x] **Pure layout-based detection** - No fields dependency, race condition resistant ✅
+- [x] **Group validation logic** - At least one checkbox required for mandatory groups ✅
+- [x] **Individual checkbox state** - Each checkbox updates its own field value independently ✅
+- [x] **Interaction-based validation** - Errors only show after user interaction ✅
+- [x] **Non-mandatory group support** - Handles both mandatory and optional checkbox groups ✅
 
 ### 📋 Phase 9: Advanced Field Types (PENDING)
 - [ ] **Multi-Row Variable Sets (MRVS)** - Repeatable field groups

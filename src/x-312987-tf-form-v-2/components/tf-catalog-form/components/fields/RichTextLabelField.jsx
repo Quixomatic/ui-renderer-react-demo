@@ -10,7 +10,8 @@ export function RichTextLabelField({
     name, 
     config, 
     fieldState, 
-    renderStyle 
+    renderStyle,
+    variableGap
 }) {
     // Rich text labels display their label as HTML
     const htmlContent = config.label || '';

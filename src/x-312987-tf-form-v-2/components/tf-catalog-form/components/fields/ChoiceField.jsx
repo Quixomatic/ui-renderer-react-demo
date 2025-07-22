@@ -37,16 +37,11 @@ function transformValueFromSelect(value) {
     return value === NONE_PLACEHOLDER ? '' : value;
 }
 export function ChoiceField({ 
-    name, 
-    config, 
-    value, 
-    fieldState, 
-    error, 
-    fieldMessages,
-    renderStyle,
-    shadowRoot,
+    baseFieldProps,
     onValueChange 
 }) {
+    // Extract needed values from baseFieldProps
+    const { name, config, value, error, shadowRoot } = baseFieldProps;
     // Get current field value and transform for Select component
     const actualValue = typeof value === 'object' ? (value?.value || '') : (value || '');
     const currentValue = actualValue === '' ? NONE_PLACEHOLDER : actualValue;
@@ -85,15 +80,7 @@ export function ChoiceField({
     const transformedChoices = transformChoicesForSelect(rawChoices);
 
     return (
-        <BaseField 
-            name={name} 
-            config={config} 
-            value={value} 
-            fieldState={fieldState} 
-            error={error}
-            fieldMessages={fieldMessages}
-            renderStyle={renderStyle}
-        >
+        <BaseField {...baseFieldProps}>
             <Select value={currentValue} onValueChange={handleChange}>
                 <SelectTrigger className={`w-full ${error ? 'border-destructive' : ''}`}>
                     <SelectValue placeholder="-- Choose an option --" />

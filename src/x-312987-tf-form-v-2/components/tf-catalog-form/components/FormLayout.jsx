@@ -76,10 +76,13 @@ export function FormLayout({
                     showValidationErrors={showValidationErrors}
                     readOnlyOption={readOnlyOption}
                     renderStyle={renderStyle}
+                    variableGap={variableGap}
+                    layoutItem={item}
                     shadowRoot={shadowRoot}
                     referenceData={referenceData}
                     referenceLoading={referenceLoading}
                     referencePagination={referencePagination}
+                    allFields={fields}
                     onValueChange={onValueChange}
                     onValidation={onValidation}
                     onReferenceSearch={onReferenceSearch}

@@ -9,14 +9,12 @@ import { BaseField } from './BaseField.jsx';
  * Provides URL format validation and appropriate input attributes.
  */
 export function UrlField({ 
-    name, 
-    config, 
-    value, 
-    fieldState, 
-    error, 
-    renderStyle,
+    baseFieldProps,
     onValueChange 
 }) {
+    // Extract needed values from baseFieldProps
+    const { name, config, value, error } = baseFieldProps;
+    
     // Get current field value
     const currentValue = typeof value === 'object' ? (value?.value || '') : (value || '');
     const displayValue = typeof value === 'object' ? (value?.displayValue || value?.value || '') : (value || '');
@@ -33,14 +31,7 @@ export function UrlField({
     };
 
     return (
-        <BaseField 
-            name={name} 
-            config={config} 
-            value={value} 
-            fieldState={fieldState} 
-            error={error}
-            renderStyle={renderStyle}
-        >
+        <BaseField {...baseFieldProps}>
             <Input
                 type="url"
                 value={displayValue}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { FieldRenderer } from './FieldRenderer.jsx';
 
 /**
@@ -30,6 +30,36 @@ export function Container({
 }) {
     const { name, caption, captionDisplay, layout, columns } = config;
 
+    // Memoize container field names to avoid recalculating on every render
+    const containerFieldNames = useMemo(() => 
+        columns?.flatMap(col => (col.fields || []).map(field => field.name)) || []
+    , [columns]);
+
+    // Track container visibility based on field states
+    const [isContainerVisible, setIsContainerVisible] = useState(true);
+
+    // Update container visibility when fieldStates change
+    useEffect(() => {
+        if (containerFieldNames.length === 0) {
+            setIsContainerVisible(true);
+            return;
+        }
+
+        // Check if ANY field in this container is visible
+        const hasVisibleField = containerFieldNames.some(fieldName => {
+            const fieldState = fieldStates?.[fieldName];
+            // Default to visible if not explicitly set to false
+            return fieldState?.visible !== false;
+        });
+
+        setIsContainerVisible(hasVisibleField);
+    }, [fieldStates, containerFieldNames]);
+
+    // Hide container if all fields are hidden
+    if (!isContainerVisible) {
+        return null;
+    }
+
     // Calculate gap classes based on variableGap setting
     const gapClass = {
         'sm': 'gap-2',
@@ -59,10 +89,13 @@ export function Container({
                         showValidationErrors={showValidationErrors}
                         readOnlyOption={readOnlyOption}
                         renderStyle={renderStyle}
+                        variableGap={variableGap}
+                        layoutItem={field}
                         shadowRoot={shadowRoot}
                         referenceData={referenceData}
                         referenceLoading={referenceLoading}
                         referencePagination={referencePagination}
+                        allFields={fields}
                         onValueChange={onValueChange}
                         onValidation={onValidation}
                         onReferenceSearch={onReferenceSearch}

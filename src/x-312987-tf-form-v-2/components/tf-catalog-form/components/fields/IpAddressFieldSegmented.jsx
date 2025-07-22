@@ -11,14 +11,12 @@ import { resolveSegmentedPreset } from '../../../../../../components/lib/resolve
  * This is an alternative to the standard IpAddressField.
  */
 export function IpAddressFieldSegmented({ 
-    name, 
-    config, 
-    value, 
-    fieldState, 
-    error, 
-    renderStyle,
+    baseFieldProps,
     onValueChange 
 }) {
+    // Extract needed values from baseFieldProps
+    const { name, config, value, fieldState, error } = baseFieldProps;
+    
     // Get current field value
     const currentValue = typeof value === 'object' ? (value?.value || '') : (value || '');
     const displayValue = typeof value === 'object' ? (value?.displayValue || value?.value || '') : (value || '');
@@ -59,12 +57,8 @@ export function IpAddressFieldSegmented({
 
     return (
         <BaseField 
-            name={name} 
-            config={config} 
-            value={value} 
-            fieldState={fieldState} 
+            {...baseFieldProps}
             error={error || validationError}
-            renderStyle={renderStyle}
         >
             <div className="space-y-3">
                 

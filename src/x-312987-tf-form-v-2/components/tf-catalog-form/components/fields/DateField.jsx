@@ -15,16 +15,12 @@ import { BaseField } from './BaseField.jsx';
  * For date fields, value and displayValue are typically the same formatted date string.
  */
 export function DateField({ 
-    name, 
-    config, 
-    value, 
-    fieldState, 
-    error, 
-    fieldMessages,
-    renderStyle,
-    shadowRoot,
+    baseFieldProps,
     onValueChange 
 }) {
+    // Extract needed values from baseFieldProps
+    const { name, config, value, fieldState, error, shadowRoot } = baseFieldProps;
+    
     const [open, setOpen] = React.useState(false);
 
     // Get current field value
@@ -82,15 +78,7 @@ export function DateField({
     // For datetime fields, use separate date and time inputs
     if (config.type === 'glide_date_time') {
         return (
-            <BaseField 
-                name={name} 
-                config={config} 
-                value={value} 
-                fieldState={fieldState} 
-                error={error}
-                fieldMessages={fieldMessages}
-                renderStyle={renderStyle}
-            >
+            <BaseField {...baseFieldProps}>
                 <div className="flex gap-4">
                     <div className="flex flex-col gap-3">
                         <Popover open={open} onOpenChange={setOpen}>
@@ -137,15 +125,7 @@ export function DateField({
 
     // For date fields, use calendar picker with shadow DOM container
     return (
-        <BaseField 
-            name={name} 
-            config={config} 
-            value={value} 
-            fieldState={fieldState} 
-            error={error}
-            fieldMessages={fieldMessages}
-            renderStyle={renderStyle}
-        >
+        <BaseField {...baseFieldProps}>
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
                     <Button

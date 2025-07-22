@@ -12,14 +12,12 @@ import { BaseField } from './BaseField.jsx';
  * Includes a toggle to show/hide the masked value.
  */
 export function MaskedField({ 
-    name, 
-    config, 
-    value, 
-    fieldState, 
-    error, 
-    renderStyle,
+    baseFieldProps,
     onValueChange 
 }) {
+    // Extract needed values from baseFieldProps
+    const { name, config, value, fieldState, error } = baseFieldProps;
+    
     // State for showing/hiding masked value
     const [showValue, setShowValue] = useState(false);
     
@@ -60,14 +58,7 @@ export function MaskedField({
     const isReadOnly = fieldState?.readonly || config.readOnly;
 
     return (
-        <BaseField 
-            name={name} 
-            config={config} 
-            value={value} 
-            fieldState={fieldState} 
-            error={error}
-            renderStyle={renderStyle}
-        >
+        <BaseField {...baseFieldProps}>
             <div className="relative">
                 <Input
                     type={showValue ? 'text' : 'password'}

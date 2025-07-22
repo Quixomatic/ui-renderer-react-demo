@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { StringField } from './fields/StringField.jsx';
 import { DateField } from './fields/DateField.jsx';
 import { ChoiceField } from './fields/ChoiceField.jsx';
@@ -18,6 +18,7 @@ import { LabelField } from './fields/LabelField.jsx';
 import { RichTextLabelField } from './fields/RichTextLabelField.jsx';
 import { ListCollectorField } from './fields/ListCollectorField.jsx';
 import { HtmlField } from './fields/HtmlField.jsx';
+import { CheckboxGroupField } from './fields/CheckboxGroupField.jsx';
 
 /**
  * FieldRenderer - Field Type Router
@@ -34,6 +35,7 @@ export function FieldRenderer({
     error,
     readOnlyOption,
     renderStyle,
+    variableGap,
     fieldStates,
     showValidationErrors,
     shadowRoot,
@@ -43,18 +45,26 @@ export function FieldRenderer({
     onValueChange,
     onValidation,
     onReferenceSearch,
-    onReferenceLoadMore
+    onReferenceLoadMore,
+    layoutItem, // Layout item from normalizer (may contain checkboxGroupInfo)
+    allFields // All fields object for checkbox group child field access
 }) {
-    // Common props passed to all field components
-    const commonProps = {
+    // Props that should always be passed to BaseField components
+    const baseFieldProps = {
         name,
         config,
         value,
         fieldState: fieldStates?.[name] || {},
         error,
-        showValidationErrors,
         renderStyle,
+        variableGap,
         shadowRoot,
+        showValidationErrors
+    };
+
+    // Common props passed to all field components (includes baseFieldProps + field-specific props)
+    const commonProps = {
+        ...baseFieldProps,
         referenceData,
         referenceLoading,
         referencePagination,
@@ -67,8 +77,36 @@ export function FieldRenderer({
             }
         },
         onReferenceSearch,
-        onReferenceLoadMore
+        onReferenceLoadMore,
+        // Separate baseFieldProps for easy BaseField passing
+        baseFieldProps
     };
+
+    // Check if this is a checkbox group field (from layout normalizer)
+    if (layoutItem?.checkboxGroupInfo) {
+        // Memoize child field extraction to avoid unnecessary re-renders
+        const childFields = useMemo(() => {
+            const extracted = {};
+            layoutItem.checkboxGroupInfo.childFieldNames.forEach(fieldName => {
+                if (allFields && allFields[fieldName]) {
+                    extracted[fieldName] = allFields[fieldName];
+                }
+            });
+            return extracted;
+        }, [
+            layoutItem.checkboxGroupInfo.childFieldNames,
+            // Only watch the specific child fields we care about
+            ...layoutItem.checkboxGroupInfo.childFieldNames.map(fieldName => allFields?.[fieldName])
+        ]);
+
+        return (
+            <CheckboxGroupField 
+                {...commonProps}
+                checkboxGroupInfo={layoutItem.checkboxGroupInfo}
+                childFields={childFields}
+            />
+        );
+    }
 
     // Route to appropriate field component based on type and subtype
     const { type, subType } = config;

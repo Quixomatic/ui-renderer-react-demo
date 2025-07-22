@@ -17,16 +17,12 @@ import { resolveSegmentedPreset } from '../../../../../../components/lib/resolve
  * Handles glide_date type fields with proper value/displayValue handling.
  */
 export function DateFieldSegmented({ 
-    name, 
-    config, 
-    value, 
-    fieldState, 
-    error, 
-    showValidationErrors,
-    renderStyle,
-    shadowRoot,
+    baseFieldProps,
     onValueChange 
 }) {
+    // Extract needed values from baseFieldProps
+    const { name, config, value, fieldState, error, showValidationErrors, shadowRoot } = baseFieldProps;
+    
     const [open, setOpen] = useState(false);
     const [validationError, setValidationError] = useState(null);
     
@@ -103,13 +99,8 @@ export function DateFieldSegmented({
 
     return (
         <BaseField 
-            name={name} 
-            config={config} 
-            value={value} 
-            fieldState={fieldState} 
+            {...baseFieldProps}
             error={error || (showValidationErrors && validationError)}
-            showValidationErrors={showValidationErrors}
-            renderStyle={renderStyle}
         >
             <div className="flex gap-2">
                 <div className="flex-1">

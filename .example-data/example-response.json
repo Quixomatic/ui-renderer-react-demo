@@ -125,7 +125,7 @@
                         {
                             "fields": [
                                 {
-                                    "name": "variables.d3fcef4b83faa290e8fbc9a6feaad368",
+                                    "name": "variables.29aa741f8372e290e8fbc9a6feaad3c2",
                                     "type": "checkbox_container"
                                 },
                                 {
@@ -163,13 +163,17 @@
                                 {
                                     "name": "variables.wide_text_test",
                                     "type": "field"
+                                },
+                                {
+                                    "name": "variables.checkbox_group_label",
+                                    "type": "checkbox_container"
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    "name": "variables.d3fcef4b83faa290e8fbc9a6feaad368",
+                    "name": "variables.29aa741f8372e290e8fbc9a6feaad3c2",
                     "type": "checkbox_container",
                     "parent": "variables.0f95a90283b26e50e8fbc9a6feaad3d2",
                     "caption": "",
@@ -180,6 +184,32 @@
                             "fields": [
                                 {
                                     "name": "variables.checkbox_test",
+                                    "type": "field"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "variables.checkbox_group_label",
+                    "type": "checkbox_container",
+                    "parent": "variables.0f95a90283b26e50e8fbc9a6feaad3d2",
+                    "caption": "checkbox_group_label",
+                    "captionDisplay": "Checkbox Group Label",
+                    "layout": "normal",
+                    "columns": [
+                        {
+                            "fields": [
+                                {
+                                    "name": "variables.group_checkbox_1",
+                                    "type": "field"
+                                },
+                                {
+                                    "name": "variables.group_checkbox_2",
+                                    "type": "field"
+                                },
+                                {
+                                    "name": "variables.group_checkbox_3",
                                     "type": "field"
                                 }
                             ]
@@ -222,7 +252,8 @@
                     ],
                     "parsedAttributes": {},
                     "subType": null,
-                    "defaultValue": null
+                    "defaultValue": null,
+                    "tooltip": null
                 },
                 "variables.start_date": {
                     "type": "glide_date",
@@ -264,7 +295,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter_1",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.end_date": {
                     "type": "glide_date",
@@ -306,7 +338,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter_1",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.need_travel": {
                     "type": "choice",
@@ -365,7 +398,8 @@
                     "display_value_list": [],
                     "_parent": "",
                     "parsedAttributes": {},
-                    "subType": "button_yes_no"
+                    "subType": "button_yes_no",
+                    "tooltip": null
                 },
                 "variables.transportation_type": {
                     "type": "choice",
@@ -420,7 +454,8 @@
                     "display_value_list": [],
                     "_parent": "",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.formatter_2": {
                     "type": "container",
@@ -456,7 +491,8 @@
                     ],
                     "parsedAttributes": {},
                     "subType": null,
-                    "defaultValue": null
+                    "defaultValue": null,
+                    "tooltip": null
                 },
                 "variables.travel_start": {
                     "type": "glide_date",
@@ -498,7 +534,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter_2",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.travel_end": {
                     "type": "glide_date",
@@ -540,7 +577,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter_2",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.formatter5": {
                     "type": "container",
@@ -581,7 +619,7 @@
                         "variables.numeric_scale",
                         "variables.rich_text_label_test",
                         "variables.yes_no_test",
-                        "variables.d3fcef4b83faa290e8fbc9a6feaad368",
+                        "variables.29aa741f8372e290e8fbc9a6feaad3c2",
                         "variables.single_line_text_test",
                         "variables.html_test",
                         "variables.label_test",
@@ -590,11 +628,13 @@
                         "variables.multiple_choice_test",
                         "variables.requested_for_test",
                         "variables.url_test",
-                        "variables.wide_text_test"
+                        "variables.wide_text_test",
+                        "variables.checkbox_group_label"
                     ],
                     "parsedAttributes": {},
                     "subType": null,
-                    "defaultValue": null
+                    "defaultValue": null,
+                    "tooltip": null
                 },
                 "variables.reference_test": {
                     "type": "reference",
@@ -640,6 +680,7 @@
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
                     "subType": null,
+                    "tooltip": null,
                     "tableFields": [
                         {
                             "column_label": {
@@ -698,7 +739,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.duration_test": {
                     "type": "glide_duration",
@@ -740,7 +782,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.ip_test": {
                     "type": "ip_address",
@@ -782,7 +825,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.list_collector_test": {
                     "type": "glide_list",
@@ -835,6 +879,7 @@
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
                     "subType": null,
+                    "tooltip": null,
                     "tableFields": [
                         {
                             "column_label": {
@@ -3427,7 +3472,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.multi_line_text_test": {
                     "type": "multi_two_lines",
@@ -3469,7 +3515,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.numeric_scale": {
                     "type": "numeric_scale",
@@ -3565,6 +3612,7 @@
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
                     "subType": null,
+                    "tooltip": null,
                     "min": "0",
                     "max": "10"
                 },
@@ -3608,7 +3656,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.yes_no_test": {
                     "type": "choice",
@@ -3671,12 +3720,13 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
-                "variables.d3fcef4b83faa290e8fbc9a6feaad368": {
+                "variables.29aa741f8372e290e8fbc9a6feaad3c2": {
                     "type": "container",
-                    "id": "17fcef4b83faa290e8fbc9a6feaad368",
-                    "name": "variables.d3fcef4b83faa290e8fbc9a6feaad368",
+                    "id": "69aa741f8372e290e8fbc9a6feaad3c2",
+                    "name": "variables.29aa741f8372e290e8fbc9a6feaad3c2",
                     "variableName": null,
                     "label": "Options",
                     "order": -1,
@@ -3700,7 +3750,7 @@
                     "variable_name": null,
                     "_cat_variable": true,
                     "is_variable": true,
-                    "variable_id": "IO:17fcef4b83faa290e8fbc9a6feaad368",
+                    "variable_id": "IO:69aa741f8372e290e8fbc9a6feaad3c2",
                     "_children": [
                         "variables.checkbox_test"
                     ],
@@ -3744,10 +3794,11 @@
                     "displayValue": "false",
                     "valuesList": [],
                     "display_value_list": [],
-                    "_parent": "variables.d3fcef4b83faa290e8fbc9a6feaad368",
+                    "_parent": "variables.29aa741f8372e290e8fbc9a6feaad3c2",
                     "hideMandatory": false,
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.single_line_text_test": {
                     "type": "string",
@@ -3790,6 +3841,7 @@
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
                     "subType": null,
+                    "tooltip": "This is a test",
                     "validation": {
                         "name": {
                             "value": "Email",
@@ -3869,7 +3921,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.label_test": {
                     "type": "label",
@@ -3911,7 +3964,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.lookup_multiple_choice_test": {
                     "type": "multiple_choice",
@@ -3986,7 +4040,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.masked_test": {
                     "type": "masked",
@@ -4029,7 +4084,8 @@
                     "confirmationValue": "",
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.multiple_choice_test": {
                     "type": "multiple_choice",
@@ -4088,7 +4144,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.requested_for_test": {
                     "type": "requested_for",
@@ -4134,6 +4191,7 @@
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
                     "subType": null,
+                    "tooltip": null,
                     "tableFields": [
                         {
                             "column_label": {
@@ -4191,7 +4249,8 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
                 },
                 "variables.wide_text_test": {
                     "type": "string",
@@ -4233,7 +4292,179 @@
                     "display_value_list": [],
                     "_parent": "variables.formatter5",
                     "parsedAttributes": {},
-                    "subType": null
+                    "subType": null,
+                    "tooltip": null
+                },
+                "variables.checkbox_group_label": {
+                    "type": "container",
+                    "id": "7ed524db83bea290e8fbc9a6feaad3cd",
+                    "name": "variables.checkbox_group_label",
+                    "variableName": "checkbox_group_label",
+                    "label": "Checkbox Group Label",
+                    "order": 4610,
+                    "visible": true,
+                    "canRead": true,
+                    "canWrite": true,
+                    "canCreate": true,
+                    "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                    "variableSet": "",
+                    "displayTitle": true,
+                    "layout": "",
+                    "containerType": "checkbox_container",
+                    "hasPriceImplecations": false,
+                    "showHelp": false,
+                    "helpText": "",
+                    "instructions": null,
+                    "__typename": "AppCatalog_ContainerQuestionElementType",
+                    "sys_readonly": false,
+                    "readonly": false,
+                    "mandatory": false,
+                    "variable_name": "checkbox_group_label",
+                    "_cat_variable": true,
+                    "is_variable": true,
+                    "variable_id": "IO:7ed524db83bea290e8fbc9a6feaad3cd",
+                    "_children": [
+                        "variables.group_checkbox_1",
+                        "variables.group_checkbox_2",
+                        "variables.group_checkbox_3"
+                    ],
+                    "_parent": "variables.formatter5",
+                    "parsedAttributes": {},
+                    "subType": null,
+                    "defaultValue": null,
+                    "tooltip": null
+                },
+                "variables.group_checkbox_1": {
+                    "type": "boolean",
+                    "id": "2c0620938332e290e8fbc9a6feaad318",
+                    "name": "variables.group_checkbox_1",
+                    "variableName": "group_checkbox_1",
+                    "label": "Group Checkbox 1",
+                    "order": 4620,
+                    "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                    "variableSet": "",
+                    "mandatory": false,
+                    "readOnly": false,
+                    "visible": true,
+                    "canRead": true,
+                    "canWrite": true,
+                    "canCreate": true,
+                    "variableAttributes": "",
+                    "defaultValue": null,
+                    "dynamicValueField": "",
+                    "dynamicValueDotWalkPath": "",
+                    "exampleText": "",
+                    "useConfirmation": false,
+                    "regExp": "",
+                    "canDecrypt": false,
+                    "hasPriceImplecations": false,
+                    "showHelp": false,
+                    "helpText": "",
+                    "instructions": null,
+                    "__typename": "AppCatalog_StandardQuestionElementType",
+                    "sys_readonly": false,
+                    "readonly": false,
+                    "variable_name": "group_checkbox_1",
+                    "_cat_variable": true,
+                    "is_variable": true,
+                    "variable_id": "IO:2c0620938332e290e8fbc9a6feaad318",
+                    "value": "false",
+                    "displayValue": "false",
+                    "valuesList": [],
+                    "display_value_list": [],
+                    "_parent": "variables.checkbox_group_label",
+                    "hideMandatory": true,
+                    "parsedAttributes": {},
+                    "subType": null,
+                    "tooltip": null
+                },
+                "variables.group_checkbox_2": {
+                    "type": "boolean",
+                    "id": "2e3624db83bea290e8fbc9a6feaad3b4",
+                    "name": "variables.group_checkbox_2",
+                    "variableName": "group_checkbox_2",
+                    "label": "Group Checkbox 2",
+                    "order": 4630,
+                    "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                    "variableSet": "",
+                    "mandatory": false,
+                    "readOnly": false,
+                    "visible": true,
+                    "canRead": true,
+                    "canWrite": true,
+                    "canCreate": true,
+                    "variableAttributes": "",
+                    "defaultValue": null,
+                    "dynamicValueField": "",
+                    "dynamicValueDotWalkPath": "",
+                    "exampleText": "",
+                    "useConfirmation": false,
+                    "regExp": "",
+                    "canDecrypt": false,
+                    "hasPriceImplecations": false,
+                    "showHelp": false,
+                    "helpText": "",
+                    "instructions": null,
+                    "__typename": "AppCatalog_StandardQuestionElementType",
+                    "sys_readonly": false,
+                    "readonly": false,
+                    "variable_name": "group_checkbox_2",
+                    "_cat_variable": true,
+                    "is_variable": true,
+                    "variable_id": "IO:2e3624db83bea290e8fbc9a6feaad3b4",
+                    "value": "false",
+                    "displayValue": "false",
+                    "valuesList": [],
+                    "display_value_list": [],
+                    "_parent": "variables.checkbox_group_label",
+                    "hideMandatory": true,
+                    "parsedAttributes": {},
+                    "subType": null,
+                    "tooltip": null
+                },
+                "variables.group_checkbox_3": {
+                    "type": "boolean",
+                    "id": "be56a45f83bea290e8fbc9a6feaad362",
+                    "name": "variables.group_checkbox_3",
+                    "variableName": "group_checkbox_3",
+                    "label": "Group Checkbox 3",
+                    "order": 4640,
+                    "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                    "variableSet": "",
+                    "mandatory": false,
+                    "readOnly": false,
+                    "visible": true,
+                    "canRead": true,
+                    "canWrite": true,
+                    "canCreate": true,
+                    "variableAttributes": "",
+                    "defaultValue": null,
+                    "dynamicValueField": "",
+                    "dynamicValueDotWalkPath": "",
+                    "exampleText": "",
+                    "useConfirmation": false,
+                    "regExp": "",
+                    "canDecrypt": false,
+                    "hasPriceImplecations": false,
+                    "showHelp": false,
+                    "helpText": "",
+                    "instructions": null,
+                    "__typename": "AppCatalog_StandardQuestionElementType",
+                    "sys_readonly": false,
+                    "readonly": false,
+                    "variable_name": "group_checkbox_3",
+                    "_cat_variable": true,
+                    "is_variable": true,
+                    "variable_id": "IO:be56a45f83bea290e8fbc9a6feaad362",
+                    "value": "false",
+                    "displayValue": "false",
+                    "valuesList": [],
+                    "display_value_list": [],
+                    "_parent": "variables.checkbox_group_label",
+                    "hideMandatory": true,
+                    "parsedAttributes": {},
+                    "subType": null,
+                    "tooltip": null
                 }
             },
             "client_scripts": {
@@ -4901,9 +5132,30 @@
                 "display_value_list": []
             },
             {
+                "name": "variables.group_checkbox_3",
+                "value": "false",
+                "displayValue": "false",
+                "valuesList": [],
+                "display_value_list": []
+            },
+            {
+                "name": "variables.group_checkbox_1",
+                "value": "false",
+                "displayValue": "false",
+                "valuesList": [],
+                "display_value_list": []
+            },
+            {
                 "name": "variables.url_test",
                 "value": "",
                 "displayValue": "",
+                "valuesList": [],
+                "display_value_list": []
+            },
+            {
+                "name": "variables.group_checkbox_2",
+                "value": "false",
+                "displayValue": "false",
                 "valuesList": [],
                 "display_value_list": []
             },
@@ -5104,7 +5356,7 @@
         },
         "targetRecord": {
             "table": "sc_cart_item",
-            "sysId": "93fcef4b83faa290e8fbc9a6feaad369"
+            "sysId": "29aa741f8372e290e8fbc9a6feaad3c3"
         },
         "deliveryInformation": {
             "value": "",

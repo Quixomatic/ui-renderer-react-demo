@@ -11,14 +11,12 @@ import { cn } from '../../../../../../components/lib/utils.js';
  * Displays a row of clickable numbers for rating selection.
  */
 export function NumericScaleField({ 
-    name, 
-    config, 
-    value, 
-    fieldState, 
-    error, 
-    renderStyle,
+    baseFieldProps,
     onValueChange 
 }) {
+    // Extract needed values from baseFieldProps
+    const { name, config, value, fieldState, error } = baseFieldProps;
+    
     // Get current value
     const currentValue = typeof value === 'object' ? (value?.value || '') : (value || '');
     const displayValue = typeof value === 'object' ? (value?.displayValue || value?.value || '') : (value || '');
@@ -44,14 +42,7 @@ export function NumericScaleField({
     const selectedValue = currentValue ? parseInt(currentValue) : min;
 
     return (
-        <BaseField 
-            name={name} 
-            config={config} 
-            value={value} 
-            fieldState={fieldState} 
-            error={error}
-            renderStyle={renderStyle}
-        >
+        <BaseField {...baseFieldProps}>
             <div className="flex flex-col gap-4">
                 <div>
                     <Slider 
