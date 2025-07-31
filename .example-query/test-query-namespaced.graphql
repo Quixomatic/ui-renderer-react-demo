@@ -1,0 +1,306 @@
+{
+  x312987Turbofo0 {
+    tf_mrvs {
+      MRVSVariableSet(variableSetId: "9e1f0f88830be690e8fbc9a6feaad3e5") {
+        variableSetId
+        variableSetName
+        maxRows
+        layout
+        variablesLayout {
+          name
+          type
+          parent
+          caption
+          captionDisplay
+          layout
+          columns {
+            fields {
+              name
+              type
+            }
+          }
+        }
+        variables {
+          ... on x312987Turbofo0_tf_mrvs_MRVSStandardVariable {
+            type
+            id
+            name
+            variableName
+            label
+            order
+            mandatory
+            readOnly
+            visible
+            canRead
+            canWrite
+            canCreate
+            variableAttributes
+            defaultValue
+            value
+            displayValue
+            exampleText
+            helpText
+            regExp
+            __typename
+            
+            # Extended properties from x_312987_turbofo_0_question
+            subType
+            tooltip
+            parsedAttributes {
+              limit
+              enableSearch
+              enablePagination
+              placeholder
+              maxlength
+            }
+            validation {
+              name
+              validation_message
+              active
+              regex
+            }
+            needsTextCompilation
+            compiledValue
+          }
+          ... on x312987Turbofo0_tf_mrvs_MRVSReferenceVariable {
+            type
+            id
+            name
+            variableName
+            label
+            order
+            mandatory
+            readOnly
+            visible
+            canRead
+            canWrite
+            canCreate
+            variableAttributes
+            defaultValue
+            value
+            displayValue
+            exampleText
+            helpText
+            regExp
+            reference
+            referenceQual
+            __typename
+            
+            # Extended properties from x_312987_turbofo_0_question
+            subType
+            tooltip
+            parsedAttributes {
+              limit
+              enableSearch
+              enablePagination
+              placeholder
+              maxlength
+            }
+            validation {
+              name
+              validation_message
+              active
+              regex
+            }
+            compiledValue
+            
+            # Reference-specific extended properties
+            tableFields {
+              column_label {
+                value
+                display_value
+              }
+              element {
+                value
+                display_value
+              }
+              type {
+                value
+                display_value
+              }
+            }
+            qualifier
+            valueField
+          }
+          ... on x312987Turbofo0_tf_mrvs_MRVSChoiceVariable {
+            type
+            id
+            name
+            variableName
+            label
+            order
+            mandatory
+            readOnly
+            visible
+            canRead
+            canWrite
+            canCreate
+            variableAttributes
+            defaultValue
+            value
+            displayValue
+            exampleText
+            helpText
+            regExp
+            choices {
+              value
+              displayValue
+            }
+            includeNone
+            __typename
+            
+            # Extended properties from x_312987_turbofo_0_question
+            subType
+            tooltip
+            parsedAttributes {
+              limit
+              enableSearch
+              enablePagination
+              placeholder
+              maxlength
+            }
+            validation {
+              name
+              validation_message
+              active
+              regex
+            }
+            compiledValue
+            
+            # Choice/Numeric Scale specific extended properties
+            min
+            max
+          }
+          ... on x312987Turbofo0_tf_mrvs_MRVSAttachmentVariable {
+            type
+            id
+            name
+            variableName
+            label
+            order
+            mandatory
+            readOnly
+            visible
+            canRead
+            canWrite
+            canCreate
+            variableAttributes
+            defaultValue
+            value
+            displayValue
+            exampleText
+            helpText
+            regExp
+            allowedFileExtensions
+            maxAttachmentSize
+            __typename
+            
+            # Extended properties from x_312987_turbofo_0_question
+            subType
+            tooltip
+            parsedAttributes {
+              limit
+              enableSearch
+              enablePagination
+              placeholder
+              maxlength
+            }
+            validation {
+              name
+              validation_message
+              active
+              regex
+            }
+            compiledValue
+          }
+          ... on x312987Turbofo0_tf_mrvs_MRVSContainerVariable {
+            type
+            id
+            name
+            variableName
+            label
+            order
+            mandatory
+            readOnly
+            visible
+            canRead
+            canWrite
+            canCreate
+            variableAttributes
+            defaultValue
+            value
+            displayValue
+            exampleText
+            helpText
+            regExp
+            displayTitle
+            layout
+            containerType
+            __typename
+            
+            # Extended properties from x_312987_turbofo_0_question
+            subType
+            tooltip
+            parsedAttributes {
+              limit
+              enableSearch
+              enablePagination
+              placeholder
+              maxlength
+            }
+            validation {
+              name
+              validation_message
+              active
+              regex
+            }
+            compiledValue
+          }
+        }
+        clientScripts {
+          onChange {
+            name
+            sysId
+            script
+            type
+            fieldName
+          }
+          onLoad {
+            name
+            sysId
+            script
+            type
+          }
+          onSubmit {
+            name
+            sysId
+            script
+            type
+          }
+        }
+        uiPolicies {
+          shortDescription
+          sysId
+          reverse
+          onLoad
+          actions {
+            name
+            visible
+            disabled
+            mandatory
+            cleared
+          }
+          conditions {
+            term
+            field
+            fieldLabel
+            type
+            value
+            oper
+            operatorLabel
+          }
+        }
+      }
+    }
+  }
+}

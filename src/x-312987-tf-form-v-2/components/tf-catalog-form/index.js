@@ -155,6 +155,12 @@ createCustomElement("tf-catalog-form", {
 		referencePagination: {
 			default: {},
 		},
+		/**
+		 * Field change batch for client script execution
+		 */
+		changesBatch: {
+			default: {},
+		},
 	},
 	actionHandlers: {
 		[COMPONENT_CONNECTED]: ({ action, updateState, state, host }) => {

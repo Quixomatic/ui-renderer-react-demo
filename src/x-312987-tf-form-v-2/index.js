@@ -5,8 +5,8 @@ import styles from './styles.scss';
 import view from './view.js';
 
 // Import the React components so they register themselves
-import './components/shadcn-example';
 import './components/tf-catalog-form';
+import './components/tf-mrvs-modal';
 
 // Import utilities
 import {
@@ -32,36 +32,36 @@ const { COMPONENT_CONNECTED, COMPONENT_RENDERED } = actionTypes;
  */
 function getStateDifferences(previousState, currentState) {
 	const differences = {};
-	
+
 	// Helper function to deep compare objects
 	function deepEqual(obj1, obj2) {
 		if (obj1 === obj2) return true;
 		if (!obj1 || !obj2) return false;
 		if (typeof obj1 !== 'object' || typeof obj2 !== 'object') return false;
-		
+
 		const keys1 = Object.keys(obj1);
 		const keys2 = Object.keys(obj2);
-		
+
 		if (keys1.length !== keys2.length) return false;
-		
+
 		for (let key of keys1) {
 			if (!keys2.includes(key)) return false;
 			if (!deepEqual(obj1[key], obj2[key])) return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	// Compare top-level properties
 	const allKeys = new Set([
 		...Object.keys(previousState || {}),
 		...Object.keys(currentState || {})
 	]);
-	
+
 	for (const key of allKeys) {
 		const prevValue = previousState?.[key];
 		const currValue = currentState?.[key];
-		
+
 		if (!deepEqual(prevValue, currValue)) {
 			differences[key] = {
 				previous: prevValue,
@@ -70,7 +70,7 @@ function getStateDifferences(previousState, currentState) {
 			};
 		}
 	}
-	
+
 	return differences;
 }
 
@@ -335,6 +335,13 @@ createCustomElement('x-312987-tf-form-v-2', {
 			default: []
 		},
 		/**
+		 * User session data containing user preferences and settings.
+		 * @type {object}
+		 */
+		userSession: {
+			default: {}
+		},
+		/**
 		 * Validation scripts for form validation.
 		 * @type {array}
 		 */
@@ -349,7 +356,8 @@ createCustomElement('x-312987-tf-form-v-2', {
 				properties.fields,
 				properties.variablesLayout,
 				properties.sourceTable,
-				properties.sourceId
+				properties.sourceId,
+				properties.userSession
 			);
 
 			// Transform client scripts and policies
@@ -377,15 +385,15 @@ createCustomElement('x-312987-tf-form-v-2', {
 		[COMPONENT_RENDERED ]: ({ action, updateState, state, properties }) => {
 			// Compare previous and current state to identify what changed
 			const previousRenderState = action.payload?.previousRenderState;
-			
+
 			if (previousRenderState) {
 				const differences = getStateDifferences(previousRenderState, state);
 				const changedKeys = Object.keys(differences);
-				
+
 				if (changedKeys.length > 0) {
 					debug.group('componentInit', 'Component Re-render Triggered', () => {
 						debug.log('componentInit', `${changedKeys.length} state properties changed:`, changedKeys);
-						
+
 						// Log each changed property with before/after values
 						changedKeys.forEach(key => {
 							const diff = differences[key];
@@ -422,12 +430,24 @@ createCustomElement('x-312987-tf-form-v-2', {
 
 				// Only update if values have actually changed
 				if (currentValue !== newValue || currentDisplayValue !== newDisplayValue) {
+					// Get old value from current state (previous render cycle)
+					const oldValue = currentField.value || '';
+					
 					const updatedField = updateFieldValue(currentField, value);
 
 					updateState({
 						fields: {
 							...state.fields,
 							[mappedFieldName]: updatedField
+						},
+						// Add to change batch for client script execution
+						changesBatch: {
+							...state.changesBatch,
+							[mappedFieldName]: {
+								oldValue,
+								value: newValue,
+								timestamp: Date.now()
+							}
 						}
 					});
 				} else {
@@ -585,21 +605,21 @@ createCustomElement('x-312987-tf-form-v-2', {
 			// Only set isInvalid flags, don't store error messages yet
 			const validatedFields = { ...state.fields };
 			let hasInvalidFields = false;
-			
+
 			Object.entries(state.fields).forEach(([fieldName, field]) => {
 				const validationError = validateFieldValue(field, field.value);
-				
+
 				// Only set the isInvalid flag, don't store the error message
 				validatedFields[fieldName] = {
 					...field,
 					isInvalid: validationError !== null
 				};
-				
+
 				if (validationError !== null) {
 					hasInvalidFields = true;
 				}
 			});
-			
+
 			updateState({
 				fields: validatedFields,
 				formValid: !hasInvalidFields
@@ -634,18 +654,21 @@ createCustomElement('x-312987-tf-form-v-2', {
 			}
 		},
 		'REFERENCE_SEARCH': ({ action, updateState, state, dispatch }) => {
-			const { field, referenceTable, searchTerm, qualifier } = action.payload;
+			const { field, referenceTable, searchTerm, qualifier, metadata = {} } = action.payload;
 			// Simple cache key based on field and table only
 			const cacheKey = `${field}__${referenceTable}`;
 
 			debug.log('referenceSearch', 'REFERENCE_SEARCH triggered:', { field, referenceTable, searchTerm, qualifier, cacheKey });
 
-			// Get field configuration to access tableFields
+			// Get field configuration to access tableFields and limit
 			const fieldConfig = state.fields[field];
 			if (!fieldConfig) {
 				debug.error('referenceField', 'Field configuration not found for:', field);
 				return;
 			}
+
+			// Get limit from parsedAttributes or use default of 20
+			const limit = parseInt(fieldConfig.parsedAttributes?.limit) || 20;
 
 			// Check if we already have basic data cached for this field
 			// Only cache the initial load (when searchTerm is empty), always fetch for searches
@@ -684,13 +707,39 @@ createCustomElement('x-312987-tf-form-v-2', {
 
 			// Build search query using tableFields
 			let query = '';
+			
+			// First, clean up the qualifier - remove any ^EQ (end query) markers
+			let cleanQualifier = qualifier ? qualifier.replace(/\^EQ/gi, '') : '';
+			
 			if (searchTerm && fieldNames.length > 0) {
 				// Create OR query for each searchable field
 				const searchQueries = fieldNames.map(fieldName => `${fieldName}LIKE${searchTerm}`);
-				query = searchQueries.join('^OR');
-			}
-			if (qualifier) {
-				query = qualifier + (query ? `^${query}` : '');
+				const searchClause = searchQueries.join('^OR');
+				
+				if (cleanQualifier) {
+					// Check if qualifier contains ^NQ (new query) operators
+					if (cleanQualifier.includes('^NQ')) {
+						// Split by ^NQ and append search terms to each segment
+						const segments = cleanQualifier.split('^NQ');
+						const modifiedSegments = segments.map(segment => {
+							// Don't add search to empty segments
+							if (segment.trim()) {
+								return `${segment}^${searchClause}`;
+							}
+							return segment;
+						});
+						query = modifiedSegments.join('^NQ');
+					} else {
+						// Simple case - just append search terms
+						query = `${cleanQualifier}^${searchClause}`;
+					}
+				} else {
+					// No qualifier, just use search terms
+					query = searchClause;
+				}
+			} else {
+				// No search term, use cleaned qualifier
+				query = cleanQualifier;
 			}
 
 			// Ensure consistent ordering for pagination if no ORDER BY is present
@@ -709,11 +758,11 @@ createCustomElement('x-312987-tf-form-v-2', {
 				{
 					referenceTable,
 					sysparm_query: query,
-					sysparm_limit: 20,
+					sysparm_limit: limit,
 					sysparm_fields: allFields.join(',')
 				},
-				// Pass metadata as third parameter
-				{ field, referenceTable, searchTerm, qualifier, cacheKey, tableFields }
+				// Pass metadata as third parameter, including any passed metadata
+				{ field, referenceTable, searchTerm, qualifier, cacheKey, tableFields, ...metadata }
 			);
 		},
 		'REFERENCE_LOAD_MORE': ({ action, updateState, state, dispatch }) => {
@@ -799,7 +848,7 @@ createCustomElement('x-312987-tf-form-v-2', {
 			});
 
 			// Get metadata from the action
-			const { cacheKey, field, referenceTable, tableFields, isLoadMore } = action.meta || {};
+			const { cacheKey, field, referenceTable, tableFields, isLoadMore, storeAsRaw } = action.meta || {};
 
 			// Transform ServiceNow response to our format
 			const options = (Array.isArray(records) ? records : []).map(record => {
@@ -816,8 +865,12 @@ createCustomElement('x-312987-tf-form-v-2', {
 					if (tableFields.length > 1) {
 						const secondaryFields = tableFields.slice(1);
 						const secondaryValues = secondaryFields
-							.map(tf => record[tf.element.value])
-							.filter(val => val && val.trim()) // Filter out empty values
+							.map(tf => {
+								const fieldValue = record[tf.element.value];
+								// Handle both ServiceNow field objects and plain values
+								return fieldValue?.display_value || fieldValue || '';
+							})
+							.filter(val => val && typeof val === 'string' && val.trim()) // Filter out empty values
 							.join(' • ');
 
 						secondaryInfo = secondaryValues;
@@ -847,9 +900,19 @@ createCustomElement('x-312987-tf-form-v-2', {
 
 			// Only update if we have a valid cacheKey
 			if (cacheKey) {
-				// If this is a "load more" request, append to existing options
-				const existingOptions = isLoadMore ? (state.referenceData[cacheKey] || []) : [];
-				const allOptions = isLoadMore ? [...existingOptions, ...options] : options;
+				// Determine what to store based on storeAsRaw flag
+				let dataToStore;
+				if (storeAsRaw) {
+					// Store raw records for table display
+					dataToStore = records;
+				} else {
+					// Store transformed options for dropdown display
+					dataToStore = options;
+				}
+
+				// If this is a "load more" request, append to existing data
+				const existingData = isLoadMore ? (state.referenceData[cacheKey] || []) : [];
+				const allData = isLoadMore ? [...existingData, ...dataToStore] : dataToStore;
 
 				// Clear both regular and load more loading states
 				const newReferenceLoading = { ...state.referenceLoading };
@@ -859,7 +922,7 @@ createCustomElement('x-312987-tf-form-v-2', {
 				const paginationInfo = {
 					hasMore,
 					nextUrl,
-					totalLoaded: allOptions.length
+					totalLoaded: allData.length
 				};
 
 				debug.log('referenceSearch', 'Storing pagination info:', { cacheKey, paginationInfo });
@@ -870,12 +933,19 @@ createCustomElement('x-312987-tf-form-v-2', {
 				// Build new reference data state
 				const newReferenceData = {
 					...state.referenceData,
-					[cacheKey]: allOptions
+					[cacheKey]: allData
 				};
 
 				// Mark if this was a search result (to track when user clears search)
 				if (searchTerm) {
 					newReferenceData[`${cacheKey}_searched`] = true;
+				}
+
+				// Also store metadata about how this data is structured
+				if (storeAsRaw) {
+					newReferenceData[`${cacheKey}_format`] = 'raw';
+				} else {
+					newReferenceData[`${cacheKey}_format`] = 'options';
 				}
 
 				updateState({
@@ -908,6 +978,99 @@ createCustomElement('x-312987-tf-form-v-2', {
 					}
 				});
 			}
+		},
+		'ATTACHMENT_UPLOAD': async ({ action, updateState, state, dispatch }) => {
+			const { fieldName, file, uploadContext } = action.payload;
+			const { tableName, tableSysId, enableVirusScan } = uploadContext;
+
+			try {
+				debug.log('attachments', `Starting file upload for field: ${fieldName}`, {
+					fileName: file.name,
+					fileSize: file.size,
+					tableName,
+					tableSysId
+				});
+
+				// Create FormData for multipart upload
+				const formData = new FormData();
+				// We have to prefix tablename with ZZ_YY so that these attachments do not appear in attachment lists
+				const modifiedTableName = 'ZZ_YY' + tableName;
+				formData.append('table_name', modifiedTableName);
+				formData.append('table_sys_id', tableSysId);
+				formData.append('schedule_for_cleanup', 'true');
+				formData.append('file', file);
+
+				// Upload to ServiceNow attachment API
+				const response = await fetch('/api/now/attachment/upload', {
+					method: 'POST',
+					body: formData,
+					headers: {
+						// Let browser set Content-Type with boundary for multipart/form-data
+						'Accept': 'application/json'
+					}
+				});
+
+				if (!response.ok) {
+					throw new Error(`Upload failed: ${response.status} ${response.statusText}`);
+				}
+
+				const result = await response.json();
+				debug.log('attachments', 'File upload successful', result);
+
+				// Dispatch value change like all other fields
+				const attachment = result.result;
+				dispatch('FORM_VALUE_CHANGE', {
+					field: fieldName,
+					value: {
+						value: attachment.sys_id,
+						displayValue: attachment.file_name
+					}
+				});
+
+			} catch (error) {
+				debug.error('attachments', 'File upload failed:', error);
+				// Could add error state here for user feedback
+			}
+		},
+		'ATTACHMENT_DELETE': async ({ action, updateState, state, dispatch }) => {
+			const { fieldName, attachmentId } = action.payload;
+
+			try {
+				debug.log('attachments', `Deleting attachment: ${attachmentId} from field: ${fieldName}`);
+
+				// Delete from ServiceNow
+				const response = await fetch(`/api/now/attachment/${attachmentId}`, {
+					method: 'DELETE',
+					headers: {
+						'Accept': 'application/json'
+					}
+				});
+
+				if (!response.ok) {
+					throw new Error(`Delete failed: ${response.status} ${response.statusText}`);
+				}
+
+				debug.log('attachments', 'Attachment deleted successfully');
+
+				// Dispatch value change to clear the field
+				dispatch('FORM_VALUE_CHANGE', {
+					field: fieldName,
+					value: {
+						value: '',
+						displayValue: ''
+					}
+				});
+
+			} catch (error) {
+				debug.error('attachments', 'Attachment deletion failed:', error);
+			}
+		},
+
+		'CHANGES_PROCESSED': ({ updateState }) => {
+			// Clear the changes batch after processing
+			updateState({
+				changesBatch: {}
+			});
 		}
 	},
 	initialState: {
@@ -932,6 +1095,9 @@ createCustomElement('x-312987-tf-form-v-2', {
 		globals: {
 			g_user: null,
 			g_scratchpad: {}
-		}
+		},
+
+		// Field change batch for client script execution
+		changesBatch: {}
 	}
 });

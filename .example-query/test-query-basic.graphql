@@ -1,0 +1,17 @@
+{
+  x312987Turbofo0 {
+    tf_mrvs {
+      MRVSVariableSet(variableSetId: "9e1f0f88830be690e8fbc9a6feaad3e5") {
+        variableSetId
+        variableSetName
+        maxRows
+        variables {
+          name
+          type
+          label
+          mandatory
+        }
+      }
+    }
+  }
+}

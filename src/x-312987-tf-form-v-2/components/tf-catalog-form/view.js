@@ -36,7 +36,8 @@ export default function TfCatalogForm(state) {
         uiPolicies,
         referenceData,
         referenceLoading,
-        referencePagination
+        referencePagination,
+        changesBatch
     } = properties;
 
     // Get shadow root for portal rendering
@@ -141,7 +142,7 @@ export default function TfCatalogForm(state) {
             isLoadingRef.current = false;
             clientScriptEngineRef.current.executeOnLoad(formValues);
             uiPolicyEngineRef.current.evaluateAll(formValues, true);
-            
+
             // Run initial validation on all fields after everything is set up
             dispatch('FORM_INITIAL_VALIDATION', {});
         }, 0);
@@ -176,6 +177,34 @@ export default function TfCatalogForm(state) {
         }
     }, [clientScripts]);
 
+    // Process changes batch for client script execution
+    useEffect(() => {
+        if (changesBatch && Object.keys(changesBatch).length > 0 && !isLoadingRef.current) {
+            // Process all batched changes with fresh g_form state
+            Object.entries(changesBatch).forEach(([field, changeData]) => {
+                const { oldValue, value } = changeData;
+                
+                // Execute onChange scripts with updated g_form state
+                if (clientScriptEngineRef.current) {
+                    clientScriptEngineRef.current.executeOnChange(
+                        field,
+                        oldValue,
+                        value,
+                        isLoadingRef.current
+                    );
+                }
+
+                // Re-evaluate UI policies with updated form values
+                if (uiPolicyEngineRef.current) {
+                    uiPolicyEngineRef.current.onFieldChange(field, formValues);
+                }
+            });
+            
+            // Clear the batch after processing
+            dispatch('CHANGES_PROCESSED');
+        }
+    }, [changesBatch]); // Runs when changesBatch updates from main component
+
     // Handle value changes from child components
     const handleValueChange = (field, value) => {
         // Track first interaction
@@ -184,29 +213,8 @@ export default function TfCatalogForm(state) {
             dispatch('FORM_FIRST_INTERACTION', {});
         }
 
-        // Get old value before change
-        const oldValue = formValues[field];
-
-        // Dispatch the change
+        // Dispatch the change - client scripts will be handled via changesBatch useEffect
         dispatch('VALUE_CHANGE', { field, value });
-
-        // Execute onChange scripts and re-evaluate UI policies
-        setTimeout(() => {
-            if (clientScriptEngineRef.current) {
-                clientScriptEngineRef.current.executeOnChange(
-                    field,
-                    oldValue,
-                    value,
-                    isLoadingRef.current
-                );
-            }
-
-            if (uiPolicyEngineRef.current) {
-                // Need to get updated formValues after dispatch
-                const updatedFormValues = { ...formValues, [field]: value };
-                uiPolicyEngineRef.current.onFieldChange(field, updatedFormValues);
-            }
-        }, 0);
     };
 
     // Handle form submission
@@ -235,12 +243,13 @@ export default function TfCatalogForm(state) {
     };
 
     // Handle reference field searches
-    const handleReferenceSearch = (field, referenceTable, searchTerm, qualifier) => {
+    const handleReferenceSearch = (field, referenceTable, searchTerm, qualifier, metadata) => {
         dispatch('REFERENCE_SEARCH', {
             field,
             referenceTable,
             searchTerm: searchTerm || '',
-            qualifier
+            qualifier,
+            metadata
         });
     };
 
@@ -249,6 +258,23 @@ export default function TfCatalogForm(state) {
         dispatch('REFERENCE_LOAD_MORE', {
             field,
             referenceTable
+        });
+    };
+
+    // Handle attachment upload
+    const handleAttachmentUpload = (fieldName, file, uploadContext) => {
+        dispatch('ATTACHMENT_UPLOAD', {
+            fieldName,
+            file,
+            uploadContext
+        });
+    };
+
+    // Handle attachment delete
+    const handleAttachmentDelete = (fieldName, attachmentId) => {
+        dispatch('ATTACHMENT_DELETE', {
+            fieldName,
+            attachmentId
         });
     };
 
@@ -281,6 +307,8 @@ export default function TfCatalogForm(state) {
                         onValidation={handleValidation}
                         onReferenceSearch={handleReferenceSearch}
                         onReferenceLoadMore={handleReferenceLoadMore}
+                        onAttachmentUpload={handleAttachmentUpload}
+                        onAttachmentDelete={handleAttachmentDelete}
                         onSubmit={handleSubmit}
                         onReset={handleReset}
                     />

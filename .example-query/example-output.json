@@ -1,0 +1,2058 @@
+{
+  "data": {
+    "AppCatalogView_Query": {
+      "itemViewLayout": {
+        "_query": {
+          "AppCatalog_Query": {
+            "itemLayout": {
+              "__typename": "AppCatalog_ItemLayoutType",
+              "name": "Type - Home Leave",
+              "shortDescription": "Home Leave: {current.location}",
+              "description": "",
+              "sysId": "3a2dae00974dfd10ee1d9300f153afb0",
+              "picture": "",
+              "requestMethod": "",
+              "mandatoryAttachment": "false",
+              "hideQuantity": "false",
+              "hideAttachment": "false",
+              "hideDeliveryTime": "false",
+              "deliveryAddress": "",
+              "quantity": [
+                {
+                  "label": "1",
+                  "value": "1"
+                },
+                {
+                  "label": "2",
+                  "value": "2"
+                },
+                {
+                  "label": "3",
+                  "value": "3"
+                },
+                {
+                  "label": "4",
+                  "value": "4"
+                },
+                {
+                  "label": "5",
+                  "value": "5"
+                },
+                {
+                  "label": "6",
+                  "value": "6"
+                },
+                {
+                  "label": "7",
+                  "value": "7"
+                },
+                {
+                  "label": "8",
+                  "value": "8"
+                },
+                {
+                  "label": "9",
+                  "value": "9"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                }
+              ],
+              "type": "catalog_item",
+              "targetRecordTable": "sc_cart_item",
+              "targetRecordSysId": "06b07f1583c3e210e8fbc9a6feaad37f",
+              "pricing": {
+                "price": 0,
+                "displayPrice": "$0.00",
+                "recurringPrice": 0,
+                "recurringDisplayPrice": "$0.00",
+                "recurringFrequencyDisplay": null,
+                "recurringFrequency": "",
+                "showPrices": true,
+                "currencyCode": "USD",
+                "currencySymbol": "$"
+              },
+              "variablesLayout": [
+                {
+                  "name": "variables.formatter_1",
+                  "type": "container",
+                  "parent": "",
+                  "caption": "",
+                  "captionDisplay": "",
+                  "layout": "normal",
+                  "columns": [
+                    {
+                      "fields": [
+                        {
+                          "name": "variables.start_date",
+                          "type": "field"
+                        }
+                      ]
+                    },
+                    {
+                      "fields": [
+                        {
+                          "name": "variables.end_date",
+                          "type": "field"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "variables.need_travel",
+                  "type": "field",
+                  "parent": ""
+                },
+                {
+                  "name": "variables.transportation_type",
+                  "type": "field",
+                  "parent": ""
+                },
+                {
+                  "name": "variables.formatter_2",
+                  "type": "container",
+                  "parent": "",
+                  "caption": "",
+                  "captionDisplay": "",
+                  "layout": "normal",
+                  "columns": [
+                    {
+                      "fields": [
+                        {
+                          "name": "variables.travel_start",
+                          "type": "field"
+                        }
+                      ]
+                    },
+                    {
+                      "fields": [
+                        {
+                          "name": "variables.travel_end",
+                          "type": "field"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "variables.formatter5",
+                  "type": "container",
+                  "parent": "",
+                  "caption": "",
+                  "captionDisplay": "",
+                  "layout": "normal",
+                  "columns": [
+                    {
+                      "fields": [
+                        {
+                          "name": "variables.reference_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.email_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.duration_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.ip_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.list_collector_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.lookup_select_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.multi_line_text_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.numeric_scale",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.rich_text_label_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.yes_no_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.file_attachment_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.existing_value_text_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.existing_value_simple_record_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.existing_value_table_list_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.table_list_test",
+                          "type": "field"
+                        }
+                      ]
+                    },
+                    {
+                      "fields": [
+                        {
+                          "name": "variables.bdb07f1583c3e210e8fbc9a6feaad37d",
+                          "type": "checkbox_container"
+                        },
+                        {
+                          "name": "variables.single_line_text_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.html_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.label_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.lookup_multiple_choice_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.masked_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.multiple_choice_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.requested_for_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.url_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.wide_text_test",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.checkbox_group_label",
+                          "type": "checkbox_container"
+                        },
+                        {
+                          "name": "variables.tile_choice_reference_test",
+                          "type": "field"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "variables.bdb07f1583c3e210e8fbc9a6feaad37d",
+                  "type": "checkbox_container",
+                  "parent": "variables.0f95a90283b26e50e8fbc9a6feaad3d2",
+                  "caption": "",
+                  "captionDisplay": "",
+                  "layout": "normal",
+                  "columns": [
+                    {
+                      "fields": [
+                        {
+                          "name": "variables.checkbox_test",
+                          "type": "field"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "variables.checkbox_group_label",
+                  "type": "checkbox_container",
+                  "parent": "variables.0f95a90283b26e50e8fbc9a6feaad3d2",
+                  "caption": "checkbox_group_label",
+                  "captionDisplay": "Checkbox Group Label",
+                  "layout": "normal",
+                  "columns": [
+                    {
+                      "fields": [
+                        {
+                          "name": "variables.group_checkbox_1",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.group_checkbox_2",
+                          "type": "field"
+                        },
+                        {
+                          "name": "variables.group_checkbox_3",
+                          "type": "field"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "variables.development_test_set",
+                  "type": "multi_row_container",
+                  "parent": "",
+                  "caption": "",
+                  "captionDisplay": "",
+                  "layout": "across",
+                  "columns": [
+                    {
+                      "fields": []
+                    }
+                  ]
+                },
+                {
+                  "name": "variables.development_test_set_two",
+                  "type": "multi_row_container",
+                  "parent": "",
+                  "caption": "",
+                  "captionDisplay": "",
+                  "layout": "across",
+                  "columns": [
+                    {
+                      "fields": []
+                    }
+                  ]
+                }
+              ],
+              "variablesValues": [
+                {
+                  "name": "variables.file_attachment_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.reference_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.numeric_scale",
+                  "value": "0",
+                  "displayValue": "0",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.checkbox_test",
+                  "value": "false",
+                  "displayValue": "false",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.existing_value_text_test",
+                  "value": "{current.number}",
+                  "displayValue": "{current.number}",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.single_line_text_test",
+                  "value": "Test 123",
+                  "displayValue": "Test 123",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.lookup_multiple_choice_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.multi_line_text_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.duration_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.table_list_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.html_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.group_checkbox_3",
+                  "value": "false",
+                  "displayValue": "false",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.group_checkbox_1",
+                  "value": "false",
+                  "displayValue": "false",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.url_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.group_checkbox_2",
+                  "value": "false",
+                  "displayValue": "false",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.transportation_type",
+                  "value": "economy_airfare",
+                  "displayValue": "Economy Airfare",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.masked_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.end_date",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.travel_start",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.email_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.tile_choice_reference_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.multiple_choice_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.start_date",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.existing_value_table_list_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.travel_end",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.lookup_select_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.label_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.need_travel",
+                  "value": "Yes",
+                  "displayValue": "Yes",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.requested_for_test",
+                  "value": "ab72b26793840210df2f76718bba102c",
+                  "displayValue": "James Freund",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.wide_text_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.rich_text_label_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.list_collector_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": [
+                    {
+                      "value": "",
+                      "displayValue": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "variables.yes_no_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.existing_value_simple_record_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                },
+                {
+                  "name": "variables.ip_test",
+                  "value": "",
+                  "displayValue": "",
+                  "valuesList": []
+                }
+              ],
+              "variables": [
+                {
+                  "type": "container",
+                  "id": "3665cc2e97c1b950ee1d9300f153af09",
+                  "name": "variables.formatter_1",
+                  "variableName": "formatter_1",
+                  "label": null,
+                  "order": 1000,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "displayTitle": false,
+                  "layout": "",
+                  "containerType": "container",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ContainerQuestionElementType"
+                },
+                {
+                  "type": "glide_date",
+                  "id": "8af4c42e97c1b950ee1d9300f153af5a",
+                  "name": "variables.start_date",
+                  "variableName": "start_date",
+                  "label": "What is your Home Leave start date?",
+                  "order": 1010,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": true,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "glide_date",
+                  "id": "2635842e97c1b950ee1d9300f153af7f",
+                  "name": "variables.end_date",
+                  "variableName": "end_date",
+                  "label": "What is your Home Leave end date?",
+                  "order": 1510,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": true,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "choice",
+                  "id": "4bb5cc2e97c1b950ee1d9300f153af3d",
+                  "name": "variables.need_travel",
+                  "variableName": "need_travel",
+                  "label": "Do you need to travel to your Home Leave destination? If your destination is in a separate city, you must include travel details.",
+                  "order": 2010,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": true,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "Yes",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "lookupTable": "",
+                  "lookupValue": "",
+                  "lookupLabel": "",
+                  "includeNone": false,
+                  "lookupUnique": false,
+                  "choiceTable": "",
+                  "choiceField": "",
+                  "choiceDirection": "down",
+                  "choices": [
+                    {
+                      "displayValue": "Yes",
+                      "value": "Yes"
+                    },
+                    {
+                      "displayValue": "No",
+                      "value": "No"
+                    }
+                  ],
+                  "dependentField": "",
+                  "referringTable": "sc_cat_item",
+                  "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ChoiceQuestionElementType"
+                },
+                {
+                  "type": "choice",
+                  "id": "5726446e97c1b950ee1d9300f153afe4",
+                  "name": "variables.transportation_type",
+                  "variableName": "transportation_type",
+                  "label": "What would be your mode of transportation?",
+                  "order": 2020,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": true,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "economy_airfare",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "lookupTable": "",
+                  "lookupValue": "",
+                  "lookupLabel": "",
+                  "includeNone": false,
+                  "lookupUnique": false,
+                  "choiceTable": "",
+                  "choiceField": "",
+                  "choiceDirection": "down",
+                  "choices": [
+                    {
+                      "displayValue": "Economy Airfare",
+                      "value": "economy_airfare"
+                    }
+                  ],
+                  "dependentField": "",
+                  "referringTable": "sc_cat_item",
+                  "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ChoiceQuestionElementType"
+                },
+                {
+                  "type": "container",
+                  "id": "39564c6e97c1b950ee1d9300f153af3a",
+                  "name": "variables.formatter_2",
+                  "variableName": "formatter_2",
+                  "label": null,
+                  "order": 3000,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "displayTitle": false,
+                  "layout": "",
+                  "containerType": "container",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ContainerQuestionElementType"
+                },
+                {
+                  "type": "glide_date",
+                  "id": "c786c46e97c1b950ee1d9300f153af6e",
+                  "name": "variables.travel_start",
+                  "variableName": "travel_start",
+                  "label": "When are you beginning travel to your Home Leave Destination?",
+                  "order": 3010,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": true,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "glide_date",
+                  "id": "8ec644ae97c1b950ee1d9300f153af37",
+                  "name": "variables.travel_end",
+                  "variableName": "travel_end",
+                  "label": "When are you ending travel to your Home Leave Destination?",
+                  "order": 3510,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": true,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "container",
+                  "id": "0f95a90283b26e50e8fbc9a6feaad3d2",
+                  "name": "variables.formatter5",
+                  "variableName": "formatter5",
+                  "label": null,
+                  "order": 4000,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "displayTitle": false,
+                  "layout": "",
+                  "containerType": "container",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ContainerQuestionElementType"
+                },
+                {
+                  "type": "reference",
+                  "id": "09fc1ff583f62e50e8fbc9a6feaad31a",
+                  "name": "variables.reference_test",
+                  "variableName": "reference_test",
+                  "label": "Reference Test",
+                  "order": 4010,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "reference": "sys_user",
+                  "referenceQual": "active=true^emailISNOTEMPTY^EQ",
+                  "listTable": "",
+                  "useReferenceQualifier": "simple",
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "referringTable": "sc_cat_item",
+                  "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "refAcOrderBy": "name",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ReferenceQuestionElementType"
+                },
+                {
+                  "type": "email",
+                  "id": "b8e250d683fe6e50e8fbc9a6feaad3a8",
+                  "name": "variables.email_test",
+                  "variableName": "email_test",
+                  "label": "Email Test",
+                  "order": 4020,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": true,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "glide_duration",
+                  "id": "ea0dbc1e83b2ae50e8fbc9a6feaad3e2",
+                  "name": "variables.duration_test",
+                  "variableName": "duration_test",
+                  "label": "Duration Test",
+                  "order": 4030,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "ip_address",
+                  "id": "3a6dbc1e83b2ae50e8fbc9a6feaad3d9",
+                  "name": "variables.ip_test",
+                  "variableName": "ip_test",
+                  "label": "IP Test",
+                  "order": 4040,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "glide_list",
+                  "id": "10ed349e83b2ae50e8fbc9a6feaad366",
+                  "name": "variables.list_collector_test",
+                  "variableName": "list_collector_test",
+                  "label": "List Collector Test",
+                  "order": 4050,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "reference": "sys_user",
+                  "referenceQual": "",
+                  "listTable": "sys_user",
+                  "useReferenceQualifier": "",
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "referringTable": "sc_cat_item",
+                  "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "refAcOrderBy": "",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ReferenceQuestionElementType"
+                },
+                {
+                  "type": "choice",
+                  "id": "64c1811283f2ae50e8fbc9a6feaad3b0",
+                  "name": "variables.lookup_select_test",
+                  "variableName": "lookup_select_test",
+                  "label": "Lookup Select Test",
+                  "order": 4060,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "lookupTable": "sys_user",
+                  "lookupValue": "name",
+                  "lookupLabel": "email",
+                  "includeNone": true,
+                  "lookupUnique": false,
+                  "choiceTable": "",
+                  "choiceField": "",
+                  "choiceDirection": "down",
+                  "choices": [
+                    {
+                      "displayValue": "-- None --",
+                      "value": ""
+                    },
+                    {
+                      "displayValue": "alejandro.mascall@example.com",
+                      "value": "Alejandro Mascall"
+                    },
+                    {
+                      "displayValue": "alene.rabeck@example.com",
+                      "value": "Alene Rabeck"
+                    },
+                    {
+                      "displayValue": "alfonso.griglen@example.com",
+                      "value": "Alfonso Griglen"
+                    },
+                    {
+                      "displayValue": "alissa.mountjoy@example.com",
+                      "value": "Alissa Mountjoy"
+                    },
+                    {
+                      "displayValue": "allan.schwantd@example.com",
+                      "value": "Allan Schwantd"
+                    }
+                  ],
+                  "dependentField": "",
+                  "referringTable": "sc_cat_item",
+                  "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ChoiceQuestionElementType"
+                },
+                {
+                  "type": "multi_two_lines",
+                  "id": "fd1849d283f2ae50e8fbc9a6feaad3f0",
+                  "name": "variables.multi_line_text_test",
+                  "variableName": "multi_line_text_test",
+                  "label": "Multi Line Text Test",
+                  "order": 4070,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "Example Text",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "numeric_scale",
+                  "id": "01094d1e83f2ae50e8fbc9a6feaad347",
+                  "name": "variables.numeric_scale",
+                  "variableName": "numeric_scale",
+                  "label": "Numeric Scale",
+                  "order": 4080,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "0",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "lookupTable": "",
+                  "lookupValue": "",
+                  "lookupLabel": "",
+                  "includeNone": false,
+                  "lookupUnique": false,
+                  "choiceTable": "",
+                  "choiceField": "",
+                  "choiceDirection": "down",
+                  "choices": [
+                    {
+                      "displayValue": "0",
+                      "value": "0"
+                    },
+                    {
+                      "displayValue": "1",
+                      "value": "1"
+                    },
+                    {
+                      "displayValue": "2",
+                      "value": "2"
+                    },
+                    {
+                      "displayValue": "3",
+                      "value": "3"
+                    },
+                    {
+                      "displayValue": "4",
+                      "value": "4"
+                    },
+                    {
+                      "displayValue": "5",
+                      "value": "5"
+                    },
+                    {
+                      "displayValue": "6",
+                      "value": "6"
+                    },
+                    {
+                      "displayValue": "7",
+                      "value": "7"
+                    },
+                    {
+                      "displayValue": "8",
+                      "value": "8"
+                    },
+                    {
+                      "displayValue": "9",
+                      "value": "9"
+                    },
+                    {
+                      "displayValue": "10",
+                      "value": "10"
+                    }
+                  ],
+                  "dependentField": "",
+                  "referringTable": "sc_cat_item",
+                  "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ChoiceQuestionElementType"
+                },
+                {
+                  "type": "rich_text_label",
+                  "id": "3da98d5e83f2ae50e8fbc9a6feaad335",
+                  "name": "variables.rich_text_label_test",
+                  "variableName": "rich_text_label_test",
+                  "label": "<p>The <strong>Rich</strong> Text</p>",
+                  "order": 4090,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "choice",
+                  "id": "5b3a01de83f2ae50e8fbc9a6feaad36f",
+                  "name": "variables.yes_no_test",
+                  "variableName": "yes_no_test",
+                  "label": "Yes No Test",
+                  "order": 4100,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "lookupTable": "",
+                  "lookupValue": "",
+                  "lookupLabel": "",
+                  "includeNone": true,
+                  "lookupUnique": false,
+                  "choiceTable": "",
+                  "choiceField": "",
+                  "choiceDirection": "down",
+                  "choices": [
+                    {
+                      "displayValue": "-- None --",
+                      "value": ""
+                    },
+                    {
+                      "displayValue": "Yes",
+                      "value": "Yes"
+                    },
+                    {
+                      "displayValue": "No",
+                      "value": "No"
+                    }
+                  ],
+                  "dependentField": "",
+                  "referringTable": "sc_cat_item",
+                  "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ChoiceQuestionElementType"
+                },
+                {
+                  "type": "attachment",
+                  "id": "8d0f286783362690e8fbc9a6feaad3a1",
+                  "name": "variables.file_attachment_test",
+                  "variableName": "file_attachment_test",
+                  "label": "File Attachment Test",
+                  "order": 4110,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": true,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "allowedFileExtensions": "",
+                  "maxAttachmentSize": "20",
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "contentType": null,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_AttachmentQuestionElementType"
+                },
+                {
+                  "type": "string",
+                  "id": "74a0fe7783b2a690e8fbc9a6feaad3ff",
+                  "name": "variables.existing_value_text_test",
+                  "variableName": "existing_value_text_test",
+                  "label": "Existing Value Text - Test",
+                  "order": 4120,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "{current.number}",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "reference",
+                  "id": "23b7babb83b2a690e8fbc9a6feaad3be",
+                  "name": "variables.existing_value_simple_record_test",
+                  "variableName": "existing_value_simple_record_test",
+                  "label": "Existing Value Simple Record Test",
+                  "order": 4130,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "reference": "cmdb_ci",
+                  "referenceQual": "sys_class_name=cmdb_ci_cluster_node^ORDERBYdelivery_date",
+                  "listTable": "",
+                  "useReferenceQualifier": "advanced",
+                  "variableAttributes": "limit=5",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "referringTable": "sc_cat_item",
+                  "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "refAcOrderBy": "",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ReferenceQuestionElementType"
+                },
+                {
+                  "type": "reference",
+                  "id": "4b2fbeb383f2a690e8fbc9a6feaad3aa",
+                  "name": "variables.existing_value_table_list_test",
+                  "variableName": "existing_value_table_list_test",
+                  "label": "Existing Value Table List Test",
+                  "order": 4140,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "reference": "cmdb_ci",
+                  "referenceQual": "sys_class_name=cmdb_ci_cluster_node^ORDERBYdelivery_date",
+                  "listTable": "",
+                  "useReferenceQualifier": "advanced",
+                  "variableAttributes": "limit=5",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "referringTable": "sc_cat_item",
+                  "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "refAcOrderBy": "",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ReferenceQuestionElementType"
+                },
+                {
+                  "type": "reference",
+                  "id": "fb9903bb83f2a690e8fbc9a6feaad31e",
+                  "name": "variables.table_list_test",
+                  "variableName": "table_list_test",
+                  "label": "Table List Test",
+                  "order": 4150,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": true,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "reference": "cmdb_ci",
+                  "referenceQual": "sys_class_name=cmdb_ci_cluster_node^ORDERBYdelivery_date",
+                  "listTable": "",
+                  "useReferenceQualifier": "advanced",
+                  "variableAttributes": "limit=5",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "referringTable": "sc_cat_item",
+                  "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "refAcOrderBy": "",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ReferenceQuestionElementType"
+                },
+                {
+                  "type": "container",
+                  "id": "fdb07f1583c3e210e8fbc9a6feaad37d",
+                  "name": "variables.bdb07f1583c3e210e8fbc9a6feaad37d",
+                  "variableName": null,
+                  "label": "Options",
+                  "order": -1,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "catalogItem": null,
+                  "variableSet": null,
+                  "displayTitle": false,
+                  "layout": "",
+                  "containerType": "checkbox_container",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ContainerQuestionElementType"
+                },
+                {
+                  "type": "boolean",
+                  "id": "c976298283b26e50e8fbc9a6feaad3f9",
+                  "name": "variables.checkbox_test",
+                  "variableName": "checkbox_test",
+                  "label": "Checkbox Test",
+                  "order": 4510,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "false",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "By checking this box you are agreeing that I'm the best",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "string",
+                  "id": "1411585e83be6e50e8fbc9a6feaad38b",
+                  "name": "variables.single_line_text_test",
+                  "variableName": "single_line_text_test",
+                  "label": "Single Line Text Test",
+                  "order": 4520,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "Test 123",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "^(?![\\.])[a-zA-Z0-9!#$%*\\/?|^{}`~&'\\+\\-=_.]+(?<![.]+)@(?![\\.-])[a-zA-Z0-9-_\\.]+(\\.[a-zA-Z0-9_]+)$",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "html",
+                  "id": "685d345e83b2ae50e8fbc9a6feaad39c",
+                  "name": "variables.html_test",
+                  "variableName": "html_test",
+                  "label": "HTMLTest",
+                  "order": 4530,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "label",
+                  "id": "dd8db85e83b2ae50e8fbc9a6feaad326",
+                  "name": "variables.label_test",
+                  "variableName": "label_test",
+                  "label": "Label Test",
+                  "order": 4540,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "multiple_choice",
+                  "id": "61fd3c5e83b2ae50e8fbc9a6feaad3e4",
+                  "name": "variables.lookup_multiple_choice_test",
+                  "variableName": "lookup_multiple_choice_test",
+                  "label": "Lookup Multiple Choice Test",
+                  "order": 4550,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "lookupTable": "sys_user",
+                  "lookupValue": "email",
+                  "lookupLabel": "name",
+                  "includeNone": true,
+                  "lookupUnique": false,
+                  "choiceTable": "",
+                  "choiceField": "",
+                  "choiceDirection": "down",
+                  "choices": [
+                    {
+                      "displayValue": "-- None --",
+                      "value": ""
+                    },
+                    {
+                      "displayValue": "Alejandro Mascall",
+                      "value": "alejandro.mascall@example.com"
+                    },
+                    {
+                      "displayValue": "Alene Rabeck",
+                      "value": "alene.rabeck@example.com"
+                    },
+                    {
+                      "displayValue": "Alfonso Griglen",
+                      "value": "alfonso.griglen@example.com"
+                    },
+                    {
+                      "displayValue": "Alissa Mountjoy",
+                      "value": "alissa.mountjoy@example.com"
+                    },
+                    {
+                      "displayValue": "Allan Schwantd",
+                      "value": "allan.schwantd@example.com"
+                    }
+                  ],
+                  "dependentField": "",
+                  "referringTable": "sc_cat_item",
+                  "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ChoiceQuestionElementType"
+                },
+                {
+                  "type": "masked",
+                  "id": "0be5c5d283f2ae50e8fbc9a6feaad34b",
+                  "name": "variables.masked_test",
+                  "variableName": "masked_test",
+                  "label": "Masked Test",
+                  "order": 4560,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": true,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "multiple_choice",
+                  "id": "97684dda83f2ae50e8fbc9a6feaad3bb",
+                  "name": "variables.multiple_choice_test",
+                  "variableName": "multiple_choice_test",
+                  "label": "Multiple Choice Test",
+                  "order": 4570,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "lookupTable": "",
+                  "lookupValue": "",
+                  "lookupLabel": "",
+                  "includeNone": false,
+                  "lookupUnique": false,
+                  "choiceTable": "",
+                  "choiceField": "",
+                  "choiceDirection": "down",
+                  "choices": [
+                    {
+                      "displayValue": "Test 1",
+                      "value": "test_1"
+                    },
+                    {
+                      "displayValue": "Test 2",
+                      "value": "test_2"
+                    }
+                  ],
+                  "dependentField": "",
+                  "referringTable": "sc_cat_item",
+                  "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ChoiceQuestionElementType"
+                },
+                {
+                  "type": "requested_for",
+                  "id": "84498d1e83f2ae50e8fbc9a6feaad3cc",
+                  "name": "variables.requested_for_test",
+                  "variableName": "requested_for_test",
+                  "label": "Requested For Test",
+                  "order": 4580,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": true,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "reference": "sys_user",
+                  "referenceQual": "EQ",
+                  "listTable": "",
+                  "useReferenceQualifier": "simple",
+                  "variableAttributes": "",
+                  "defaultValue": "ab72b26793840210df2f76718bba102c",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "referringTable": "sc_cat_item",
+                  "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "refAcOrderBy": "name",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ReferenceQuestionElementType"
+                },
+                {
+                  "type": "url",
+                  "id": "eaf98d5e83f2ae50e8fbc9a6feaad388",
+                  "name": "variables.url_test",
+                  "variableName": "url_test",
+                  "label": "URL Test",
+                  "order": 4590,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "string",
+                  "id": "e67a85de83f2ae50e8fbc9a6feaad303",
+                  "name": "variables.wide_text_test",
+                  "variableName": "wide_text_test",
+                  "label": "Wide Text Test",
+                  "order": 4600,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "container",
+                  "id": "7ed524db83bea290e8fbc9a6feaad3cd",
+                  "name": "variables.checkbox_group_label",
+                  "variableName": "checkbox_group_label",
+                  "label": "Checkbox Group Label",
+                  "order": 4610,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "displayTitle": true,
+                  "layout": "",
+                  "containerType": "checkbox_container",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ContainerQuestionElementType"
+                },
+                {
+                  "type": "boolean",
+                  "id": "2c0620938332e290e8fbc9a6feaad318",
+                  "name": "variables.group_checkbox_1",
+                  "variableName": "group_checkbox_1",
+                  "label": "Group Checkbox 1",
+                  "order": 4620,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "false",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "boolean",
+                  "id": "2e3624db83bea290e8fbc9a6feaad3b4",
+                  "name": "variables.group_checkbox_2",
+                  "variableName": "group_checkbox_2",
+                  "label": "Group Checkbox 2",
+                  "order": 4630,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "false",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "boolean",
+                  "id": "be56a45f83bea290e8fbc9a6feaad362",
+                  "name": "variables.group_checkbox_3",
+                  "variableName": "group_checkbox_3",
+                  "label": "Group Checkbox 3",
+                  "order": 4640,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": false,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableAttributes": "",
+                  "defaultValue": "false",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "exampleText": "",
+                  "useConfirmation": false,
+                  "regExp": "",
+                  "canDecrypt": false,
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_StandardQuestionElementType"
+                },
+                {
+                  "type": "reference",
+                  "id": "6095677b83b6a690e8fbc9a6feaad32c",
+                  "name": "variables.tile_choice_reference_test",
+                  "variableName": "tile_choice_reference_test",
+                  "label": "Tile Choice Reference Test",
+                  "order": 4660,
+                  "catalogItem": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "variableSet": "",
+                  "mandatory": true,
+                  "readOnly": false,
+                  "visible": true,
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "reference": "incident",
+                  "referenceQual": "active=true^EQ",
+                  "listTable": "",
+                  "useReferenceQualifier": "simple",
+                  "variableAttributes": "limit=8",
+                  "defaultValue": "",
+                  "dynamicValueField": "",
+                  "dynamicValueDotWalkPath": "",
+                  "referringTable": "sc_cat_item",
+                  "referringRecordId": "3a2dae00974dfd10ee1d9300f153afb0",
+                  "refAcOrderBy": "",
+                  "hasPriceImplecations": false,
+                  "showHelp": false,
+                  "helpText": "",
+                  "instructions": null,
+                  "__typename": "AppCatalog_ReferenceQuestionElementType"
+                },
+                {
+                  "type": "container",
+                  "name": "variables.development_test_set",
+                  "label": "Development Test Set",
+                  "containerType": "one_to_many",
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableName": "development_test_set",
+                  "id": "9e1f0f88830be690e8fbc9a6feaad3e5",
+                  "maxRows": 50,
+                  "fields": [
+                    {
+                      "name": "test_set_question_1",
+                      "id": "cc4f874883c7e690e8fbc9a6feaad32a",
+                      "label": "Test Set Question 1",
+                      "type": "6",
+                      "unique": false
+                    },
+                    {
+                      "name": "test_set_question_2",
+                      "id": "8bb2d700834be690e8fbc9a6feaad330",
+                      "label": "Test Set Question 2",
+                      "type": "8",
+                      "unique": false
+                    },
+                    {
+                      "name": "test_set_question_3",
+                      "id": "debf4b88830be690e8fbc9a6feaad341",
+                      "label": "Test Set Question 3",
+                      "type": "9",
+                      "unique": false
+                    }
+                  ],
+                  "rowData": [],
+                  "__typename": "AppCatalog_MultiRowVariableSetType"
+                },
+                {
+                  "type": "container",
+                  "name": "variables.development_test_set_two",
+                  "label": "Development Test Set Two",
+                  "containerType": "one_to_many",
+                  "canRead": true,
+                  "canWrite": true,
+                  "canCreate": true,
+                  "variableName": "development_test_set_two",
+                  "id": "514b0c6083436a90e8fbc9a6feaad3ee",
+                  "maxRows": 50,
+                  "fields": [
+                    {
+                      "name": "test_ref",
+                      "id": "d46bcc6083436a90e8fbc9a6feaad383",
+                      "label": "Test Ref",
+                      "type": "8",
+                      "unique": false
+                    }
+                  ],
+                  "rowData": [],
+                  "__typename": "AppCatalog_MultiRowVariableSetType"
+                }
+              ],
+              "catalogClientScripts": {
+                "onLoad": [],
+                "onChange": ["2af94bbd83762e50e8fbc9a6feaad3ce"],
+                "onSubmit": []
+              },
+              "catalogUIPolicies": ["7595d63f9715f910ee1d9300f153affe"]
+            }
+          },
+          "GlideClientScriptingEnvironment_Query": {
+            "CatalogClientScriptingEnvironment_Scripts": {
+              "onLoad": [],
+              "onChange": [
+                {
+                  "name": "On Change - Test",
+                  "sysId": "2af94bbd83762e50e8fbc9a6feaad3ce",
+                  "script": "function onChange(control, oldValue, newValue, isLoading) {\n    if (isLoading || newValue == '') {\n        return;\n    }\n\n    var value = g_form.getValue('start_date');\n\n    console.log(value);\n}\n",
+                  "type": "onChange",
+                  "fieldName": "variables.start_date",
+                  "tableName": ""
+                }
+              ],
+              "onSubmit": [],
+              "messages": [
+                {
+                  "name": "",
+                  "value": ""
+                }
+              ]
+            },
+            "CatalogClientScriptingEnvironment_Policies": [
+              {
+                "shortDescription": "Show travel needed fields",
+                "sysId": "7595d63f9715f910ee1d9300f153affe",
+                "scriptTrue": null,
+                "scriptFalse": null,
+                "reverse": true,
+                "onLoad": true,
+                "isRunScripts": false,
+                "preEvaluated": false,
+                "preEvaluatedResult": false,
+                "actions": [
+                  {
+                    "visible": "true",
+                    "name": "variables.transportation_type",
+                    "disabled": "ignore",
+                    "mandatory": "true",
+                    "cleared": "false",
+                    "relatedList": null,
+                    "value": "",
+                    "valueAction": "ignore",
+                    "fieldMessageType": "none",
+                    "fieldMessage": "",
+                    "sysId": "0bb59a3f9715f910ee1d9300f153afc6"
+                  },
+                  {
+                    "visible": "true",
+                    "name": "variables.travel_start",
+                    "disabled": "ignore",
+                    "mandatory": "true",
+                    "cleared": "false",
+                    "relatedList": null,
+                    "value": "",
+                    "valueAction": "ignore",
+                    "fieldMessageType": "none",
+                    "fieldMessage": "",
+                    "sysId": "5ab51e3f9715f910ee1d9300f153af1c"
+                  },
+                  {
+                    "visible": "true",
+                    "name": "variables.travel_end",
+                    "disabled": "ignore",
+                    "mandatory": "true",
+                    "cleared": "false",
+                    "relatedList": null,
+                    "value": "",
+                    "valueAction": "ignore",
+                    "fieldMessageType": "none",
+                    "fieldMessage": "",
+                    "sysId": "cba5da3f9715f910ee1d9300f153af73"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "term": "variables.need_travel=Yes",
+                    "field": "variables.need_travel",
+                    "fieldLabel": "Do you need to travel to your Home Leave destination? If your destination is in a separate city, you must include travel details.",
+                    "type": "string",
+                    "columnType": "variable_request",
+                    "value": "Yes",
+                    "oper": "=",
+                    "operatorLabel": "is",
+                    "catalogVariable": "4bb5cc2e97c1b950ee1d9300f153af3d",
+                    "catalogOperator": "=",
+                    "catalogVariableType": "yesno",
+                    "catalogVariableTable": null,
+                    "or": false,
+                    "newquery": false,
+                    "preEvaluatedTerm": false,
+                    "preEvaluatedTermResult": false,
+                    "referenceFields": []
+                  }
+                ]
+              }
+            ]
+          },
+          "GlideDataLookupQuery_Query": {
+            "catalogDataLookup": {
+              "fields": []
+            }
+          }
+        }
+      }
+    }
+  }
+}

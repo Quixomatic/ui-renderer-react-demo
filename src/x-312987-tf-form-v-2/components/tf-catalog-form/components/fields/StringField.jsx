@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Input } from '../../../../../components/ui/input.jsx';
 import { BaseField } from './BaseField.jsx';
 
@@ -7,6 +7,7 @@ import { BaseField } from './BaseField.jsx';
  * 
  * Handles string type fields with proper value/displayValue handling.
  * For string fields, value and displayValue are typically the same.
+ * Uses cursor position preservation to prevent jumping during typing.
  */
 export function StringField({ 
     baseFieldProps,
@@ -18,9 +19,19 @@ export function StringField({
     const currentValue = typeof value === 'object' ? (value?.value || '') : (value || '');
     const displayValue = typeof value === 'object' ? (value?.displayValue || value?.value || '') : (value || '');
     
-    // Handle value changes
+    const inputRef = useRef(null);
+    
+    // Handle value changes with cursor position preservation
     const handleChange = (e) => {
         const newValue = e.target.value;
+        const cursorPosition = e.target.selectionStart;
+        
+        // Store cursor position before dispatching to parent
+        requestAnimationFrame(() => {
+            if (inputRef.current && cursorPosition !== null) {
+                inputRef.current.setSelectionRange(cursorPosition, cursorPosition);
+            }
+        });
         
         // For string fields, value and displayValue are the same
         onValueChange(name, {
@@ -32,6 +43,7 @@ export function StringField({
     return (
         <BaseField {...baseFieldProps}>
             <Input
+                ref={inputRef}
                 type="text"
                 value={displayValue}
                 onChange={handleChange}

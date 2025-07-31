@@ -1,0 +1,290 @@
+schema {
+    query: Query
+}
+
+type Query {
+    MRVSVariableSet(variableSetId: String!, rowData: String): MRVSVariableSetResponse
+}
+
+type MRVSVariableSetResponse {
+    variableSetId: String
+    variableSetName: String
+    maxRows: Int
+    layout: String
+    variablesLayout: [MRVSLayoutItem]
+    variables: [MRVSVariable]
+    clientScripts: MRVSClientScripts
+    uiPolicies: [MRVSUIPolicy]
+}
+
+type MRVSLayoutItem {
+    name: String
+    type: String
+    parent: String
+    caption: String
+    captionDisplay: String
+    layout: String
+    columns: [MRVSLayoutColumn]
+}
+
+type MRVSLayoutColumn {
+    fields: [MRVSLayoutField]
+}
+
+type MRVSLayoutField {
+    name: String
+    type: String
+}
+
+union MRVSVariable = 
+    MRVSStandardVariable
+    | MRVSReferenceVariable  
+    | MRVSChoiceVariable
+    | MRVSAttachmentVariable
+    | MRVSContainerVariable
+
+type MRVSStandardVariable {
+    type: String
+    id: String
+    name: String
+    variableName: String
+    label: String
+    order: Int
+    mandatory: Boolean
+    readOnly: Boolean
+    visible: Boolean
+    canRead: Boolean
+    canWrite: Boolean
+    canCreate: Boolean
+    variableAttributes: String
+    defaultValue: String
+    value: String
+    displayValue: String
+    exampleText: String
+    helpText: String
+    regExp: String
+    __typename: String
+    
+    # Extended properties from x_312987_turbofo_0_question
+    subType: String
+    tooltip: String
+    parsedAttributes: MRVSParsedAttributes
+    validation: MRVSValidation
+    needsTextCompilation: Boolean
+    compiledValue: String
+}
+
+type MRVSReferenceVariable {
+    type: String
+    id: String
+    name: String
+    variableName: String
+    label: String
+    order: Int
+    mandatory: Boolean
+    readOnly: Boolean
+    visible: Boolean
+    canRead: Boolean
+    canWrite: Boolean
+    canCreate: Boolean
+    variableAttributes: String
+    defaultValue: String
+    value: String
+    displayValue: String
+    exampleText: String
+    helpText: String
+    regExp: String
+    reference: String
+    referenceQual: String
+    __typename: String
+    
+    # Extended properties from x_312987_turbofo_0_question
+    subType: String
+    tooltip: String
+    parsedAttributes: MRVSParsedAttributes
+    validation: MRVSValidation
+    compiledValue: String
+    
+    # Reference-specific extended properties
+    tableFields: [MRVSTableField]
+    qualifier: String
+    valueField: String
+}
+
+type MRVSChoiceVariable {
+    type: String
+    id: String
+    name: String
+    variableName: String
+    label: String
+    order: Int
+    mandatory: Boolean
+    readOnly: Boolean
+    visible: Boolean
+    canRead: Boolean
+    canWrite: Boolean
+    canCreate: Boolean
+    variableAttributes: String
+    defaultValue: String
+    value: String
+    displayValue: String
+    exampleText: String
+    helpText: String
+    regExp: String
+    choices: [MRVSChoice]
+    includeNone: Boolean
+    __typename: String
+    
+    # Extended properties from x_312987_turbofo_0_question
+    subType: String
+    tooltip: String
+    parsedAttributes: MRVSParsedAttributes
+    validation: MRVSValidation
+    compiledValue: String
+    
+    # Choice/Numeric Scale specific extended properties
+    min: Int
+    max: Int
+}
+
+type MRVSAttachmentVariable {
+    type: String
+    id: String
+    name: String
+    variableName: String
+    label: String
+    order: Int
+    mandatory: Boolean
+    readOnly: Boolean
+    visible: Boolean
+    canRead: Boolean
+    canWrite: Boolean
+    canCreate: Boolean
+    variableAttributes: String
+    defaultValue: String
+    value: String
+    displayValue: String
+    exampleText: String
+    helpText: String
+    regExp: String
+    allowedFileExtensions: String
+    maxAttachmentSize: String
+    __typename: String
+    
+    # Extended properties from x_312987_turbofo_0_question
+    subType: String
+    tooltip: String
+    parsedAttributes: MRVSParsedAttributes
+    validation: MRVSValidation
+    compiledValue: String
+}
+
+type MRVSContainerVariable {
+    type: String
+    id: String
+    name: String
+    variableName: String
+    label: String
+    order: Int
+    mandatory: Boolean
+    readOnly: Boolean
+    visible: Boolean
+    canRead: Boolean
+    canWrite: Boolean
+    canCreate: Boolean
+    variableAttributes: String
+    defaultValue: String
+    value: String
+    displayValue: String
+    exampleText: String
+    helpText: String
+    regExp: String
+    displayTitle: Boolean
+    layout: String
+    containerType: String
+    __typename: String
+    
+    # Extended properties from x_312987_turbofo_0_question
+    subType: String
+    tooltip: String
+    parsedAttributes: MRVSParsedAttributes
+    validation: MRVSValidation
+    compiledValue: String
+}
+
+type MRVSChoice {
+    value: String
+    displayValue: String
+}
+
+type MRVSClientScripts {
+    onChange: [MRVSClientScript]
+    onLoad: [MRVSClientScript]
+    onSubmit: [MRVSClientScript]
+}
+
+type MRVSClientScript {
+    name: String
+    sysId: String
+    script: String
+    type: String
+    fieldName: String
+}
+
+type MRVSUIPolicy {
+    shortDescription: String
+    sysId: String
+    reverse: Boolean
+    onLoad: Boolean
+    actions: [MRVSUIPolicyAction]
+    conditions: [MRVSUIPolicyCondition]
+}
+
+type MRVSUIPolicyAction {
+    name: String
+    visible: String
+    disabled: String
+    mandatory: String
+    cleared: String
+}
+
+type MRVSUIPolicyCondition {
+    term: String
+    field: String
+    fieldLabel: String
+    type: String
+    value: String
+    oper: String
+    operatorLabel: String
+}
+
+# Extended variable types for enriched data
+
+type MRVSParsedAttributes {
+    # Dynamic attributes parsed from variable attributes string
+    # This is a flexible type that can contain any key-value pairs
+    # Common examples:
+    limit: String
+    enableSearch: String  
+    enablePagination: String
+    placeholder: String
+    maxlength: String
+}
+
+type MRVSValidation {
+    name: String
+    validation_message: String
+    active: Boolean
+    regex: String
+}
+
+type MRVSTableField {
+    column_label: MRVSTableFieldValue
+    element: MRVSTableFieldValue
+    type: MRVSTableFieldValue
+}
+
+type MRVSTableFieldValue {
+    value: String
+    display_value: String
+}

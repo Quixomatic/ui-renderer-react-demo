@@ -51,7 +51,7 @@ export function YesNoButtonField({
                             onClick={() => handleSelect(choice.value, choice.displayValue)}
                             disabled={isReadOnly || isDisabled}
                             className={cn(
-                                "min-w-[60px]",
+                                "min-w-[100px]",
                                 isSelected && "font-medium",
                                 error && "border-destructive"
                             )}

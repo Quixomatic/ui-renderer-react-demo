@@ -4,6 +4,8 @@
  * Handles field name transformations, comprehensive field object creation,
  * and other field-related utilities.
  */
+import { enrichFieldsByType } from '../lib/fieldEnrichment.js';
+import debug from '../lib/debug.js';
 
 /**
  * Ensures field name has the 'variables.' prefix
@@ -34,9 +36,10 @@ export function getVariableName(fieldName) {
  * @param {Array} variablesLayout - Layout configuration
  * @param {string} sourceTable - Source table name
  * @param {string} sourceId - Source record sys_id
+ * @param {Object} userSession - User session data with preferences
  * @returns {Object} Comprehensive field objects keyed by field name
  */
-export function createComprehensiveFields(fields, variablesLayout, sourceTable, sourceId) {
+export function createComprehensiveFields(fields, variablesLayout, sourceTable, sourceId, userSession = {}) {
     const comprehensiveFields = {};
     
     // Process each field
@@ -83,7 +86,24 @@ export function createComprehensiveFields(fields, variablesLayout, sourceTable, 
     // Add container definitions from layout if needed
     addContainersFromLayout(comprehensiveFields, variablesLayout);
     
-    return comprehensiveFields;
+    // Enrich fields with type-specific configuration
+    const formData = { 
+        sourceTable, 
+        sourceId,
+        userSession: userSession || {} // User session data passed from properties
+    };
+    
+    debug.log('enrichment', 'Starting field enrichment process', {
+        fieldCount: Object.keys(comprehensiveFields).length,
+        sourceTable,
+        sourceId
+    });
+    
+    const enrichedFields = enrichFieldsByType(comprehensiveFields, formData);
+    
+    debug.log('enrichment', 'Field enrichment completed successfully');
+    
+    return enrichedFields;
 }
 
 /**

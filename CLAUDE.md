@@ -265,6 +265,71 @@ This architecture enables building complex, dynamic catalog forms while maintain
 
 ---
 
+# MRVS Architecture Considerations
+
+## Multiple g_form Instance Management
+
+When implementing Multi-Row Variable Sets (MRVS), we need to handle multiple g_form instances carefully:
+
+### The Challenge
+- Each MRVS row needs its own g_form instance to manage its fields independently
+- Actions dispatched from row-level g_form instances must not affect:
+  - Other rows in the same MRVS
+  - Other MRVS on the same form
+  - The parent form's fields
+- Field names might be duplicated across rows (e.g., each row has a "quantity" field)
+
+### Proposed Architecture
+
+1. **Scoped Dispatch System**
+   ```javascript
+   // All actions include metadata about their source
+   dispatch('FORM_VALUE_CHANGE', {
+     field: 'quantity',
+     value: 5
+   }, {
+     scope: {
+       type: 'mrvs_row',
+       formId: 'main_form_123',
+       mrvsId: 'mrvs_items',
+       rowId: 'row_456'
+     }
+   });
+   ```
+
+2. **Hierarchical Action Handlers**
+   - MRVS row components handle their own actions first
+   - Unhandled actions bubble up to MRVS container
+   - Finally bubble to main form if needed
+   - Each level only processes actions meant for its scope
+
+3. **Field Name Namespacing**
+   ```javascript
+   // Instead of just 'quantity', use fully qualified names
+   'mrvs_items.row_456.quantity'
+   // This prevents field collisions and makes routing clear
+   ```
+
+4. **g_form Factory Pattern**
+   ```javascript
+   // Create scoped g_form instances
+   const rowGForm = createScopedGForm({
+     parentForm: mainGForm,
+     scope: { mrvsId: 'mrvs_items', rowId: 'row_456' },
+     fields: rowFields,
+     dispatch: scopedDispatch // Automatically adds scope metadata
+   });
+   ```
+
+5. **State Isolation**
+   - Each MRVS row maintains its own field state
+   - Parent form aggregates row data for submission
+   - Validation runs both at row level and aggregate level
+
+This architecture ensures that g_form operations remain isolated to their intended scope while maintaining the ability to aggregate data for form submission.
+
+---
+
 # ServiceNow g_form API Integration
 
 The project now includes a complete g_form API replica that mimics ServiceNow's native GlideForm functionality. This allows developers to use familiar ServiceNow patterns when working with catalog forms.
@@ -781,13 +846,63 @@ This applies to all JSX file imports throughout the project. Regular JavaScript 
 - [x] **Interaction-based validation** - Errors only show after user interaction ✅
 - [x] **Non-mandatory group support** - Handles both mandatory and optional checkbox groups ✅
 
-### 📋 Phase 9: Advanced Field Types (PENDING)
+### 📋 Phase 9: Advanced Field Types (COMPLETED)
+- [x] **Attachment fields** - File upload/download capabilities ✅ COMPLETED
+  - Single file attachment per field
+  - Drag-and-drop interface with compact input styling
+  - File size and extension validation
+  - ServiceNow API integration with ZZ_YY prefix
+  - Proper value/displayValue handling (sys_id/filename)
+- [x] **HTML field enhancement** - Rich text editor with Tiptap ✅ COMPLETED
+  - ServiceNow-style toolbar with comprehensive formatting options
+  - Font family and size controls (system fonts)
+  - Text and highlight color pickers
+  - Text alignment (left, center, right, justify)
+  - Table creation and editing
+  - HTML source view with Apply/Cancel functionality
+  - Proper readonly/disabled states and error styling
+- [x] **Field Subtypes Implementation** - All ServiceNow catalog field subtypes ✅ COMPLETED
+  - `string:existing_value_text` - Presentation-only text display (ExistingValueTextField)
+  - `reference:existing_value_record_list` - Auto-query reference results as bulleted list (ExistingValueRecordListField)
+  - `reference:existing_value_table_list` - Auto-query reference results as table display (ExistingValueTableListField)
+  - `reference:table_list` - Multi-select reference with table display and checkboxes (TableListField)
+  - `multiple_choice:tile_choice` - Visual tile interface for choice options (TileChoiceField)
+  - `reference:tile_choice` - Visual tile interface for reference options (ReferenceTileChoiceField)  
+  - `storeAsRaw` metadata flow for reference fields to support table/tile displays
+  - Proper parsedAttributes support (limit, enableSearch, enablePagination)
+  - Consistent value/displayValue patterns across all subtypes
 - [ ] **Multi-Row Variable Sets (MRVS)** - Repeatable field groups
-- [ ] **Attachment fields** - File upload/download capabilities  
-- [ ] **Custom field types** - Extensible field type system
+  - Dynamic add/remove row functionality
+  - Nested field support within rows
+  - Validation across all rows
+  - UI policy support for MRVS fields
+  - Client script integration
+  - **Scoped g_form instances** - Critical architecture consideration:
+    - Each MRVS row gets its own g_form instance
+    - Action dispatch scoping to prevent cross-contamination
+    - Metadata in payloads (row_id, mrvs_id, parent_form_id)
+    - Hierarchical action handling (row → MRVS → parent form)
+    - Field name namespacing (e.g., `mrvs_123.row_456.field_name`)
+    - Isolated state management per row
+- [ ] **Form-level attachments** - Attachments associated with the form itself
+  - `attachmentsEnabled` property on main component
+  - `g_form.enableAttachments()` / `g_form.disableAttachments()` API methods
+  - Attachment section UI component
+  - Multiple file support at form level
+  - Integration with form submission
 - [ ] **Lookup dialogs** - Full reference field lookup modals
-- [ ] **Masked inputs** - Phone, SSN, credit card masking
+  - Advanced search interface
+  - Column configuration
+  - Filtering and sorting
+  - Recent items
+- [ ] **Custom field types** - Extensible field type system
+  - Plugin architecture for custom fields
+  - Field type registration system
+  - Custom validation rules
 - [ ] **Signature fields** - Digital signature capture
+  - Canvas-based signature input
+  - Touch support
+  - Clear and undo functionality
 
 ### 🎨 Phase 10: UX Enhancements (PENDING)
 - [ ] **Loading states** - Skeleton loaders for all field types
@@ -842,9 +957,9 @@ This applies to all JSX file imports throughout the project. Regular JavaScript 
 
 ### 📈 Next Sprint (Phase 9: Advanced Features)
 1. **Multi-Row Variable Sets (MRVS)** - Repeatable field groups
-2. **Attachment fields** - File upload/download capabilities
-3. **Advanced validation** - Cross-field validation, conditional logic
-4. **UI Policy Engine** - Enhanced dynamic field behavior
+2. **Form-level attachments** - Attachments associated with the form itself
+3. **Lookup dialogs** - Full reference field lookup modals
+4. **Advanced validation** - Cross-field validation, conditional logic
 
 ### 🎯 Medium Term (Next Month)
 1. **Mobile optimization** - Touch-friendly interface improvements

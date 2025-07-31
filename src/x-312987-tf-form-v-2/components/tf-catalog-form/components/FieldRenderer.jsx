@@ -19,6 +19,14 @@ import { RichTextLabelField } from './fields/RichTextLabelField.jsx';
 import { ListCollectorField } from './fields/ListCollectorField.jsx';
 import { HtmlField } from './fields/HtmlField.jsx';
 import { CheckboxGroupField } from './fields/CheckboxGroupField.jsx';
+import { AttachmentField } from './fields/AttachmentField.jsx';
+import { ExistingValueTextField } from './fields/ExistingValueTextField.jsx';
+import { ExistingValueRecordListField } from './fields/ExistingValueRecordListField.jsx';
+import { ExistingValueTableListField } from './fields/ExistingValueTableListField.jsx';
+import { TableListField } from './fields/TableListField.jsx';
+import { TileChoiceField } from './fields/TileChoiceField.jsx';
+import { ReferenceTileChoiceField } from './fields/ReferenceTileChoiceField.jsx';
+import { MultiRowVariableSetField } from './fields/MultiRowVariableSetField.jsx';
 
 /**
  * FieldRenderer - Field Type Router
@@ -46,6 +54,8 @@ export function FieldRenderer({
     onValidation,
     onReferenceSearch,
     onReferenceLoadMore,
+    onAttachmentUpload,
+    onAttachmentDelete,
     layoutItem, // Layout item from normalizer (may contain checkboxGroupInfo)
     allFields // All fields object for checkbox group child field access
 }) {
@@ -78,6 +88,8 @@ export function FieldRenderer({
         },
         onReferenceSearch,
         onReferenceLoadMore,
+        onAttachmentUpload,
+        onAttachmentDelete,
         // Separate baseFieldProps for easy BaseField passing
         baseFieldProps
     };
@@ -108,6 +120,16 @@ export function FieldRenderer({
         );
     }
 
+    // Check if this is a Multi-Row Variable Set field (from layout normalizer)
+    if (layoutItem?.mrvsInfo || config.containerType === 'one_to_many') {
+        return (
+            <MultiRowVariableSetField 
+                {...commonProps}
+                mrvsInfo={layoutItem?.mrvsInfo}
+            />
+        );
+    }
+
     // Route to appropriate field component based on type and subtype
     const { type, subType } = config;
     const fieldKey = subType ? `${type}:${subType}` : type;
@@ -116,6 +138,8 @@ export function FieldRenderer({
         // String field variations
         case 'string':
             return <StringField {...commonProps} />;
+        case 'string:existing_value_text':
+            return <ExistingValueTextField {...commonProps} />;
 
         // Date field variations
         case 'glide_date':
@@ -145,6 +169,14 @@ export function FieldRenderer({
         case 'reference':
         case 'requested_for':
             return <ReferenceField {...commonProps} />;
+        case 'reference:existing_value_record_list':
+            return <ExistingValueRecordListField {...commonProps} />;
+        case 'reference:existing_value_table_list':
+            return <ExistingValueTableListField {...commonProps} />;
+        case 'reference:table_list':
+            return <TableListField {...commonProps} />;
+        case 'reference:tile_choice':
+            return <ReferenceTileChoiceField {...commonProps} />;
 
         // Email field
         case 'email':
@@ -169,6 +201,8 @@ export function FieldRenderer({
         // Multiple choice field (radio buttons)
         case 'multiple_choice':
             return <MultipleChoiceField {...commonProps} />;
+        case 'multiple_choice:tile_choice':
+            return <TileChoiceField {...commonProps} />;
 
         // IP Address field
         case 'ip_address':
@@ -185,6 +219,11 @@ export function FieldRenderer({
         // List collector field (multi-select reference)
         case 'glide_list':
             return <ListCollectorField {...commonProps} />;
+
+        // File attachment field
+        case 'file_attachment':
+        case 'attachment':
+            return <AttachmentField {...commonProps} />;
 
         // Fallback for unsupported types
         default:

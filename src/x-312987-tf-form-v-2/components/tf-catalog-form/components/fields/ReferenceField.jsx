@@ -10,11 +10,7 @@ import { BaseField } from './BaseField.jsx';
  * - value: The sys_id of the referenced record
  * - displayValue: The human-readable name of the referenced record
  * 
- * This is a basic implementation - in a full implementation this would include:
- * - Autocomplete dropdown with search
- * - Lookup dialog
- * - Clear button
- * - Avatar/icon for user references
+ * Now uses enriched properties for search configuration and behavior.
  */
 export function ReferenceField({ 
     baseFieldProps,
@@ -27,6 +23,20 @@ export function ReferenceField({
 }) {
     // Extract needed values from baseFieldProps
     const { name, config, value, fieldState, error, shadowRoot } = baseFieldProps;
+    
+    // Extract enriched properties with fallbacks
+    const {
+        resultLimit = 15,
+        maxSearchMatches = 250,
+        searchStartsWith = true,
+        searchCancelable = true,
+        disableDisplayValueWarning = true,
+        tableName = config.referringTable,
+        recordSysId = config.referringRecordId,
+        sortBy = config.refAcOrderBy,
+        allowNewRecords = false,
+        searchOnClick = true
+    } = config;
     // Get current field value
     const currentValue = typeof value === 'object' ? (value?.value || '') : (value || '');      // sys_id
     const displayValue = typeof value === 'object' ? (value?.displayValue || '') : (value || ''); // display name

@@ -1,0 +1,35 @@
+{
+  x312987Turbofo0 {
+    tf_mrvs {
+      MRVSVariableSet(
+        variableSetId: "9e1f0f88830be690e8fbc9a6feaad3e5"
+        rowData: "{\"test_set_question_1\": {\"value\": \"Test Value 1\", \"displayValue\": \"Test Value 1\"}, \"test_set_question_2\": {\"value\": \"ab72b26793840210df2f76718bba102c\", \"displayValue\": \"James Freund\"}, \"test_set_question_3\": {\"value\": \"2025-07-30\", \"displayValue\": \"2025-07-30\"}}"
+      ) {
+        variableSetId
+        variableSetName
+        maxRows
+        layout
+        variables {
+          ... on x312987Turbofo0_tf_mrvs_MRVSStandardVariable {
+            name
+            variableName
+            type
+            label
+            value
+            displayValue
+          }
+          ... on x312987Turbofo0_tf_mrvs_MRVSReferenceVariable {
+            name
+            variableName
+            type
+            label
+            value
+            displayValue
+            reference
+            referenceQual
+          }
+        }
+      }
+    }
+  }
+}

@@ -21,7 +21,8 @@
       "Bash(npx @tailwindcss/cli:*)",
       "Bash(npm run css:build:*)",
       "WebFetch(domain:www.servicenow.com)",
-      "Bash(npx tailwindcss:*)"
+      "Bash(npx tailwindcss:*)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": []
   }

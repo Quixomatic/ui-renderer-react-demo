@@ -20,7 +20,8 @@ export default (state) => {
 		uiPolicies,
 		referenceData,
 		referenceLoading,
-		referencePagination
+		referencePagination,
+		changesBatch
 	} = state;
 
 	// Get static properties
@@ -57,6 +58,7 @@ export default (state) => {
 				referenceData={referenceData}
 				referenceLoading={referenceLoading}
 				referencePagination={referencePagination}
+				changesBatch={changesBatch}
 			/>
 		</div>
 	);

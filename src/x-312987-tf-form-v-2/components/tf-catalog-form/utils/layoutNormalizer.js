@@ -1,8 +1,9 @@
 /**
  * Layout Normalizer - Fix ServiceNow's Weird Layout Patterns
  * 
- * ServiceNow has bizarre patterns like checkbox_container references that point to other containers.
- * This utility normalizes the layout structure to be simpler and more predictable.
+ * ServiceNow has bizarre patterns like checkbox_container and multi_row_container references 
+ * that point to other containers. This utility normalizes the layout structure to be simpler 
+ * and more predictable.
  */
 
 /**
@@ -55,8 +56,8 @@ function detectCheckboxGroupFromLayout(containerItem) {
 }
 
 /**
- * Normalize the variables layout by flattening checkbox_container references
- * and detecting mandatory checkbox groups
+ * Normalize the variables layout by flattening checkbox_container and multi_row_container references
+ * and detecting special field patterns
  * @param {Array} variablesLayout - The original ServiceNow layout array
  * @param {Object} fields - The fields configuration object
  * @returns {Array} - Normalized layout array
@@ -66,9 +67,11 @@ export function normalizeVariablesLayout(variablesLayout) {
         return variablesLayout;
     }
 
-    // Create a map of checkbox containers for quick lookup
+    // Create maps for container lookups
     const checkboxContainers = {};
+    const multiRowContainers = {};
     const detectedCheckboxGroups = new Set();
+    const detectedMultiRowContainers = new Set();
     
     variablesLayout.forEach(item => {
         if (item.type === 'checkbox_container') {
@@ -82,6 +85,10 @@ export function normalizeVariablesLayout(variablesLayout) {
                 // Store the checkbox group info for later use
                 item.checkboxGroupInfo = checkboxGroupInfo;
             }
+        } else if (item.type === 'multi_row_container') {
+            multiRowContainers[item.name] = item;
+            detectedMultiRowContainers.add(item.name);
+            debug.log('layout', `Detected MRVS container: ${item.name}`);
         }
     });
 
@@ -109,6 +116,20 @@ export function normalizeVariablesLayout(variablesLayout) {
             }
             
             // Skip other standalone checkbox containers - they'll be inlined where referenced
+            return;
+        } else if (item.type === 'multi_row_container') {
+            // Convert multi_row_container to a regular field with MRVS metadata
+            debug.log('layout', `Converting multi_row_container to field: ${item.name}`);
+            normalizedLayout.push({
+                name: item.name,
+                type: 'field',
+                mrvsInfo: {
+                    type: 'multi_row_variable_set',
+                    layout: item.layout || 'across',
+                    caption: item.caption,
+                    captionDisplay: item.captionDisplay
+                }
+            });
             return;
         } else if (item.type === 'container') {
             // Process container columns to inline checkbox_container references
@@ -147,6 +168,23 @@ export function normalizeVariablesLayout(variablesLayout) {
                                 });
                             } else {
                                 debug.warn('layout', `Referenced checkbox container not found: ${field.name}`);
+                            }
+                        } else if (field.type === 'multi_row_container') {
+                            // Convert multi_row_container reference to regular field with MRVS metadata
+                            const containerItem = multiRowContainers[field.name];
+                            if (containerItem) {
+                                normalizedFields.push({
+                                    name: field.name,
+                                    type: 'field',
+                                    mrvsInfo: {
+                                        type: 'multi_row_variable_set',
+                                        layout: containerItem.layout || 'across',
+                                        caption: containerItem.caption,
+                                        captionDisplay: containerItem.captionDisplay
+                                    }
+                                });
+                            } else {
+                                debug.warn('layout', `Referenced multi_row_container not found: ${field.name}`);
                             }
                         } else {
                             // Regular field - keep as is

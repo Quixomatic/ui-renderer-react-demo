@@ -1,0 +1,15 @@
+/* istanbul ignore file */
+export const APP_CATALOG_VIEW_FRAGMENT_PREFIX = 'AppCatalogView_Query';
+export const ITEM_VIEW_LAYOUT_FRAGMENT_PREFIX = 'itemViewLayout._query';
+export const APP_CATALOG_FRAGMENT_PREFIX = 'AppCatalog_Query';
+export const GLIDE_CLIENT_SCRIPTING_ENVIRONMENT_PREFIX = 'GlideClientScriptingEnvironment_Query';
+export const ITEM_LAYOUT_FRAGMENT_PREFIX = 'itemLayout';
+export const PRICING_FRAGMENT_PREFIX = 'pricing';
+export const VARIABLES_LAYOUT_FRAGMENT_PREFIX = 'variablesLayout';
+export const VARIABLES_FRAGMENT_PREFIX = 'variables';
+export const VARIABLES_VALUES_FRAGMENT_PREFIX = 'variablesValues';
+export const CATALOG_CLIENT_SCRIPTS_FRAGMENT_PREFIX = 'catalogClientScripts';
+export const CATALOG_UI_POLICIES_FRAGMENT_PREFIX = 'catalogUIPolicies';
+export const CATALOG_CLIENT_SCRIPTING_ENVIRONMENT_SCRIPTS_FRAGMENT_PREFIX = 'CatalogClientScriptingEnvironment_Scripts';
+export const CATALOG_CLIENT_SCRIPTING_ENVIRONMENT_POLICIES_FRAGMENT_PREFIX = 'CatalogClientScriptingEnvironment_Policies';
+export const DATA_LOOKUPS_FRAGMENT_PREFIX = 'GlideDataLookupQuery_Query';

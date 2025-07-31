@@ -26,7 +26,9 @@ export function Container({
     onValueChange,
     onValidation,
     onReferenceSearch,
-    onReferenceLoadMore
+    onReferenceLoadMore,
+    onAttachmentUpload,
+    onAttachmentDelete
 }) {
     const { name, caption, captionDisplay, layout, columns } = config;
 
@@ -62,11 +64,11 @@ export function Container({
 
     // Calculate gap classes based on variableGap setting
     const gapClass = {
-        'sm': 'gap-2',
-        'md': 'gap-4',
-        'lg': 'gap-6',
-        'xl': 'gap-8'
-    }[variableGap] || 'gap-4';
+        'sm': 'gap-4',
+        'md': 'gap-8',
+        'lg': 'gap-10',
+        'xl': 'gap-12'
+    }[variableGap] || 'gap-8';
 
     // Render fields within a column
     const renderColumnFields = (columnFields) => {
@@ -100,6 +102,8 @@ export function Container({
                         onValidation={onValidation}
                         onReferenceSearch={onReferenceSearch}
                         onReferenceLoadMore={onReferenceLoadMore}
+                        onAttachmentUpload={onAttachmentUpload}
+                        onAttachmentDelete={onAttachmentDelete}
                     />
                 );
             } else {
@@ -124,15 +128,15 @@ export function Container({
             );
         }
 
-        // Multiple columns - render as grid
+        // Multiple columns - render as responsive grid
         const gridCols = {
-            2: 'grid-cols-2',
-            3: 'grid-cols-3',
-            4: 'grid-cols-4'
-        }[columns.length] || 'grid-cols-2';
+            2: 'md:grid-cols-2',
+            3: 'md:grid-cols-3',
+            4: 'md:grid-cols-4'
+        }[columns.length] || 'md:grid-cols-2';
 
         return (
-            <div className={`grid ${gridCols} ${gapClass}`}>
+            <div className={`grid grid-cols-1 ${gridCols} ${gapClass}`}>
                 {columns.map((column, columnIndex) => (
                     <div key={columnIndex} className="space-y-4">
                         {renderColumnFields(column.fields || [])}

@@ -1,0 +1,404 @@
+query x312987TfCatalogFormConnected(
+  $noGuideEvaluate: Boolean
+  $requestedFor: String
+  $sysId: String!
+  $table: String!
+  $variablesData: [AppCatalog_variablesData!]
+) {
+  AppCatalogView_Query {
+    itemViewLayout(
+      sourceTable: $table
+      sourceId: $sysId
+      requestedFor: $requestedFor
+      variablesData: $variablesData
+      noGuideEvaluate: $noGuideEvaluate
+    ) {
+      _query {
+        AppCatalog_Query {
+          itemLayout(
+            sourceTable: $table
+            sourceId: $sysId
+            requestedFor: $requestedFor
+          ) {
+            __typename
+            name
+            shortDescription
+            description
+            sysId
+            picture
+            requestMethod
+            mandatoryAttachment
+            hideQuantity
+            hideAttachment
+            hideDeliveryTime
+            deliveryAddress
+            quantity {
+              label
+              value
+            }
+            type
+            targetRecordTable
+            targetRecordSysId
+            pricing {
+              price
+              displayPrice
+              recurringPrice
+              recurringDisplayPrice
+              recurringFrequencyDisplay
+              recurringFrequency
+              showPrices
+              currencyCode
+              currencySymbol
+            }
+            variablesLayout {
+              name
+              type
+              parent
+              ... on AppCatalog_ContainerVariableFieldLayoutType {
+                caption
+                captionDisplay
+                layout
+                columns {
+                  fields {
+                    name
+                    type
+                  }
+                }
+              }
+              ... on AppCatalog_VariableFieldLayoutType {
+                name
+                type
+                parent
+              }
+            }
+            variablesValues {
+              name
+              value
+              displayValue
+              valuesList {
+                value
+                displayValue
+              }
+            }
+            variables {
+              ... on AppCatalog_MultiRowVariableSetType {
+                type
+                name
+                label
+                containerType
+                canRead
+                canWrite
+                canCreate
+                variableName
+                id
+                maxRows
+                fields {
+                  name
+                  id
+                  label
+                  type
+                  unique
+                }
+                rowData {
+                  row {
+                    id
+                    value
+                    displayValue
+                  }
+                }
+              }
+              ... on AppCatalog_SingleRowVariableSetType {
+                type
+                id
+                name
+                label
+                containerType
+                visible
+                canRead
+                canWrite
+                canCreate
+                variableName
+              }
+              ... on AppCatalog_ChoiceQuestionElementType {
+                type
+                id
+                name
+                variableName
+                label
+                order
+                catalogItem
+                variableSet
+                mandatory
+                readOnly
+                visible
+                canRead
+                canWrite
+                canCreate
+                variableAttributes
+                defaultValue
+                dynamicValueField
+                dynamicValueDotWalkPath
+                lookupTable
+                lookupValue
+                lookupLabel
+                includeNone
+                lookupUnique
+                choiceTable
+                choiceField
+                choiceDirection
+                choices {
+                  displayValue: label
+                  value
+                }
+                dependentField
+                referringTable
+                referringRecordId
+                hasPriceImplecations
+                showHelp
+                helpText
+                instructions
+              }
+              ... on AppCatalog_ReferenceQuestionElementType {
+                type
+                id
+                name
+                variableName
+                label
+                order
+                catalogItem
+                variableSet
+                mandatory
+                readOnly
+                visible
+                canRead
+                canWrite
+                canCreate
+                reference
+                referenceQual
+                listTable
+                useReferenceQualifier
+                variableAttributes
+                defaultValue
+                dynamicValueField
+                dynamicValueDotWalkPath
+                referringTable
+                referringRecordId
+                refAcOrderBy
+                hasPriceImplecations
+                showHelp
+                helpText
+                instructions
+              }
+              ... on AppCatalog_ContainerQuestionElementType {
+                type
+                id
+                name
+                variableName
+                label
+                order
+                visible
+                canRead
+                canWrite
+                canCreate
+                catalogItem
+                variableSet
+                displayTitle
+                layout
+                containerType
+                hasPriceImplecations
+                showHelp
+                helpText
+                instructions
+              }
+              ... on AppCatalog_AttachmentQuestionElementType {
+                type
+                id
+                name
+                variableName
+                label
+                order
+                catalogItem
+                variableSet
+                mandatory
+                readOnly
+                visible
+                canRead
+                canWrite
+                canCreate
+                allowedFileExtensions
+                maxAttachmentSize
+                variableAttributes
+                defaultValue
+                contentType
+                showHelp
+                helpText
+                instructions
+              }
+              ... on AppCatalog_MacroQuestionElementType {
+                type
+                id
+                name
+                variableName
+                label
+                order
+                catalogItem
+                variableSet
+                mandatory
+                canRead
+                canWrite
+                canCreate
+                variableAttributes
+                defaultValue
+                dynamicValueField
+                dynamicValueDotWalkPath
+                macroponentId
+                showHelp
+                helpText
+                instructions
+              }
+              ... on AppCatalog_StandardQuestionElementType {
+                type
+                id
+                name
+                variableName
+                label
+                order
+                catalogItem
+                variableSet
+                mandatory
+                readOnly
+                visible
+                canRead
+                canWrite
+                canCreate
+                variableAttributes
+                defaultValue
+                dynamicValueField
+                dynamicValueDotWalkPath
+                exampleText
+                useConfirmation
+                regExp
+                canDecrypt
+                hasPriceImplecations
+                showHelp
+                helpText
+                instructions
+              }
+              __typename
+            }
+            catalogClientScripts {
+              onLoad
+              onChange
+              onSubmit
+            }
+            catalogUIPolicies
+          }
+        }
+        GlideClientScriptingEnvironment_Query {
+          CatalogClientScriptingEnvironment_Scripts(
+            table: $table
+            sysId: $sysId
+          ) {
+            onLoad {
+              name
+              sysId
+              script
+              type
+              fieldName
+              tableName
+            }
+            onChange {
+              name
+              sysId
+              script
+              type
+              fieldName
+              tableName
+            }
+            onSubmit {
+              name
+              sysId
+              script
+              type
+              fieldName
+              tableName
+            }
+            messages {
+              name
+              value
+            }
+          }
+          CatalogClientScriptingEnvironment_Policies(
+            table: $table
+            sysId: $sysId
+          ) {
+            shortDescription
+            sysId
+            scriptTrue {
+              name
+              script
+            }
+            scriptFalse {
+              name
+              script
+            }
+            reverse
+            onLoad
+            isRunScripts
+            preEvaluated
+            preEvaluatedResult
+            actions {
+              visible
+              name
+              disabled
+              mandatory
+              cleared: clearValue
+              relatedList
+              value
+              valueAction
+              fieldMessageType
+              fieldMessage
+              sysId
+            }
+            conditions {
+              term
+              field: fieldName
+              fieldLabel
+              type
+              columnType
+              value
+              oper: operator
+              operatorLabel
+              catalogVariable
+              catalogOperator
+              catalogVariableType
+              catalogVariableTable
+              or: isOrQuery
+              newquery: isNewQuery
+              preEvaluatedTerm
+              preEvaluatedTermResult
+              referenceFields {
+                table
+                fieldName
+                fieldLabel
+                internalType
+                referenceTable
+              }
+            }
+          }
+        }
+        GlideDataLookupQuery_Query {
+          catalogDataLookup(targetTable: $table, targetId: $sysId) {
+            fields {
+              field
+              definitions {
+                name
+                sysId
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

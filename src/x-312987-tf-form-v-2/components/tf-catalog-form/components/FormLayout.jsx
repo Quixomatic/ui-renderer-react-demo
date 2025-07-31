@@ -30,6 +30,8 @@ export function FormLayout({
     onValidation,
     onReferenceSearch,
     onReferenceLoadMore,
+    onAttachmentUpload,
+    onAttachmentDelete,
     onSubmit,
     onReset
 }) {
@@ -56,6 +58,8 @@ export function FormLayout({
                     onValidation={onValidation}
                     onReferenceSearch={onReferenceSearch}
                     onReferenceLoadMore={onReferenceLoadMore}
+                    onAttachmentUpload={onAttachmentUpload}
+                    onAttachmentDelete={onAttachmentDelete}
                 />
             );
         } else if (item.type === 'field') {
@@ -87,6 +91,8 @@ export function FormLayout({
                     onValidation={onValidation}
                     onReferenceSearch={onReferenceSearch}
                     onReferenceLoadMore={onReferenceLoadMore}
+                    onAttachmentUpload={onAttachmentUpload}
+                    onAttachmentDelete={onAttachmentDelete}
                 />
             );
         }

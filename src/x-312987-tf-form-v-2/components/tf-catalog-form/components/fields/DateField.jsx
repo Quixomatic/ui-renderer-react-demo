@@ -12,7 +12,7 @@ import { BaseField } from './BaseField.jsx';
  * 
  * Handles glide_date and glide_date_time type fields with proper value/displayValue handling.
  * Uses shadcn/ui Calendar and Popover components for a proper date picker experience.
- * For date fields, value and displayValue are typically the same formatted date string.
+ * Now uses enriched properties for format, timezone, locale, and date constraints.
  */
 export function DateField({ 
     baseFieldProps,
@@ -20,6 +20,18 @@ export function DateField({
 }) {
     // Extract needed values from baseFieldProps
     const { name, config, value, fieldState, error, shadowRoot } = baseFieldProps;
+    
+    // Extract enriched properties with fallbacks
+    const {
+        format: dateFormat = 'yyyy-MM-dd',
+        originalFormat = 'yyyy-MM-dd', 
+        timezone = 'UTC',
+        locale = 'en-US',
+        firstDayOfWeek = 0,
+        minDate,
+        maxDate,
+        timePicker = false
+    } = config;
     
     const [open, setOpen] = React.useState(false);
 
@@ -33,6 +45,8 @@ export function DateField({
     // Handle date selection from calendar
     const handleDateSelect = (date) => {
         if (date) {
+            // For date-only fields, always use yyyy-MM-dd format (ServiceNow standard)
+            // For datetime fields, we'll handle the time component separately
             const formattedDate = format(date, 'yyyy-MM-dd');
             onValueChange(name, {
                 value: formattedDate,
@@ -88,7 +102,7 @@ export function DateField({
                                     className={`w-32 justify-between font-normal ${error ? 'border-destructive' : ''} ${!currentDate ? 'text-muted-foreground' : ''}`}
                                     disabled={isReadOnly || isDisabled}
                                 >
-                                    {currentDate ? currentDate.toLocaleDateString() : "Select date"}
+                                    {currentDate ? currentDate.toLocaleDateString(locale) : "Select date"}
                                     <ChevronDownIcon />
                                 </Button>
                             </PopoverTrigger>
@@ -102,6 +116,12 @@ export function DateField({
                                     selected={currentDate}
                                     captionLayout="dropdown"
                                     onSelect={handleDateSelect}
+                                    weekStartsOn={firstDayOfWeek}
+                                    disabled={(date) => {
+                                        if (minDate && date < new Date(minDate)) return true;
+                                        if (maxDate && date > new Date(maxDate)) return true;
+                                        return false;
+                                    }}
                                 />
                             </PopoverContent>
                         </Popover>
@@ -133,7 +153,7 @@ export function DateField({
                         className={`w-full justify-between font-normal ${error ? 'border-destructive' : ''} ${!currentDate ? 'text-muted-foreground' : ''}`}
                         disabled={isReadOnly || isDisabled}
                     >
-                        {currentDate ? currentDate.toLocaleDateString() : "Select date"}
+                        {currentDate ? currentDate.toLocaleDateString(locale) : "Select date"}
                         <ChevronDownIcon />
                     </Button>
                 </PopoverTrigger>
@@ -147,6 +167,14 @@ export function DateField({
                         selected={currentDate}
                         captionLayout="dropdown"
                         onSelect={handleDateSelect}
+                        weekStartsOn={firstDayOfWeek}
+                        timeZone={timezone}
+                        locale={locale}
+                        disabled={(date) => {
+                            if (minDate && date < new Date(minDate)) return true;
+                            if (maxDate && date > new Date(maxDate)) return true;
+                            return false;
+                        }}
                     />
                 </PopoverContent>
             </Popover>

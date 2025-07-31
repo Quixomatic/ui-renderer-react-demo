@@ -1,0 +1,64 @@
+{
+  x312987Turbofo0 {
+    tf_mrvs {
+      MRVSVariableSet(variableSetId: "9e1f0f88830be690e8fbc9a6feaad3e5") {
+        variableSetId
+        variableSetName
+        maxRows
+        variablesLayout {
+          name
+          type
+          parent
+        }
+        variables {
+          name
+          type
+          label
+          mandatory
+          ... on MRVSStandardVariable {
+            exampleText
+            helpText
+            regExp
+          }
+          ... on MRVSReferenceVariable {
+            reference
+            referenceQual
+          }
+          ... on MRVSChoiceVariable {
+            choices {
+              value
+              displayValue
+            }
+            includeNone
+          }
+        }
+        clientScripts {
+          onChange {
+            name
+            script
+            fieldName
+          }
+          onLoad {
+            name
+            script
+          }
+        }
+        uiPolicies {
+          shortDescription
+          reverse
+          onLoad
+          actions {
+            name
+            visible
+            mandatory
+          }
+          conditions {
+            field
+            oper
+            value
+          }
+        }
+      }
+    }
+  }
+}
