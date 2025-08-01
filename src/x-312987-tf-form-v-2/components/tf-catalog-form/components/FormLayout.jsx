@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '../../../../components/ui/button.jsx';
 import { FieldRenderer } from './FieldRenderer.jsx';
 import { Container } from './Container.jsx';
+import debug from '../../../lib/debug.js';
 
 /**
  * FormLayout - Regular React Component
@@ -35,6 +36,13 @@ export function FormLayout({
     onSubmit,
     onReset
 }) {
+    // Debug component lifecycle
+    useEffect(() => {
+        debug.log('componentMount', '🟢 FormLayout MOUNTED');
+        return () => {
+            debug.log('componentMount', '🔴 FormLayout UNMOUNTING');
+        };
+    }, []);
     // Helper function to render a layout item
     const renderLayoutItem = (item, index) => {
         if (item.type === 'container') {

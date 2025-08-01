@@ -5,6 +5,7 @@ import { GFormAPI } from "../../lib/GFormAPI.js";
 import { UIPolicyEngine } from "../../lib/UIPolicyEngine.js";
 import { ClientScriptEngine } from "../../lib/ClientScriptEngine.js";
 import { normalizeVariablesLayout, debugLayoutTransformation } from "./utils/layoutNormalizer.js";
+import debug from "../../lib/debug.js";
 
 /**
  * Main TurboForge Catalog Form View
@@ -42,6 +43,14 @@ export default function TfCatalogForm(state) {
 
     // Get shadow root for portal rendering
     const shadowRoot = hostElement?.shadowRoot;
+
+    // Debug component lifecycle
+    useEffect(() => {
+        debug.log('componentMount', '🟢 TfCatalogForm MOUNTED');
+        return () => {
+            debug.log('componentMount', '🔴 TfCatalogForm UNMOUNTING');
+        };
+    }, []);
 
     // Create derived objects using useMemo for optimal performance
     const formValues = useMemo(() => {
@@ -88,6 +97,17 @@ export default function TfCatalogForm(state) {
         });
         return messages;
     }, [fields]);
+
+    // Memoize the fields object to prevent unnecessary re-renders downstream
+    // This is crucial to prevent component unmounting/remounting on every field change
+    const memoizedFields = useMemo(() => {
+        return fields;
+    }, [
+        // Only recalculate if the number of fields changes or field structure changes
+        Object.keys(fields || {}).length,
+        // Create a shallow hash of field names and types to detect structural changes
+        Object.keys(fields || {}).map(key => `${key}:${fields[key]?.type}`).join('|')
+    ]);
 
     // Normalize the variables layout to handle ServiceNow's weird checkbox_container patterns
     const normalizedVariablesLayout = useMemo(() => {
@@ -183,7 +203,7 @@ export default function TfCatalogForm(state) {
             // Process all batched changes with fresh g_form state
             Object.entries(changesBatch).forEach(([field, changeData]) => {
                 const { oldValue, value } = changeData;
-                
+
                 // Execute onChange scripts with updated g_form state
                 if (clientScriptEngineRef.current) {
                     clientScriptEngineRef.current.executeOnChange(
@@ -199,7 +219,7 @@ export default function TfCatalogForm(state) {
                     uiPolicyEngineRef.current.onFieldChange(field, formValues);
                 }
             });
-            
+
             // Clear the batch after processing
             dispatch('CHANGES_PROCESSED');
         }
@@ -289,7 +309,7 @@ export default function TfCatalogForm(state) {
                 </CardHeader>
                 <CardContent>
                     <FormLayout
-                        fields={fields}
+                        fields={memoizedFields}
                         variablesLayout={normalizedVariablesLayout}
                         formValues={formValues}
                         validationErrors={validationErrors}

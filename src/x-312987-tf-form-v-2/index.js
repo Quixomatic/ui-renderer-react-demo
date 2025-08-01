@@ -1,4 +1,4 @@
-import { createCustomElement, actionTypes } from '@servicenow/ui-core';
+import { createCustomElement, actionTypes, declarativeOperations } from '@servicenow/ui-core';
 import { createHttpEffect } from '@servicenow/ui-effect-http';
 import snabbdom from '@servicenow/ui-renderer-snabbdom';
 import styles from './styles.scss';
@@ -432,7 +432,7 @@ createCustomElement('x-312987-tf-form-v-2', {
 				if (currentValue !== newValue || currentDisplayValue !== newDisplayValue) {
 					// Get old value from current state (previous render cycle)
 					const oldValue = currentField.value || '';
-					
+
 					const updatedField = updateFieldValue(currentField, value);
 
 					updateState({
@@ -707,15 +707,15 @@ createCustomElement('x-312987-tf-form-v-2', {
 
 			// Build search query using tableFields
 			let query = '';
-			
+
 			// First, clean up the qualifier - remove any ^EQ (end query) markers
 			let cleanQualifier = qualifier ? qualifier.replace(/\^EQ/gi, '') : '';
-			
+
 			if (searchTerm && fieldNames.length > 0) {
 				// Create OR query for each searchable field
 				const searchQueries = fieldNames.map(fieldName => `${fieldName}LIKE${searchTerm}`);
 				const searchClause = searchQueries.join('^OR');
-				
+
 				if (cleanQualifier) {
 					// Check if qualifier contains ^NQ (new query) operators
 					if (cleanQualifier.includes('^NQ')) {
@@ -1069,7 +1069,9 @@ createCustomElement('x-312987-tf-form-v-2', {
 		'CHANGES_PROCESSED': ({ updateState }) => {
 			// Clear the changes batch after processing
 			updateState({
-				changesBatch: {}
+				path: 'changesBatch',
+				value: {},
+				shouldRender: false
 			});
 		}
 	},

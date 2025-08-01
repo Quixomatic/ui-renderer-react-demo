@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { FieldRenderer } from './FieldRenderer.jsx';
+import debug from '../../../lib/debug.js';
 
 /**
  * Container - Regular React Component
@@ -32,35 +33,44 @@ export function Container({
 }) {
     const { name, caption, captionDisplay, layout, columns } = config;
 
+    // Debug component lifecycle
+    useEffect(() => {
+        debug.log('componentMount', `🟢 Container [${name}] MOUNTED`);
+        return () => {
+            debug.log('componentMount', `🔴 Container [${name}] UNMOUNTING`);
+        };
+    }, [name]);
+
     // Memoize container field names to avoid recalculating on every render
     const containerFieldNames = useMemo(() => 
         columns?.flatMap(col => (col.fields || []).map(field => field.name)) || []
     , [columns]);
 
-    // Track container visibility based on field states
-    const [isContainerVisible, setIsContainerVisible] = useState(true);
+    // TEMPORARILY DISABLED: Track container visibility based on field states
+    // const [isContainerVisible, setIsContainerVisible] = useState(true);
 
-    // Update container visibility when fieldStates change
-    useEffect(() => {
-        if (containerFieldNames.length === 0) {
-            setIsContainerVisible(true);
-            return;
-        }
+    // TEMPORARILY DISABLED: Update container visibility when fieldStates change
+    // useEffect(() => {
+    //     if (containerFieldNames.length === 0) {
+    //         setIsContainerVisible(true);
+    //         return;
+    //     }
 
-        // Check if ANY field in this container is visible
-        const hasVisibleField = containerFieldNames.some(fieldName => {
-            const fieldState = fieldStates?.[fieldName];
-            // Default to visible if not explicitly set to false
-            return fieldState?.visible !== false;
-        });
+    //     // Check if ANY field in this container is visible
+    //     const hasVisibleField = containerFieldNames.some(fieldName => {
+    //         const fieldState = fieldStates?.[fieldName];
+    //         // Default to visible if not explicitly set to false
+    //         return fieldState?.visible !== false;
+    //     });
 
-        setIsContainerVisible(hasVisibleField);
-    }, [fieldStates, containerFieldNames]);
+    //     setIsContainerVisible(hasVisibleField);
+    // }, [fieldStates, containerFieldNames]);
 
-    // Hide container if all fields are hidden
-    if (!isContainerVisible) {
-        return null;
-    }
+    // TEMPORARILY DISABLED: Hide container if all fields are hidden
+    // Always show container for now to test if this fixes unmounting issue
+    // if (!isContainerVisible) {
+    //     return null;
+    // }
 
     // Calculate gap classes based on variableGap setting
     const gapClass = {

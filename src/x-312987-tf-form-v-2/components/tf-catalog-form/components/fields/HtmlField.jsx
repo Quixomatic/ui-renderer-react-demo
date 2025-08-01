@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
@@ -76,6 +76,30 @@ export function HtmlField({
     // State for HTML source view
     const [showSourceView, setShowSourceView] = useState(false);
     const [sourceHtml, setSourceHtml] = useState('');
+    
+    // Local state for HTML content control
+    const [localValue, setLocalValue] = useState(displayValue);
+    
+    // Detect external changes (g_form.setValue, etc.) and sync local state
+    useEffect(() => {
+        if (displayValue !== localValue) {
+            setLocalValue(displayValue);
+        }
+    }, [displayValue]);
+    
+    // Debounced updates to parent (optional real-time updates)
+    const debouncedUpdate = useMemo(() => {
+        let timeoutId;
+        return (html) => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                onValueChange(name, {
+                    value: html,
+                    displayValue: html
+                });
+            }, 300); // 300ms debounce
+        };
+    }, [name, onValueChange]);
 
     // Initialize Tiptap editor
     const editor = useEditor({
@@ -109,12 +133,19 @@ export function HtmlField({
             TableHeader,
             TableCell,
         ],
-        content: displayValue,
+        content: localValue,
         editable: !isReadOnly && !isDisabled,
         onUpdate: ({ editor }) => {
             const html = editor.getHTML();
             
-            // Only update if content actually changed
+            // Update local state and use debounced parent update
+            setLocalValue(html);
+            debouncedUpdate(html);
+        },
+        onBlur: ({ editor }) => {
+            const html = editor.getHTML();
+            
+            // Ensure final sync on blur
             if (html !== displayValue) {
                 onValueChange(name, {
                     value: html,
@@ -124,12 +155,12 @@ export function HtmlField({
         },
     });
 
-    // Update editor content when value changes externally
-    React.useEffect(() => {
-        if (editor && editor.getHTML() !== displayValue) {
-            editor.commands.setContent(displayValue);
+    // Update editor content when external changes occur
+    useEffect(() => {
+        if (editor && editor.getHTML() !== localValue) {
+            editor.commands.setContent(localValue);
         }
-    }, [displayValue, editor]);
+    }, [localValue, editor]);
 
     // Font families (system/browser fonts)
     const fontFamilies = [

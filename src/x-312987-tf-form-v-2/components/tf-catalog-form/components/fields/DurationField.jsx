@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Input } from '../../../../../components/ui/input.jsx';
 import { BaseField } from './BaseField.jsx';
 
@@ -87,6 +87,20 @@ export function DurationField({
         setSeconds(newDuration.seconds);
     }, [currentValue]);
 
+    // Debounced updates to parent (optional real-time updates)
+    const debouncedUpdate = useMemo(() => {
+        let timeoutId;
+        return (formattedValue, displayVal) => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                onValueChange(name, {
+                    value: formattedValue,
+                    displayValue: displayVal
+                });
+            }, 300); // 300ms debounce
+        };
+    }, [name, onValueChange]);
+
     // Handle component changes
     const handleChange = (component, newValue) => {
         let newDays = days;
@@ -123,6 +137,23 @@ export function DurationField({
         if (newSeconds > 0) parts.push(`${newSeconds} second${newSeconds !== 1 ? 's' : ''}`);
         const displayVal = parts.length > 0 ? parts.join(', ') : '0 seconds';
 
+        // Use debounced update instead of immediate
+        debouncedUpdate(formattedValue, displayVal);
+    };
+
+    // Handle blur - ensure final sync for any field
+    const handleBlur = () => {
+        const formattedValue = formatDuration(days, hours, minutes, seconds);
+        
+        // Create display value
+        const parts = [];
+        if (days > 0) parts.push(`${days} day${days !== 1 ? 's' : ''}`);
+        if (hours > 0) parts.push(`${hours} hour${hours !== 1 ? 's' : ''}`);
+        if (minutes > 0) parts.push(`${minutes} minute${minutes !== 1 ? 's' : ''}`);
+        if (seconds > 0) parts.push(`${seconds} second${seconds !== 1 ? 's' : ''}`);
+        const displayVal = parts.length > 0 ? parts.join(', ') : '0 seconds';
+
+        // Always sync on blur to ensure parent has latest values
         onValueChange(name, {
             value: formattedValue,
             displayValue: displayVal
@@ -140,6 +171,7 @@ export function DurationField({
                         type="number"
                         value={days}
                         onChange={(e) => handleChange('days', e.target.value)}
+                        onBlur={handleBlur}
                         placeholder="0"
                         className={`w-16 ${error ? 'border-destructive' : ''}`}
                         min="0"
@@ -153,6 +185,7 @@ export function DurationField({
                         type="number"
                         value={hours}
                         onChange={(e) => handleChange('hours', e.target.value)}
+                        onBlur={handleBlur}
                         placeholder="0"
                         className={`w-16 ${error ? 'border-destructive' : ''}`}
                         min="0"
@@ -167,6 +200,7 @@ export function DurationField({
                         type="number"
                         value={minutes}
                         onChange={(e) => handleChange('minutes', e.target.value)}
+                        onBlur={handleBlur}
                         placeholder="0"
                         className={`w-16 ${error ? 'border-destructive' : ''}`}
                         min="0"
@@ -181,6 +215,7 @@ export function DurationField({
                         type="number"
                         value={seconds}
                         onChange={(e) => handleChange('seconds', e.target.value)}
+                        onBlur={handleBlur}
                         placeholder="0"
                         className={`w-16 ${error ? 'border-destructive' : ''}`}
                         min="0"

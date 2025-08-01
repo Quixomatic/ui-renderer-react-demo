@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
+import debug from '../../../lib/debug.js';
 import { StringField } from './fields/StringField.jsx';
 import { DateField } from './fields/DateField.jsx';
 import { ChoiceField } from './fields/ChoiceField.jsx';
@@ -59,6 +60,14 @@ export function FieldRenderer({
     layoutItem, // Layout item from normalizer (may contain checkboxGroupInfo)
     allFields // All fields object for checkbox group child field access
 }) {
+    // Debug component lifecycle
+    useEffect(() => {
+        debug.log('componentMount', `🟢 FieldRenderer [${name}] MOUNTED`);
+        return () => {
+            debug.log('componentMount', `🔴 FieldRenderer [${name}] UNMOUNTING`);
+        };
+    }, []);
+    
     // Props that should always be passed to BaseField components
     const baseFieldProps = {
         name,
@@ -72,12 +81,9 @@ export function FieldRenderer({
         showValidationErrors
     };
 
-    // Common props passed to all field components (includes baseFieldProps + field-specific props)
+    // Common props passed to all field components (excludes reference-specific props)
     const commonProps = {
         ...baseFieldProps,
-        referenceData,
-        referenceLoading,
-        referencePagination,
         onValueChange: (fieldName, newValue) => {
             onValueChange(fieldName, newValue);
             // Trigger validation if needed
@@ -86,12 +92,19 @@ export function FieldRenderer({
                 onValidation(fieldName, val);
             }
         },
-        onReferenceSearch,
-        onReferenceLoadMore,
         onAttachmentUpload,
         onAttachmentDelete,
         // Separate baseFieldProps for easy BaseField passing
         baseFieldProps
+    };
+
+    // Reference-specific props only passed to reference fields
+    const referenceProps = {
+        referenceData,
+        referenceLoading,
+        referencePagination,
+        onReferenceSearch,
+        onReferenceLoadMore
     };
 
     // Check if this is a checkbox group field (from layout normalizer)
@@ -168,15 +181,15 @@ export function FieldRenderer({
         // Reference field variations
         case 'reference':
         case 'requested_for':
-            return <ReferenceField {...commonProps} />;
+            return <ReferenceField {...referenceProps} {...commonProps} />;
         case 'reference:existing_value_record_list':
-            return <ExistingValueRecordListField {...commonProps} />;
+            return <ExistingValueRecordListField {...referenceProps} {...commonProps} />;
         case 'reference:existing_value_table_list':
-            return <ExistingValueTableListField {...commonProps} />;
+            return <ExistingValueTableListField {...referenceProps} {...commonProps} />;
         case 'reference:table_list':
-            return <TableListField {...commonProps} />;
+            return <TableListField {...referenceProps} {...commonProps} />;
         case 'reference:tile_choice':
-            return <ReferenceTileChoiceField {...commonProps} />;
+            return <ReferenceTileChoiceField {...referenceProps} {...commonProps} />;
 
         // Email field
         case 'email':
@@ -218,7 +231,7 @@ export function FieldRenderer({
 
         // List collector field (multi-select reference)
         case 'glide_list':
-            return <ListCollectorField {...commonProps} />;
+            return <ListCollectorField {...referenceProps} {...commonProps} />;
 
         // File attachment field
         case 'file_attachment':

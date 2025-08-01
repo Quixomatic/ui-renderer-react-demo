@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { MetaSegmentedInput } from '../../../../../components/ui/meta-segmented-input.jsx';
 import { BaseField } from './BaseField.jsx';
 import { networkPresets } from '../../../../../../components/lib/segmented-input-presets.js';
@@ -23,16 +23,48 @@ export function IpAddressFieldSegmented({
     
     const [validationError, setValidationError] = useState(null);
     
+    // Local state for input control
+    const [localValue, setLocalValue] = useState(displayValue);
+    
+    // Detect external changes (g_form.setValue, etc.) and sync local state
+    useEffect(() => {
+        if (displayValue !== localValue) {
+            setLocalValue(displayValue);
+        }
+    }, [displayValue]);
+    
+    // Debounced updates to parent (optional real-time updates)
+    const debouncedUpdate = useMemo(() => {
+        let timeoutId;
+        return (value) => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                onValueChange(name, {
+                    value: value,
+                    displayValue: value
+                });
+            }, 300); // 300ms debounce
+        };
+    }, [name, onValueChange]);
+    
     // Handle value changes from MetaSegmentedInput
     const handleChange = ({ config: configKey, value: newValue }) => {
-        // For IP address fields, value and displayValue are the same
-        onValueChange(name, {
-            value: newValue,
-            displayValue: newValue
-        });
+        setLocalValue(newValue);
+        debouncedUpdate(newValue);
         
         // Clear validation error on change
         setValidationError(null);
+    };
+    
+    // Handle blur - ensure final sync
+    const handleBlur = () => {
+        // Only dispatch if value actually changed from what parent knows
+        if (localValue !== displayValue) {
+            onValueChange(name, {
+                value: localValue,
+                displayValue: localValue
+            });
+        }
     };
     
     // Handle validation errors from MetaSegmentedInput
@@ -64,7 +96,7 @@ export function IpAddressFieldSegmented({
                 
                 <div>
                     <MetaSegmentedInput
-                        value={displayValue}
+                        value={localValue}
                         onChange={handleChange}
                         onError={handleError}
                         use="ipv4"
